@@ -42,7 +42,8 @@ Hardware Guide: Neural Networks on GPUs (Updated 2016-1-30)
   author =   {Joseph Redmon},
   title =    {Darknet: Open Source Neural Networks in C},
   howpublished = {\url{http://pjreddie.com/darknet/}},
-  year = {2013--2016}}
+  year = {2013--2016}
+}
 ```
 
 ## 11. 연락(Contact)
@@ -55,6 +56,7 @@ Hardware Guide: Neural Networks on GPUs (Updated 2016-1-30)
 Darknet is easy to install with only two optional dependancies:
 - OpenCV if you want a wider variety of supported image types.
 - CUDA if you want GPU computation.Both are optional so lets start by just installing the base system. I've only tested this on Linux and Mac computers. If it doesn't work for you, email me or something?
+
 ### 1) Installing The Base System
 First clone the Darknet git repository here. This can be accomplished by:
 > ```bash
