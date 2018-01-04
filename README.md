@@ -6,24 +6,70 @@
 ## [7. 꼬맹이 다크넷(Tiny Darknet)](#꼬맹이-다크넷)이미지 분류를 꼬맹이(아주작게)로 만들었다.
 ## [8. CIFAR-10 으로 분류기를 수련한다(Train a Classifier on CIFAR-10)](#CIFAR-10-분류기)다크넷에서 분류자를 어떻게 수련하는지 기초부터 배운다.
 ## [9. 장비 안내: GPU 로 신경망](#장비-안내)Hardware Guide: Neural Networks on GPUs (Updated 2016-1-30)  많은 사람들이 나에게 물었다 시각응용프로그램을 위한 신경망 수련을 위하여 권장하는 장비가 무엇인지. 이것은 내생각의 일부이다.
-## 10. 인용(Cite)다크넷을 연구에 사용한다면 이것을 인용하시오:```@misc{darknet13,  author =   {Joseph Redmon},  title =    {Darknet: Open Source Neural Networks in C},  howpublished = {\url{http://pjreddie.com/darknet/}},  year = {2013--2016}}```
-## 11. 연락(Contact)다크넷에 관한 질문이나 도움을 받으려면 [다크넷 메일목록](https://groups.google.com/forum/#!forum/darknet)에 연락하시오. 가능한 한 빨리 질문에 답변할 것이다.
-------<a name="다크넷-설치"></a>## 1. 다크넷 설치Darknet is easy to install with only two optional dependancies:- OpenCV if you want a wider variety of supported image types.- CUDA if you want GPU computation.Both are optional so lets start by just installing the base system. I've only tested this on Linux and Mac computers. If it doesn't work for you, email me or something?
-### 1) Installing The Base SystemFirst clone the Darknet git repository here. This can be accomplished by:  > ```bash> git clone https://github.com/pjreddie/darknet.git> cd darknet> Make> ```If this works you should see a whole bunch of compiling information fly by:```bashmkdir -p objgcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast....gcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast....gcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast.........gcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast -lm....```If you have any errors, try to fix them? If everything seems to have compiled correctly, try running it!```bash./darknet```You should get the output:```bashusage: ./darknet <function>```Great! Now check out the cool things you can do with darknet here.### 2) Compiling With CUDA
-Darknet on the CPU is fast but it's like 500 times faster on GPU! You'll have to have an Nvidia GPU and you'll have to install CUDA. I won't go into CUDA installation in detail because it is terrifying.Once you have CUDA installed, change the first line of the Makefile in the base directory to read:
-GPU=1
-Now you can make the project and CUDA will be enabled. By default it will run the network on the 0th graphics card in your system (if you installed CUDA correctly you can list your graphics cards using nvidia-smi). If you want to change what card Darknet uses you can give it the optional command line flag -i <index>, like:
-./darknet -i 1 imagenet test cfg/alexnet.cfg alexnet.weights
-If you compiled using CUDA but want to do CPU computation for whatever reason you can use -nogpu to use the CPU instead:
-./darknet -nogpu imagenet test cfg/alexnet.cfg alexnet.weights
-Enjoy your new, super fast neural networks!
+## 10. 인용(Cite)다크넷을 연구에 사용한다면 이것을 인용하시오:
+```
+@misc{darknet13,
+  author =   {Joseph Redmon},
+  title =    {Darknet: Open Source Neural Networks in C},
+  howpublished = {\url{http://pjreddie.com/darknet/}},
+  year = {2013--2016}}
+```
+## 11. 연락(Contact)
+다크넷에 관한 질문이나 도움을 받으려면 [다크넷 메일목록](https://groups.google.com/forum/#!forum/darknet)에 연락하시오. 가능한 한 빨리 질문에 답변할 것이다.
+---
+---
+<a name="다크넷-설치"></a>
+## 1. 다크넷 설치
+Darknet is easy to install with only two optional dependancies:
+- OpenCV if you want a wider variety of supported image types.
+- CUDA if you want GPU computation.Both are optional so lets start by just installing the base system. I've only tested this on Linux and Mac computers. If it doesn't work for you, email me or something?
+### 1) Installing The Base System
+First clone the Darknet git repository here. This can be accomplished by:
+> ```bash
+> git clone https://github.com/pjreddie/darknet.git
+> cd darknet> Make
+> ```
+If this works you should see a whole bunch of compiling information fly by:
+```bash
+mkdir -p obj
+gcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast....
+gcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast....
+gcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast....
+.....
+gcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast -lm....
+```
+If you have any errors, try to fix them? If everything seems to have compiled correctly, try running it!
+```bash
+./darknet
+```
+You should get the output:
+```bash
+usage: ./darknet <function>
+```
+Great! Now check out the cool things you can do with darknet here.
+
+### 2) Compiling With CUDA
+Darknet on the CPU is fast but it's like 500 times faster on GPU! You'll have to have an Nvidia GPU and you'll have to install CUDA. I won't go into CUDA installation in detail because it is terrifying.  
+Once you have CUDA installed, change the first line of the Makefile in the base directory to read:  
+GPU=1  
+Now you can make the project and CUDA will be enabled. By default it will run the network on the 0th graphics card in your system (if you installed CUDA correctly you can list your graphics cards using nvidia-smi). If you want to change what card Darknet uses you can give it the optional command line flag -i <index>, like:  
+./darknet -i 1 imagenet test cfg/alexnet.cfg alexnet.weights  
+If you compiled using CUDA but want to do CPU computation for whatever reason you can use -nogpu to use the CPU instead:  
+./darknet -nogpu imagenet test cfg/alexnet.cfg alexnet.weights  
+Enjoy your new, super fast neural networks!  
+  
 ### 3) Compiling With OpenCV
-By default, Darknet uses stb_image.h for image loading. If you want more support for weird formats (like CMYK jpegs, thanks Obama) you can use OpenCV instead! OpenCV also allows you to view images and detections without having to save them to disk.
-First install OpenCV. If you do this from source it will be long and complex so try to get a package manager to do it for you.
-Next, change the 2nd line of the Makefile to read:
-OPENCV=1
-You're done! To try it out, first re-make the project. Then use the imtest routine to test image loading and displaying:
-./darknet imtest data/eagle.jpg
+By default, Darknet uses stb_image.h for image loading. If you want more support for weird formats (like CMYK jpegs, thanks Obama) you can use OpenCV instead! OpenCV also allows you to view images and detections without having to save them to disk.  
+
+First install OpenCV. If you do this from source it will be long and complex so try to get a package manager to do it for you.  
+
+Next, change the 2nd line of the Makefile to read:  
+
+OPENCV=1  
+You're done! To try it out, first re-make the project. Then use the imtest routine to test image loading and displaying:  
+
+./darknet imtest data/eagle.jpg  
+
 If you get a bunch of windows with eagles in them you've succeeded! They may look like:
 
 
