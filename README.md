@@ -166,7 +166,7 @@ Weights : 신경망 가중값
 이전 검출 시스템은 검출을 수행하기 위해 분류기 또는 유도기를 용도에 맞게 변경한다. 그것은 위치와 눈금을 여러개로 이미지에 적용한다. 이미지영역의 점수가 높으면 검출로 간주한다.
  
 우리는 완전히 다른 접근방식을 사용한다. 우리는 전체이미지에 단일 신경망을 적용한다. 이 망은 이미지를 여러 영역으로 나눈다 그리고 경계상자와 각 영역에 대한 확률을 예측한다. 이러한 경계상자는 예측된 확률로 가중된 것이다.  
-<p align="center"><img width="50%" src="images/model2.png" /></p>  
+<p align="center"><img width="100%" src="images/model2.png" /></p>  
 
 우리의 모델은 분류기기반 시스템에 비해 몇가지 장점을 가진다. 평가시 이미지전체 를 확인한다 그래서 이것의 예측은 이미지에서 전체맥락으로 된 정보이다. 이것은 또한 하나의 이미지에 수천개가 필요한 [R-CNN](https://github.com/rbgirshick/rcnn) 과 달리 하나의 망으로 평가하여 예측한다. 이것은 극도로 빠르게 한다, R-CNN보다 1000배 더 빠르다 그리고 [Fast R-CNN](https://github.com/rbgirshick/fast-rcnn) 보다 100배 빠르다.  전체 시스템에 대한 자세한 내용은 우리의 [논문](https://arxiv.org/abs/1612.08242) 을 봐라.
 
@@ -207,7 +207,7 @@ car: 54%
 bicycle: 51%
 dog: 56%
 ```
-<p align="center"><img width="50%" src="images/Screen_Shot_2016-11-17_at_11_14_54_AM.png" /></p>  
+<p align="center"><img width="100%" src="images/Screen_Shot_2016-11-17_at_11_14_54_AM.png" /></p>  
 
 다크넷은 출력한다 검출된 개체, 신뢰도, 그리고 찾는데 걸린 시간. 우리는 **OpenCV** 로 컴파일하지 않았다 그래서 검출을 직접 표시할 수 없다. 대신에, 예측을 **predictions.png** 로 저장한다. 당신은 검출된 개체를 보기 위하여 그 파일을 열 수 있다. 우리는 CPU에서 다크넷을 사용하기 때문에 이미지당 6-12초 걸린다. 만약 GPU 버전을 사용한다면 훨씬 더 빠를 것이다.
 
@@ -219,6 +219,212 @@ dog: 56%
 ```
 
 하나의 이미지에서 검출을 실행하려는 경우 이것을 알 필요는 없다 하지만 웹캠에서 실행되는 것과 같은 다른 것을 하고 싶다면 아는것이 유용하다([나중에](https://pjreddie.com/darknet/yolo/#demo) 보게 될 것이다).
+
+### 4) 다중 이미지(Multiple Images)
+명령줄에 이미지를 제공하는 대신에, 한번에 여러개의 이미지를 시도해 볼 수 있다. 대신에 설정과 가중값 탑재가 완료되면 당신은 프롬프트를 볼 수 있다:
+```bash
+./darknet detect cfg/yolo.cfg yolo.weights
+layer     filters    size              input                output
+    0 conv     32  3 x 3 / 1   416 x 416 x   3   ->   416 x 416 x  32
+    1 max          2 x 2 / 2   416 x 416 x  32   ->   208 x 208 x  32
+    .......
+   29 conv    425  1 x 1 / 1    13 x  13 x1024   ->    13 x  13 x 425
+   30 detection
+Loading weights from yolo.weights ...Done!
+Enter Image Path:
+```
+
+data/horses.jpg 처럼 가지고 있는 이미지 경로를 입력하여 이미지에 대한 상자를 예측한다.
+<p align="center"><img width="100%" src="images/Screen_Shot_2016-11-17_at_12_26_06_PM.png" /></p>  
+
+일단 완료되면 다른 이미지를 시도하기 위하여 다른 경로를 물어볼 것이다. 끝나면 Ctrl-C 를 사용하여 프로그램을 종료한다.
+
+### 5) 검출 기준값 변경(Changing The Detection Threshold)
+By default, YOLO only displays objects detected with a confidence of .25 or higher. You can change this by passing the -thresh <val> flag to the yolo command. For example, to display all detection you can set the threshold to 0:
+```bash
+./darknet detect cfg/yolo.cfg yolo.weights data/dog.jpg -thresh 0
+```
+
+Which produces:
+<p align="center"><img width="100%" src="images/Screen_Shot_2016-11-17_at_12_03_22_PM.png" /></p>  
+
+So that's obviously not super useful but you can set it to different values to control what gets thresholded by the model.
+
+### 6) 꼬맹이 욜로(Tiny YOLO)
+Tiny YOLO is based off of the Darknet reference network and is much faster but less accurate than the normal YOLO model. To use the version trained on VOC:
+```bash
+wget https://pjreddie.com/media/files/tiny-yolo-voc.weights
+./darknet detector test cfg/voc.data cfg/tiny-yolo-voc.cfg tiny-yolo-voc.weights data/dog.jpg
+```
+
+Which, ok, it's not perfect, but boy it sure is fast. On GPU it runs at >200 FPS.
+<p align="center"><img width="100%" src="images/Screen_Shot_2016-11-26_at_11_22_46_PM.png" /></p>  
+
+### 7) 웹캠으로 실시간 검출(Real-Time Detection on a Webcam)
+Running YOLO on test data isn't very interesting if you can't see the result. Instead of running it on a bunch of images let's run it on the input from a webcam!
+
+To run this demo you will need to compile Darknet with CUDA and OpenCV. Then run the command:
+```bash
+./darknet detector demo cfg/coco.data cfg/yolo.cfg yolo.weights
+```
+
+YOLO will display the current FPS and predicted classes as well as the image with bounding boxes drawn on top of it.
+
+You will need a webcam connected to the computer that OpenCV can connect to or it won't work. If you have multiple webcams connected and want to select which one to use you can pass the flag -c <num> to pick (OpenCV uses webcam 0 by default).
+
+You can also run it on a video file if OpenCV can read the video:
+```bash
+./darknet detector demo cfg/coco.data cfg/yolo.cfg yolo.weights <video file>
+```
+
+That's how we made the YouTube video above.
+
+### 8) VOC로 욜로 수련(Training YOLO on VOC)
+You can train YOLO from scratch if you want to play with different training regimes, hyper-parameters, or datasets. Here's how to get it working on the Pascal VOC dataset.
+
+#### 8-1) Get The Pascal VOC Data
+To train YOLO you will need all of the VOC data from 2007 to 2012. You can find links to the data here. To get all the data, make a directory to store it all and from that directory run:
+```bash
+wget https://pjreddie.com/media/files/VOCtrainval_11-May-2012.tar
+wget https://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar
+wget https://pjreddie.com/media/files/VOCtest_06-Nov-2007.tar
+tar xf VOCtrainval_11-May-2012.tar
+tar xf VOCtrainval_06-Nov-2007.tar
+tar xf VOCtest_06-Nov-2007.tar
+```
+
+There will now be a VOCdevkit/ subdirectory with all the VOC training data in it. 
+
+#### 8-2) Generate Labels for VOC
+Now we need to generate the label files that Darknet uses. Darknet wants a .txt file for each image with a line for each ground truth object in the image that looks like:
+```bash
+<object-class> <x> <y> <width> <height>
+```
+
+Where x, y, width, and height are relative to the image's width and height. To generate these file we will run the voc_label.py script in Darknet's scripts/ directory. Let's just download it again because we are lazy.
+```bash
+wget https://pjreddie.com/media/files/voc_label.py
+python voc_label.py
+```
+
+After a few minutes, this script will generate all of the requisite files. Mostly it generates a lot of label files in VOCdevkit/VOC2007/labels/ and VOCdevkit/VOC2012/labels/. In your directory you should see:
+```bash
+ls
+2007_test.txt   VOCdevkit
+2007_train.txt  voc_label.py
+2007_val.txt    VOCtest_06-Nov-2007.tar
+2012_train.txt  VOCtrainval_06-Nov-2007.tar
+2012_val.txt    VOCtrainval_11-May-2012.tar
+```
+
+The text files like 2007_train.txt list the image files for that year and image set. Darknet needs one text file with all of the images you want to train on. In this example, let's train with everything except the 2007 test set so that we can test our model. Run:
+```bash
+cat 2007_train.txt 2007_val.txt 2012_*.txt > train.txt
+```
+
+Now we have all the 2007 trainval and the 2012 trainval set in one big list. That's all we have to do for data setup!
+
+#### 8-3) Modify Cfg for Pascal Data
+Now go to your Darknet directory. We have to change the cfg/voc.data config file to point to your data:
+```bash
+  1 classes= 20
+  2 train  = <path-to-voc>/train.txt
+  3 valid  = <path-to-voc>2007_test.txt
+  4 names = data/voc.names
+  5 backup = backup
+```
+
+You should replace <path-to-voc> with the directory where you put the VOC data.
+
+#### 8-4) Download Pretrained Convolutional Weights
+For training we use convolutional weights that are pre-trained on Imagenet. We use weights from the Extraction model. You can just download the weights for the convolutional layers here (76 MB).
+```bash
+wget https://pjreddie.com/media/files/darknet19_448.conv.23
+```
+
+If you want to generate the pre-trained weights yourself, download the pretrained Darknet19 448x448 model and run the following command:
+```bash
+./darknet partial cfg/darknet19_448.cfg darknet19_448.weights darknet19_448.conv.23 23
+```
+
+But if you just download the weights file it's way easier.
+
+#### 8-5) Train The Model
+Now we can train! Run the command:
+```bash
+./darknet detector train cfg/voc.data cfg/yolo-voc.cfg darknet19_448.conv.23
+```
+
+### 9) Training YOLO on COCO
+You can train YOLO from scratch if you want to play with different training regimes, hyper-parameters, or datasets. Here's how to get it working on the COCO dataset.
+
+#### 9-1) Get The COCO Data
+To train YOLO you will need all of the COCO data and labels. The script scripts/get_coco_dataset.sh will do this for you. Figure out where you want to put the COCO data and download it, for example:
+```bash
+cp scripts/get_coco_dataset.sh data
+cd data
+bash get_coco_dataset.sh
+```
+
+Now you should have all the data and the labels generated for Darknet.
+
+#### 9-2) Modify cfg for COCO
+Now go to your Darknet directory. We have to change the cfg/coco.data config file to point to your data:
+```bash
+  1 classes= 80
+  2 train  = <path-to-coco>/trainvalno5k.txt
+  3 valid  = <path-to-coco>/5k.txt
+  4 names = data/coco.names
+  5 backup = backup
+```
+
+You should replace <path-to-coco> with the directory where you put the COCO data.
+
+You should also modify your model cfg for training instead of testing. cfg/yolo.cfg should look like this:
+```bash
+[net]
+# Testing
+# batch=1
+# subdivisions=1
+# Training
+batch=64
+subdivisions=8
+....
+```
+
+####9-3) Train The Model
+Now we can train! Run the command:
+```bash
+./darknet detector train cfg/coco.data cfg/yolo.cfg darknet19_448.conv.23
+```
+
+If you want to use multiple gpus run:
+```bash
+./darknet detector train cfg/coco.data cfg/yolo.cfg darknet19_448.conv.23 -gpus 0,1,2,3
+```
+
+If you want to stop and restart training from a checkpoint:
+```bash
+./darknet detector train cfg/coco.data cfg/yolo.cfg backup/yolo.backup -gpus 0,1,2,3
+```
+
+### 10) What Happened to the Old YOLO Site?
+
+If you are using YOLO version 1 you can still find the site here: https://pjreddie.com/darknet/yolov1/
+
+### 11) Cite
+
+If you use YOLOv2 in your work please cite our paper!
+```bash
+@article{redmon2016yolo9000,
+  title={YOLO9000: Better, Faster, Stronger},
+  author={Redmon, Joseph and Farhadi, Ali},
+  journal={arXiv preprint arXiv:1612.08242},
+  year={2016}
+}
+```
+
+---
 
 
 
