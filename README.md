@@ -141,20 +141,21 @@ If you get a bunch of windows with eagles in them you've succeeded! They may loo
 욜로는(YOLO, 너는 오직 한번만 본다) 최첨단 기술이다, 실시간 개체 검출 시스템. 타이탄 X에서 40-90 FPS로 이미지를 처리한다 그리고 VOC 2007에 대해서 78.6%의 mAP를 가진다 그리고 COCO에 대해서 48.1%의 mAP 평가편차(test-dev)를 가진다.
 
 
-모형 평가(Model Train) | 평가 | mAP | FLOPS | FPS | Cfg | Weights |  
------------- | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |  
-Old YOLO       VOC 2007+2012 | 2007 | 63.4 | 40.19 Bn | 45 | link | -  
-SSD300         VOC 2007+2012 | 2007 | 74.3 | - | 46 | link | -  
-
-SSD500         VOC 2007+2012 | 2007 | 76.8	-	19	link  
-YOLOv2         VOC 2007+2012 | 2007 | 76.8	34.90 Bn	67	cfg	weights  
-YOLOv2 544x544 VOC 2007+2012 | 2007 | 78.6	59.68 Bn	40	cfg	weights  
-Tiny YOLO      VOC 2007+2012 | 2007 | 57.1	6.97 Bn	207	cfg	weights  
-SSD300         COCO trainval | test-dev	41.2	-	46	link  
-SSD500         COCO trainval | test-dev	46.5	-	19	link  
-YOLOv2 608x608 COCO trainval | test-dev	48.1	62.94 Bn	40	cfg	weights  
-Tiny YOLO      COCO trainval | - | - |7.07 Bn	200	cfg	weights
-
+모형(Model)     | 수련(Train) | 평가 | mAP | FLOPS | FPS | Cfg | Weights |  
+------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |  
+Old YOLO       | VOC 2007+2012 | 2007 | 63.4 | 40.19 Bn | 45 | - | [link](https://pjreddie.com/darknet/yolov1/)  
+SSD300         | VOC 2007+2012 | 2007 | 74.3 | - | 46 | - | [link](https://arxiv.org/abs/1512.02325)  
+SSD500         | VOC 2007+2012 | 2007 | 76.8 | - | 19 | - | [link](https://arxiv.org/abs/1512.02325)  
+YOLOv2         | VOC 2007+2012 | 2007 | 76.8 | 34.90 Bn | 67 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolo-voc.cfg) | [weights](https://pjreddie.com/media/files/yolo-voc.weights)  
+YOLOv2 544x544 | VOC 2007+2012 | 2007 | 78.6 | 59.68 Bn | 40 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolo-voc.cfg) | [weights](https://pjreddie.com/media/files/yolo-voc.weights)  
+Tiny YOLO      | VOC 2007+2012 | 2007 | 57.1 | 6.97 Bn | 207 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/tiny-yolo-voc.cfg) | [weights](https://pjreddie.com/media/files/tiny-yolo-voc.weights)  
+SSD300         | COCO trainval | test-dev | 41.2 | - | 46 | - | [link](https://arxiv.org/abs/1512.02325)  
+SSD500         | COCO trainval | test-dev | 46.5 | - | 19 | - | [link](https://arxiv.org/abs/1512.02325)  
+YOLOv2 608x608 | COCO trainval | test-dev | 48.1 | 62.94 Bn | 40 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolo.cfg) | [weights](https://pjreddie.com/media/files/yolo.weights)  
+Tiny YOLO      | COCO trainval | - | - | 7.07 Bn | 200 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/tiny-yolo.cfg) | [weights](https://pjreddie.com/media/files/tiny-yolo.weights)
+```
+mAP: 
+```
 
 ### 1) 이것은 어떻게 동작하는가.(How It Works)
 이전 검출 시스템은 검출을 수행하기 위해 분류기 또는 유도기를 용도에 맞게 변경한다. 그것은 위치와 눈금을 여러개로 이미지에 적용한다. 이미지영역의 점수가 높으면 검출로 간주한다.
