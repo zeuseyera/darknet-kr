@@ -140,6 +140,8 @@ If you get a bunch of windows with eagles in them you've succeeded! They may loo
 ## 2. 욜로: 실시간 개체 검출(YOLO: Real-Time Object Detection)
 욜로는(YOLO, 너는 오직 한번만 본다) 최첨단 기술이다, 실시간 개체 검출 시스템. 타이탄 X에서 40-90 FPS로 이미지를 처리한다 그리고 VOC 2007에 대해서 78.6%의 mAP를 가진다 그리고 COCO에 대해서 48.1%의 mAP 평가편차(test-dev)를 가진다.
 
+![욜로 v2](https://www.youtube.com/watch?v=VOC3huqHrss)
+<p align="center"><img width="30%" src="https://www.youtube.com/watch?v=VOC3huqHrss" /></p>  
 
 모형(Model)     | 수련(Train) | 평가 | mAP | FLOPS | FPS | Cfg | Weights |  
 ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |  
@@ -154,7 +156,10 @@ SSD500         | COCO trainval | test-dev | 46.5 | - | 19 | - | [link](https://a
 YOLOv2 608x608 | COCO trainval | test-dev | 48.1 | 62.94 Bn | 40 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolo.cfg) | [weights](https://pjreddie.com/media/files/yolo.weights)  
 Tiny YOLO      | COCO trainval | - | - | 7.07 Bn | 200 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/tiny-yolo.cfg) | [weights](https://pjreddie.com/media/files/tiny-yolo.weights)
 ```
-mAP: 
+mAP : 평균정밀도 평균(Mean Average Precision)
+Bn : 백만(Million)
+cfg : 신경망 설정내용
+Weights : 신경망 가중값
 ```
 
 ### 1) 이것은 어떻게 동작하는가.(How It Works)
