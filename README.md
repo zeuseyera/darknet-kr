@@ -136,6 +136,7 @@ If you get a bunch of windows with eagles in them you've succeeded! They may loo
 <p align="center"><img width="70%" src="images/Screen_Shot_2015-06-10_at_2_47_08_PM.png" /></p>
 
 ---
+<a name="욜로"></a>
 <p align="center"><img width="30%" src="images/yologo_1.png" /></p>  
 
 ## 2. 욜로: 실시간 개체 검출(YOLO: Real-Time Object Detection)
