@@ -139,10 +139,9 @@ If you get a bunch of windows with eagles in them you've succeeded! They may loo
 
 ## 2. 욜로: 실시간 개체 검출(YOLO: Real-Time Object Detection)
 욜로는(YOLO, 너는 오직 한번만 본다) 최첨단 기술이다, 실시간 개체 검출 시스템. 타이탄 X에서 40-90 FPS로 이미지를 처리한다 그리고 VOC 2007에 대해서 78.6%의 mAP를 가진다 그리고 COCO에 대해서 48.1%의 mAP 평가편차(test-dev)를 가진다.
-
-![욜로 v2](https://www.youtube.com/watch?v=VOC3huqHrss)
-<p align="center"><img width="30%" src="https://www.youtube.com/watch?v=VOC3huqHrss" /></p>  
-
+```
+욜로 v2 동영상: https://www.youtube.com/watch?v=VOC3huqHrss
+```
 모형(Model)     | 수련(Train) | 평가 | mAP | FLOPS | FPS | Cfg | Weights |  
 ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |  
 Old YOLO       | VOC 2007+2012 | 2007 | 63.4 | 40.19 Bn | 45 | - | [link](https://pjreddie.com/darknet/yolov1/)  
