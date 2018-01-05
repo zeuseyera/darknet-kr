@@ -85,6 +85,7 @@ gcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast -lm....
 ```
 
 어떤 오류가 있다면, 그것들을 수정하라? 모든것이 올바르게 컴파일 된 것처럼 보인다면, 실행하라!  
+<a name="그냥-실행"></a>
 ```bash
 ./darknet
 ```
@@ -161,9 +162,63 @@ cfg : 신경망 설정내용
 Weights : 신경망 가중값
 ```
 
-### 1) 이것은 어떻게 동작하는가.(How It Works)
+### 1) 이것은 어떻게 동작하는가.
 이전 검출 시스템은 검출을 수행하기 위해 분류기 또는 유도기를 용도에 맞게 변경한다. 그것은 위치와 눈금을 여러개로 이미지에 적용한다. 이미지영역의 점수가 높으면 검출로 간주한다.
  
-우리는 완전히 다른 접근방식을 사용한다. 우리는 전체이미지에 단일 신경망을 적용한다. 이 망은 이미지를 여러 영역으로 나눈다 그리고 경계상자와 각 영역에 대한 확률을 예측한다. 이러한 경계상자는 예측된 확률로 가중된 것이다.
+우리는 완전히 다른 접근방식을 사용한다. 우리는 전체이미지에 단일 신경망을 적용한다. 이 망은 이미지를 여러 영역으로 나눈다 그리고 경계상자와 각 영역에 대한 확률을 예측한다. 이러한 경계상자는 예측된 확률로 가중된 것이다.  
+<p align="center"><img width="50%" src="images/model2.png" /></p>  
+
+우리의 모델은 분류기기반 시스템에 비해 몇가지 장점을 가진다. 평가시 이미지전체 를 확인한다 그래서 이것의 예측은 이미지에서 전체맥락으로 된 정보이다. 이것은 또한 하나의 이미지에 수천개가 필요한 [R-CNN](https://github.com/rbgirshick/rcnn) 과 달리 하나의 망으로 평가하여 예측한다. 이것은 극도로 빠르게 한다, R-CNN보다 1000배 더 빠르다 그리고 [Fast R-CNN](https://github.com/rbgirshick/fast-rcnn) 보다 100배 빠르다.  전체 시스템에 대한 자세한 내용은 우리의 [논문](https://arxiv.org/abs/1612.08242) 을 봐라.
+
+### 2) 버전 2에서 새로운것은 무엇인가?
+YOLOv2는 수련과 성능향상을 개선하귀 위하여 몇가지 묘책을 사용한다. 개체인식기-특징추출기(Overfeat: Object Recognizer, Feature Extractor) 와 한장면여러상자검출(SSD: Single Shot MultiBox Detector) 처럼 우리는 전부-나선 모델을 사용한다, 하지만 우리는 여전히 전체 이미지를 수련한다, 어려운음성(hard negative)이 아닌. Fast R-CNN 처럼 우리는 너비와 높이를 철저히 예측하는 대신 테두리상자에서 걸순(뛰어난순서)을 조정한다. 하지만, 우리는 여전히 x 와 y 좌표를 직접적으로 예측한다. 전체 내용은 우리 [논문](https://arxiv.org/abs/1612.08242)에 있다.!
+
+### 3) 이미수련된 모델을 사용하여 검출
+이 게시물은 이미수련된 모델을 사용한 욜로시스템으로 개체를 검출하는 방법을 안내한다. 만약 아직 다크넷이 설치되지 않았다면, 먼저 설치해야 한다. 아니면 전부 읽는 대신에 그냥 [실행해라](그냥-실행):
+```bash
+git clone https://github.com/pjreddie/darknet
+cd darknet
+make
+```
+
+쉽다!
+
+당신은 cfg/ 하위디렉토리에 욜로에 대한 설정파일을 이미 가지고 있다. 당신은 이미수련된 가중값파일을 여기에 내려받아야 한다(258 MB). 아니면 그냥 실행해라:
+```bash
+wget https://pjreddie.com/media/files/yolo.weights
+```
+
+그런다음 검출기를 실행하라!
+```bash
+./darknet detect cfg/yolo.cfg yolo.weights data/dog.jpg
+```
+
+당신은 이것과 비슷한 몇개의 출력을 볼 것이다.
+```bash
+layer     filters    size              input                output
+    0 conv     32  3 x 3 / 1   416 x 416 x   3   ->   416 x 416 x  32
+    1 max          2 x 2 / 2   416 x 416 x  32   ->   208 x 208 x  32
+    .......
+   29 conv    425  1 x 1 / 1    13 x  13 x1024   ->    13 x  13 x 425
+   30 detection
+Loading weights from yolo.weights...Done!
+data/dog.jpg: Predicted in 0.016287 seconds.
+car: 54%
+bicycle: 51%
+dog: 56%
+```
+<p align="center"><img width="50%" src="images/Screen_Shot_2016-11-17_at_11_14_54_AM.png" /></p>  
+
+다크넷은 출력한다 검출된 개체, 신뢰도, 그리고 찾는데 걸린 시간. 우리는 **OpenCV** 로 컴파일하지 않았다 그래서 검출을 직접 표시할 수 없다. 대신에, 예측을 **predictions.png** 로 저장한다. 당신은 검출된 개체를 보기 위하여 그 파일을 열 수 있다. 우리는 CPU에서 다크넷을 사용하기 때문에 이미지당 6-12초 걸린다. 만약 GPU 버전을 사용한다면 훨씬 더 빠를 것이다.
+
+나는 당신이 시도하는 경우에 필요하다는 생각이 들어 몇 가지 예시 이미지를 포함했다. **data/eagle.jpg**, **data/dog.jpg**, **data/person.jpg**, or **data/horses.jpg** 를 시도해라!
+
+**검출(detect)** 명령은 명령의 일반 버전을 더 줄인것에 대한 줄임말이다. 이것은 다음 명령과 동일하다:
+```bash
+./darknet detector test cfg/coco.data cfg/yolo.cfg yolo.weights data/dog.jpg
+```
+
+하나의 이미지에서 검출을 실행하려는 경우 이것을 알 필요는 없다 하지만 웹캠에서 실행되는 것과 같은 다른 것을 하고 싶다면 아는것이 유용하다([나중에](https://pjreddie.com/darknet/yolo/#demo) 보게 될 것이다).
+
 
 
