@@ -419,8 +419,8 @@ subdivisions=8
 ### 10) 옛 욜로 인용은 어떻게 되었나(What Happened to the Old YOLO Site)?
 
 욜로 판1을 사용한다면 여전히 여기에서 인용을 찾을 수 있다:  
-:kr: https://github.com/zeuseyera/darknet-kr/yolov1  
-:en: https://pjreddie.com/darknet/yolov1/
+:kr: https://github.com/zeuseyera/darknet-kr/blob/master/yolov1.md  
+https://pjreddie.com/darknet/yolov1/
 
 ### 11) 인용(Cite)
 
