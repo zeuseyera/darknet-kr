@@ -538,17 +538,17 @@ If you don't compile with CUDA you can still validate on ImageNet but it will ta
 ### 3) Pre-Trained Models
 
 Here are a variety of pre-trained models for ImageNet classification. Accuracy is measured as single-crop validation accuracy on ImageNet. GPU timing is measured on a Titan X, CPU timing on an Intel i7-4790K (4 GHz).
-```bash 
-Model        | Top-1        | Top-5        | Ops          | GPU          | CPU          | Cfg          | Weights
+
+Model        | Top-1        | Top-5        | Ops          | GPU          | CPU          | Cfg          | Weights  
 ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------  
-AlexNet      | 57.0         | 80.3         | 2.27 Bn      | 1.5 ms       | 0.3 s        | cfg          | 285 MB 
-Darknet Reference | 61.1 | 83.0 |  0.81 Bn |  1.5 ms | 0.16 s | cfg | 28 MB 
-VGG-16            | 70.5 | 90.0 | 30.94 Bn | 10.7 ms | 4.9 s  | cfg | 528 MB 
-Extraction        | 72.5 | 90.8 |  8.52 Bn |  6.4 ms | 0.95 s | cfg | 90 MB 
-Darknet19         | 72.9 | 91.2 |  5.58 Bn |  6.0 ms | 0.66 s | cfg | 80 MB 
-Darknet19 448x448 | 76.4 | 93.5 | 22.33 Bn | 11.0 ms | 2.8 s  | cfg | 80 MB 
-Resnet 50         | 75.8 | 92.9 | 10 Bn    |  7.0 ms | ?? s   | cfg | 87 MB 
-Resnet 152        | 77.6 | 93.8 | 29.4 Bn  | ?? ms   | ?? s   | cfg | 220 MB 
+AlexNet      | 57.0         | 80.3         | 2.27 Bn      | 1.5 ms       | 0.3 s        | cfg          | 285 MB  
+Darknet Reference | 61.1 | 83.0 |  0.81 Bn |  1.5 ms | 0.16 s | cfg | 28 MB  
+VGG-16            | 70.5 | 90.0 | 30.94 Bn | 10.7 ms | 4.9 s  | cfg | 528 MB  
+Extraction        | 72.5 | 90.8 |  8.52 Bn |  6.4 ms | 0.95 s | cfg | 90 MB  
+Darknet19         | 72.9 | 91.2 |  5.58 Bn |  6.0 ms | 0.66 s | cfg | 80 MB  
+Darknet19 448x448 | 76.4 | 93.5 | 22.33 Bn | 11.0 ms | 2.8 s  | cfg | 80 MB  
+Resnet 50         | 75.8 | 92.9 | 10 Bn    |  7.0 ms | ?? s   | cfg | 87 MB  
+Resnet 152        | 77.6 | 93.8 | 29.4 Bn  | ?? ms   | ?? s   | cfg | 220 MB  
 Densenet 201      | 77.0 | 93.7 | 10.9 Bn  | ?? ms   | ?? s   | cfg | 66 MB  
 
 #### 3-1) 알렉스넷()lexNet
