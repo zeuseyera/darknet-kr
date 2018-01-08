@@ -12,7 +12,7 @@
 ### 갱신: 욜로v2는 종료됨
 
 You might want that instead:  
-:kr: https://github.com/zeuseyera/darknet-kr/blob/master/README.md/#욜로
+:kr: https://github.com/zeuseyera/darknet-kr/blob/master/README.md/#욜로  
 http://pjreddie.com/yolo/
 
 I'm leaving this up just for historical purposes.... or something.

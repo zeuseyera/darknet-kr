@@ -400,7 +400,7 @@ subdivisions=8
 ....
 ```
 
-####9-3) 모형 수련(Train The Model)
+#### 9-3) 모형 수련(Train The Model)
 이제 수련할 수 있다! 명령을 실행한다:
 ```bash
 ./darknet detector train cfg/coco.data cfg/yolo.cfg darknet19_448.conv.23
@@ -416,7 +416,7 @@ subdivisions=8
 ./darknet detector train cfg/coco.data cfg/yolo.cfg backup/yolo.backup -gpus 0,1,2,3
 ```
 
-### 10) 옛 욜로 인용은 어떻게 되었나(What Happened to the Old YOLO Site)?
+### 10) 옛 욜로 유적은 어떻게 되었나(What Happened to the Old YOLO Site)?
 
 욜로 판1을 사용한다면 여전히 여기에서 인용을 찾을 수 있다:  
 :kr: https://github.com/zeuseyera/darknet-kr/blob/master/yolov1.md  
@@ -436,5 +436,210 @@ https://pjreddie.com/darknet/yolov1/
 
 ---
 
+## 3. 이미지넷 분류(ImageNet Classification)
+다크넷을 사용하여 1000-분류 이미지넷 도전에 대한 이미지를 분류할 수 있다. 다크넷을 아직 설치하지 않았다면, 먼저 다크넷을 설치해야 한다.
+
+### 1) 미리수련된 모형으로 분류(Classifying With Pre-Trained Models)
+다음의 명령을 다크넷을 설치하기 위한 명령이다, 분류 가중값 파일을 내려받기한다, 그리고 이미지 분류기를 실행한다:
+```bash
+git clone https://github.com/pjreddie/darknet.git
+cd darknet
+make
+wget https://pjreddie.com/media/files/extraction.weights
+./darknet classifier predict cfg/imagenet1k.data cfg/extraction.cfg extraction.weights data/dog.jpg
+```
+
+이 본보기는 추출모형을 사용한다, 아래에서 더 많은것을 읽을 수 있다. 이 명령을 실행한 후에 다음의 출력을 볼수 있다:
+```bash
+0: Convolutional Layer: 224 x 224 x 3 image, 64 filters -> 112 x 112 x 64 image
+1: Maxpool Layer: 112 x 112 x 64 image, 2 size, 2 stride
+...
+23: Convolutional Layer: 7 x 7 x 512 image, 1024 filters -> 7 x 7 x 1024 image
+24: Convolutional Layer: 7 x 7 x 1024 image, 1000 filters -> 7 x 7 x 1000 image
+25: Avgpool Layer: 7 x 7 x 1000 image
+26: Softmax Layer: 1000 inputs
+27: Cost Layer: 1000 inputs
+Loading weights from extraction.weights...Done!
+298 224
+data/dog.jpg: Predicted in 3.756339 seconds.
+malamute: 0.194782
+Eskimo dog: 0.155007
+Siberian husky: 0.143937
+dogsled: 0.020943
+miniature schnauzer: 0.020566
+```
+
+다크넷은 설정파일과 가중값을 탑재할 때 정보를 표시한다, 그런다음 이미지를 분류한다 그리고 이미지에 대한 상위-10개의 분류를 인쇄한다. 켈프는 잡종 개다 하지만 말라뮤트(알래스카 썰매개)성질이 많다 그래서 잘 성공할 수 있다!
+
+또한 다른 이미지로 시도할 수 있다, 대머리독수리 이미지 같은:
+```bash
+./darknet classifier predict cfg/imagenet1k.data cfg/extraction.cfg extraction.weights data/eagle.jpg
+```
+
+생산된 것:
+```bash
+...
+data/eagle.jpg: Predicted in 4.036698 seconds.
+bald eagle: 0.797689
+kite: 0.185116
+vulture: 0.006402
+prairie chicken: 0.001041
+hen: 0.000888
+```
+
+아주 좋다!
+
+이미지 파일을 지정하지 않으면 실행중에 이미지에 대한 묻는다. 이렇게하면 전체 모형을 다시탑재를 하지 않고 연속해서 여러개를 분류할 수 있다. 다음 명령을 사용한다:
+```bash
+./darknet classifier predict cfg/imagenet1k.data cfg/extraction.cfg extraction.weights
+```
+
+그러면 다음과 같은 보여줌이 된다:
+```bash
+....
+27: Softmax Layer: 1000 inputs
+28: Cost Layer: 1000 inputs
+Loading weights from extraction.weights...Done!
+Enter Image Path:
+```
+
+Whenever you get bored of classifying images you can use Ctrl-C to exit the program.
+
+### 2) Validating On ImageNet
+
+You see these validation set numbers thrown around everywhere. Maybe you want to double check for yourself how well these models actually work. Let's do it!
+
+First you need to download the validation images, and the cls-loc annotations. You can get them here but you'll have to make an account! Once you download everything you should have a directory with ILSVRC2012_bbox_val_v3.tgz, and ILSVRC2012_img_val.tar. First we unpack them:
+```bash
+tar -xzf ILSVRC2012_bbox_val_v3.tgz
+mkdir -p imgs && tar xf ILSVRC2012_img_val.tar -C imgs
+```
+
+Now we have the images and the annotations but we need to label the images so Darknet can evaluate its predictions. We do that using this bash script. It's already in your scripts/ subdirectory. We can just get it again though and run it:
+```bash
+wget https://pjreddie.com/media/files/imagenet_label.sh
+bash imagenet_label.sh
+```
+
+This will generate two things: a directory called labelled/ which contains renamed symbolic links to the images, and a file called inet.val.list which contains a list of the paths of the labelled images. We need to move this file to the data/ subdirectory in Darknet:
+```bash
+mv inet.val.list <path-to>/darknet/data
+```
+
+Now you are finally ready to validate your model! First re-make Darknet. Then run the validation routine like so:
+```bash
+./darknet classifier valid cfg/imagenet1k.data cfg/extraction.cfg extraction.weights
+```
+
+Note: if you don't compile Darknet with OpenCV then you won't be able to load all of the ImageNet images since some of them are weird formats not supported by stb_image.h.
+
+If you don't compile with CUDA you can still validate on ImageNet but it will take like a reallllllly long time. Not recommended.
+
+### 3) Pre-Trained Models
+
+Here are a variety of pre-trained models for ImageNet classification. Accuracy is measured as single-crop validation accuracy on ImageNet. GPU timing is measured on a Titan X, CPU timing on an Intel i7-4790K (4 GHz).
+```bash 
+Model        | Top-1        | Top-5        | Ops          | GPU          | CPU          | Cfg          | Weights
+------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------  
+AlexNet      | 57.0         | 80.3         | 2.27 Bn      | 1.5 ms       | 0.3 s        | cfg          | 285 MB 
+Darknet Reference | 61.1 | 83.0 |  0.81 Bn |  1.5 ms | 0.16 s | cfg | 28 MB 
+VGG-16            | 70.5 | 90.0 | 30.94 Bn | 10.7 ms | 4.9 s  | cfg | 528 MB 
+Extraction        | 72.5 | 90.8 |  8.52 Bn |  6.4 ms | 0.95 s | cfg | 90 MB 
+Darknet19         | 72.9 | 91.2 |  5.58 Bn |  6.0 ms | 0.66 s | cfg | 80 MB 
+Darknet19 448x448 | 76.4 | 93.5 | 22.33 Bn | 11.0 ms | 2.8 s  | cfg | 80 MB 
+Resnet 50         | 75.8 | 92.9 | 10 Bn    |  7.0 ms | ?? s   | cfg | 87 MB 
+Resnet 152        | 77.6 | 93.8 | 29.4 Bn  | ?? ms   | ?? s   | cfg | 220 MB 
+Densenet 201      | 77.0 | 93.7 | 10.9 Bn  | ?? ms   | ?? s   | cfg | 66 MB  
+
+#### 3-1) 알렉스넷()lexNet
+The model that started a revolution! The original model was crazy with the split GPU thing so this is the model from some follow-up work.
+- Top-1 Accuracy: 57.0%
+- Top-5 Accuracy: 80.3%
+- Forward Timing: 1.5 ms/img
+- CPU Forward Timing: 0.3 s/img
+- cfg file
+- weight file (285 MB)
+
+#### 3-2) Darknet Reference Model
+
+This model is designed to be small but powerful. It attains the same top-1 and top-5 performance as AlexNet but with 1/10th the parameters. It uses mostly convolutional layers without the large fully connected layers at the end. It is about twice as fast as AlexNet on CPU making it more suitable for some vision applications.
+- Top-1 Accuracy: 61.1%
+- Top-5 Accuracy: 83.0%
+- Forward Timing: 1.5 ms/img
+- CPU Forward Timing: 0.16 s/img
+- cfg file
+- weight file (28 MB)
+
+#### 3-3) VGG-16
+
+The Visual Geometry Group at Oxford developed the VGG-16 model for the ILSVRC-2014 competition. It is highly accurate and widely used for classification and detection. I adapted this version from the Caffe pre-trained model. It was trained for an additional 6 epochs to adjust to Darknet-specific image preprocessing (instead of mean subtraction Darknet adjusts images to fall between -1 and 1).
+- Top-1 Accuracy: 70.5%
+- Top-5 Accuracy: 90.0%
+- Forward Timing: 10.7 ms/img
+- CPU Forward Timing: 4.9 s/img
+- cfg file
+- weight file (528 MB)
+
+#### 3-4) Extraction
+
+I developed this model as an offshoot of the GoogleNet model. It doesn't use the "inception" modules, only 1x1 and 3x3 convolutional layers.
+- Top-1 Accuracy: 72.5%
+- Top-5 Accuracy: 90.8%
+- Forward Timing: 6.4 ms/img
+- CPU Forward Timing: 0.95 s/img
+- cfg file
+- weight file (90 MB)
+
+#### 3-5) Darknet19
+
+I modified the Extraction network to be faster and more accurate. This network was sort of a merging of ideas from the Darknet Reference network and Extraction as well as numerous publications like Network In Network, Inception, and Batch Normalization.
+- Top-1 Accuracy: 72.9%
+- Top-5 Accuracy: 91.2%
+- Forward Timing: 6.0 ms/img
+- CPU Forward Timing: 0.66 s/img
+- cfg file
+- weight file (80 MB)
+
+#### 3-6) Darknet19 448x448
+
+I trained Darknet19 for 10 more epochs with a larger input image size, 448x448. This model performs significantly better but is slower since the whole image is larger.
+- Top-1 Accuracy: 76.4%
+- Top-5 Accuracy: 93.5%
+- Forward Timing: 11.0 ms/img
+- CPU Forward Timing: 2.8 s/img
+- cfg file
+- weight file (80 MB)
+
+#### 3-7) Resnet 50
+
+For some reason people love these networks even though they are so sloooooow. Whatever. Paper
+- Top-1 Accuracy: 75.8%
+- Top-5 Accuracy: 92.9%
+- Forward Timing: ?? ms/img
+- CPU Forward Timing: ?? s/img
+- cfg file
+- weight file (87 MB)
+
+#### 3-8) Resnet 152
+
+For some reason people love these networks even though they are so sloooooow. Whatever. Paper
+- Top-1 Accuracy: 77.6%
+- Top-5 Accuracy: 93.8%
+- Forward Timing: ?? ms/img
+- CPU Forward Timing: ?? s/img
+- cfg file
+- weight file (220 MB)
+
+#### 3-9) Densenet 201
+
+I love DenseNets! They are just so deep and so crazy and work so well. Like Resnet, still slow since they are sooooo many layers but at least they work really well! Paper
+- Top-1 Accuracy: 77.0%
+- Top-5 Accuracy: 93.7%
+- Forward Timing: ?? ms/img
+- CPU Forward Timing: ?? s/img
+- cfg file
+- weight file (67 MB)
+
+---
 
 
