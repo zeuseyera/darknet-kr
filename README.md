@@ -489,12 +489,12 @@ hen: 0.000888
 
 아주 좋다!
 
-이미지 파일을 지정하지 않으면 실행중에 이미지에 대한 묻는다. 이렇게하면 전체 모형을 다시탑재를 하지 않고 연속해서 여러개를 분류할 수 있다. 다음 명령을 사용한다:
+이미지 파일을 지정하지 않으면 실행중에 이미지에 대해 묻는다. 이렇게하면 전체 모형을 다시탑재를 하지 않고 연속해서 여러개를 분류할 수 있다. 다음 명령을 사용한다:
 ```bash
 ./darknet classifier predict cfg/imagenet1k.data cfg/extraction.cfg extraction.weights
 ```
 
-그러면 다음과 같은 보여줌이 된다:
+그러면 다음과 같은 보여줌을 얻는다:
 ```bash
 ....
 27: Softmax Layer: 1000 inputs
@@ -503,41 +503,46 @@ Loading weights from extraction.weights...Done!
 Enter Image Path:
 ```
 
-Whenever you get bored of classifying images you can use Ctrl-C to exit the program.
+이미지 분류가 지루해지면 언제나 프로그램을 종료하기 위해 Ctrl-C를 사용할 수 있다.
 
-### 2) Validating On ImageNet
+### 2) 이미지넷 검증(Validating On ImageNet)
 
-You see these validation set numbers thrown around everywhere. Maybe you want to double check for yourself how well these models actually work. Let's do it!
+사방에 뿌려진 검증집합 번호를 볼 수 있다. 아마도 스스로 이중으로 확인하고 싶을 것이다 이러한 모형이 실제로 얼마나 잘 작동하는지. 이것을 해보자!
 
-First you need to download the validation images, and the cls-loc annotations. You can get them here but you'll have to make an account! Once you download everything you should have a directory with ILSVRC2012_bbox_val_v3.tgz, and ILSVRC2012_img_val.tar. First we unpack them:
+먼저 검증 이미지를 내려받기할 필요가 있다, 그리고 cls-loc 주석을. 여기에서 그것들을 얻을 수 있다 하지만 계정을 만들어야 한다! 일단 모든것을 내려받기한다 ILSVRC2012_bbox_val_v3.tgz와 ILSVRC2012_img_val.tar이 있는 디렉토리가 있어야한다. 먼저 이것들의 압축을 푼다:
 ```bash
 tar -xzf ILSVRC2012_bbox_val_v3.tgz
 mkdir -p imgs && tar xf ILSVRC2012_img_val.tar -C imgs
 ```
 
-Now we have the images and the annotations but we need to label the images so Darknet can evaluate its predictions. We do that using this bash script. It's already in your scripts/ subdirectory. We can just get it again though and run it:
+```bash
+ILSVRC : 이미지넷 대규모 시각인식 도전(ImageNet Large Scale Visual Recognition Challenge)
+```
+
+이제 이미지와 주석을 가지고 있다 하지만 이미지에 딱지를 붙일 필요가 있다 그렇게 해서 다크넷이 예측한 것을 평가할 수 있다. 이 배쉬스크립트(bash script)를 사용한다. 이것은 이미 scripts/ 하위디렉토리에 있다. 그렇지만 그냥 이것을 다시 가져올 수 있다 그리고 이것을 실행한다:
 ```bash
 wget https://pjreddie.com/media/files/imagenet_label.sh
 bash imagenet_label.sh
 ```
 
-This will generate two things: a directory called labelled/ which contains renamed symbolic links to the images, and a file called inet.val.list which contains a list of the paths of the labelled images. We need to move this file to the data/ subdirectory in Darknet:
+이것은 두가지를 생성한다: 이름이 변경된 이미지에 대한 연결기호가 포함된 labelled/ 라고 하는 디렉토리와 딱지가 붙은 이미지의 경로 목록이 포함된 inet.val.list 라고 하는 파일. 다크넷의 하위디렉토리인 data/ 이 파일을 이동할 필요가 있다:
 ```bash
 mv inet.val.list <path-to>/darknet/data
 ```
 
-Now you are finally ready to validate your model! First re-make Darknet. Then run the validation routine like so:
+이제 마침내 모형을 검증할 준비가 되었다! 먼저 다크넷을 다시 만든다. 그 다음에 검증 경로를 실행한다 이렇게:
 ```bash
 ./darknet classifier valid cfg/imagenet1k.data cfg/extraction.cfg extraction.weights
 ```
 
-Note: if you don't compile Darknet with OpenCV then you won't be able to load all of the ImageNet images since some of them are weird formats not supported by stb_image.h.
+알림: 만약 OpenCV로 다크넷을 컴파일하지 않으면 이미지넷 이미지 전부를 탑재할 수 없다 그중 일부는 stb_image.h로 지원되지 않는 별난 형식이기 때문이다.
 
-If you don't compile with CUDA you can still validate on ImageNet but it will take like a reallllllly long time. Not recommended.
+만약 쿠다로 컴파일하지 않아도 여전히 이미지넷을 검증할 수 있다 하지만 이것은 정말정말로 오랜 시간이 걸릴 것이다. 권장하지 않는다.
 
-### 3) Pre-Trained Models
+### 3) 미리수련된 모형(Pre-Trained Models)
 
 Here are a variety of pre-trained models for ImageNet classification. Accuracy is measured as single-crop validation accuracy on ImageNet. GPU timing is measured on a Titan X, CPU timing on an Intel i7-4790K (4 GHz).
+여기에 이미지넷 분류를 위해 미리수련된 다양한 모형이 있다. 정밀도는 이미지넷에서 단일집단(single-crop) 검증 정밀도로 측정된 것이다. GPU 시간은 Titan X로 측정됨, CPU 시간은 인텔 Intel i7-4790K(4 GHz)로.
 
 Model        | Top-1        | Top-5        | Ops          | GPU          | CPU          | Cfg          | Weights  
 ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------  
@@ -551,8 +556,8 @@ Resnet 50         | 75.8 | 92.9 | 10 Bn    |  7.0 ms | ?? s   | cfg | 87 MB
 Resnet 152        | 77.6 | 93.8 | 29.4 Bn  | ?? ms   | ?? s   | cfg | 220 MB  
 Densenet 201      | 77.0 | 93.7 | 10.9 Bn  | ?? ms   | ?? s   | cfg | 66 MB  
 
-#### 3-1) 알렉스넷()lexNet
-The model that started a revolution! The original model was crazy with the split GPU thing so this is the model from some follow-up work.
+#### 3-1) 알렉스넷(AlexNet)
+이 모형은 혁명의 시작이다! 원래 모형은 GPU 분할 작업으로 굉장히 좋았다 그래서 이것은 많은 후속 작업의 모형이다.
 - Top-1 Accuracy: 57.0%
 - Top-5 Accuracy: 80.3%
 - Forward Timing: 1.5 ms/img
@@ -561,8 +566,7 @@ The model that started a revolution! The original model was crazy with the split
 - weight file (285 MB)
 
 #### 3-2) Darknet Reference Model
-
-This model is designed to be small but powerful. It attains the same top-1 and top-5 performance as AlexNet but with 1/10th the parameters. It uses mostly convolutional layers without the large fully connected layers at the end. It is about twice as fast as AlexNet on CPU making it more suitable for some vision applications.
+이 모형은 작게 설계되었다 하지만 강력하다. 이것은 알렉스넷과 같은 top-1과 top-5와 동일 성능을 달성했다 하지만 참여는 1/10로. 이것은 끝에 큰 완전연결층 없이 대부분 나선층을 사용한다. 이것은 CPU 상에서 알렉스넷 보다 약 2배 빠르다 이것은 많은 시각 응용프로그램에 더욱 적합하다.
 - Top-1 Accuracy: 61.1%
 - Top-5 Accuracy: 83.0%
 - Forward Timing: 1.5 ms/img
@@ -571,8 +575,7 @@ This model is designed to be small but powerful. It attains the same top-1 and t
 - weight file (28 MB)
 
 #### 3-3) VGG-16
-
-The Visual Geometry Group at Oxford developed the VGG-16 model for the ILSVRC-2014 competition. It is highly accurate and widely used for classification and detection. I adapted this version from the Caffe pre-trained model. It was trained for an additional 6 epochs to adjust to Darknet-specific image preprocessing (instead of mean subtraction Darknet adjusts images to fall between -1 and 1).
+ILSVRC-2014 대회를 위하여 옥스포드의 시각기하학무리(The Visual Geometry Group)가 VGG-16 모형을 개발했다. 이것은 매우 정확하고 분류와 검출을 위하여 널리 사용된다. 나는 카페(Caffe)의 미리수련된 모형으로 이판을 개조했다. 이것은 다크넷-지정 이미지 전처리로 조정하기 위하여 추가적으로 6세대 수련했다(평균빼기 대신에 다크넷은 -1과 1 사이로 이미지를 조정한다).
 - Top-1 Accuracy: 70.5%
 - Top-5 Accuracy: 90.0%
 - Forward Timing: 10.7 ms/img
@@ -581,8 +584,7 @@ The Visual Geometry Group at Oxford developed the VGG-16 model for the ILSVRC-20
 - weight file (528 MB)
 
 #### 3-4) Extraction
-
-I developed this model as an offshoot of the GoogleNet model. It doesn't use the "inception" modules, only 1x1 and 3x3 convolutional layers.
+나는 구글넷(GoogleNet) 모형의 파생물로 이 모형을 개발했다. 이것은 "시작(인셉션, inception)" 구성물을 사용하지 않는다, 오직 1x1 과 3x3 나선층이다.
 - Top-1 Accuracy: 72.5%
 - Top-5 Accuracy: 90.8%
 - Forward Timing: 6.4 ms/img
@@ -591,8 +593,7 @@ I developed this model as an offshoot of the GoogleNet model. It doesn't use the
 - weight file (90 MB)
 
 #### 3-5) Darknet19
-
-I modified the Extraction network to be faster and more accurate. This network was sort of a merging of ideas from the Darknet Reference network and Extraction as well as numerous publications like Network In Network, Inception, and Batch Normalization.
+나는 추출망을 더 빠르고 정밀하게 수정했다. 이 망은 다크넷 기준망 그리고 추출망, 망안의 망, 시작(인셉션), 그리고 뭉치고르기(Batch Normalization) 처럼 수많은 출판물의 아이디어를 하나로 합친 것이다.
 - Top-1 Accuracy: 72.9%
 - Top-5 Accuracy: 91.2%
 - Forward Timing: 6.0 ms/img
@@ -601,7 +602,6 @@ I modified the Extraction network to be faster and more accurate. This network w
 - weight file (80 MB)
 
 #### 3-6) Darknet19 448x448
-
 I trained Darknet19 for 10 more epochs with a larger input image size, 448x448. This model performs significantly better but is slower since the whole image is larger.
 - Top-1 Accuracy: 76.4%
 - Top-5 Accuracy: 93.5%
@@ -611,7 +611,6 @@ I trained Darknet19 for 10 more epochs with a larger input image size, 448x448. 
 - weight file (80 MB)
 
 #### 3-7) Resnet 50
-
 For some reason people love these networks even though they are so sloooooow. Whatever. Paper
 - Top-1 Accuracy: 75.8%
 - Top-5 Accuracy: 92.9%
@@ -621,7 +620,6 @@ For some reason people love these networks even though they are so sloooooow. Wh
 - weight file (87 MB)
 
 #### 3-8) Resnet 152
-
 For some reason people love these networks even though they are so sloooooow. Whatever. Paper
 - Top-1 Accuracy: 77.6%
 - Top-5 Accuracy: 93.8%
@@ -631,7 +629,6 @@ For some reason people love these networks even though they are so sloooooow. Wh
 - weight file (220 MB)
 
 #### 3-9) Densenet 201
-
 I love DenseNets! They are just so deep and so crazy and work so well. Like Resnet, still slow since they are sooooo many layers but at least they work really well! Paper
 - Top-1 Accuracy: 77.0%
 - Top-5 Accuracy: 93.7%
