@@ -546,96 +546,96 @@ Here are a variety of pre-trained models for ImageNet classification. Accuracy i
 
 Model        | Top-1        | Top-5        | Ops          | GPU          | CPU          | Cfg          | Weights  
 ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------  
-AlexNet      | 57.0         | 80.3         | 2.27 Bn      | 1.5 ms       | 0.3 s        | cfg          | 285 MB  
-Darknet Reference | 61.1 | 83.0 |  0.81 Bn |  1.5 ms | 0.16 s | cfg | 28 MB  
-VGG-16            | 70.5 | 90.0 | 30.94 Bn | 10.7 ms | 4.9 s  | cfg | 528 MB  
-Extraction        | 72.5 | 90.8 |  8.52 Bn |  6.4 ms | 0.95 s | cfg | 90 MB  
-Darknet19         | 72.9 | 91.2 |  5.58 Bn |  6.0 ms | 0.66 s | cfg | 80 MB  
-Darknet19 448x448 | 76.4 | 93.5 | 22.33 Bn | 11.0 ms | 2.8 s  | cfg | 80 MB  
-Resnet 50         | 75.8 | 92.9 | 10 Bn    |  7.0 ms | ?? s   | cfg | 87 MB  
-Resnet 152        | 77.6 | 93.8 | 29.4 Bn  | ?? ms   | ?? s   | cfg | 220 MB  
-Densenet 201      | 77.0 | 93.7 | 10.9 Bn  | ?? ms   | ?? s   | cfg | 66 MB  
+AlexNet      | 57.0         | 80.3         | 2.27 Bn      | 1.5 ms       | 0.3 s        | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/alexnet.cfg)          | [285 MB](https://pjreddie.com/media/files/alexnet.weights)  
+Darknet Reference | 61.1 | 83.0 |  0.81 Bn |  1.5 ms | 0.16 s | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/darknet.cfg) | [28 MB](https://pjreddie.com/media/files/darknet.weights)  
+VGG-16            | 70.5 | 90.0 | 30.94 Bn | 10.7 ms | 4.9 s  | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/vgg-16.cfg) | [528 MB](https://pjreddie.com/media/files/vgg-16.weights)  
+Extraction        | 72.5 | 90.8 |  8.52 Bn |  6.4 ms | 0.95 s | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/extraction.cfg) | [90 MB](https://pjreddie.com/media/files/extraction.weights)  
+Darknet19         | 72.9 | 91.2 |  5.58 Bn |  6.0 ms | 0.66 s | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/darknet19.cfg) | [80 MB](https://pjreddie.com/media/files/darknet19.weights)  
+Darknet19 448x448 | 76.4 | 93.5 | 22.33 Bn | 11.0 ms | 2.8 s  | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/darknet19_448.cfg) | [80 MB](https://pjreddie.com/media/files/darknet19_448.weights)  
+Resnet 50         | 75.8 | 92.9 | 10 Bn    |  7.0 ms | ?? s   | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/resnet50.cfg) | [87 MB](https://pjreddie.com/media/files/resnet50.weights)  
+Resnet 152        | 77.6 | 93.8 | 29.4 Bn  | ?? ms   | ?? s   | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/resnet152.cfg) | [220 MB](https://pjreddie.com/media/files/resnet152.weights)  
+Densenet 201      | 77.0 | 93.7 | 10.9 Bn  | ?? ms   | ?? s   | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/densenet201.cfg) | [66 MB](https://pjreddie.com/media/files/densenet201.weights)  
 
 #### 3-1) 알렉스넷(AlexNet)
-이 모형은 혁명의 시작이다! 원래 모형은 GPU 분할 작업으로 굉장히 좋았다 그래서 이것은 많은 후속 작업의 모형이다.
-- Top-1 Accuracy: 57.0%
-- Top-5 Accuracy: 80.3%
-- Forward Timing: 1.5 ms/img
-- CPU Forward Timing: 0.3 s/img
-- cfg file
-- weight file (285 MB)
+이 모형은 혁명의 시작이다! [원본](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf) 모형은 GPU 분할 작업으로 굉장히 좋았다 그래서 이것은 많은 [후속 작업](http://arxiv.org/abs/1404.5997)의 모형이다.
+- Top-1 정확도: 57.0%
+- Top-5 정확도: 80.3%
+- 순방향 시간: 1.5 ms/img
+- CPU 순방향 시간: 0.3 s/img
+- [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/alexnet.cfg)
+- [가중값(weight) 파일 (285 MB)](http://pjreddie.com/media/files/alexnet.weights)
 
 #### 3-2) Darknet Reference Model
 이 모형은 작게 설계되었다 하지만 강력하다. 이것은 알렉스넷과 같은 top-1과 top-5와 동일 성능을 달성했다 하지만 참여는 1/10로. 이것은 끝에 큰 완전연결층 없이 대부분 나선층을 사용한다. 이것은 CPU 상에서 알렉스넷 보다 약 2배 빠르다 이것은 많은 시각 응용프로그램에 더욱 적합하다.
-- Top-1 Accuracy: 61.1%
-- Top-5 Accuracy: 83.0%
-- Forward Timing: 1.5 ms/img
-- CPU Forward Timing: 0.16 s/img
-- cfg file
-- weight file (28 MB)
+- Top-1 정확도: 61.1%
+- Top-5 정확도: 83.0%
+- 순방향 시간: 1.5 ms/img
+- CPU 순방향 시간: 0.16 s/img
+- [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/darknet.cfg)
+- [가중값(weight) 파일 (28 MB)](http://pjreddie.com/media/files/darknet.weights)
 
 #### 3-3) VGG-16
-ILSVRC-2014 대회를 위하여 옥스포드의 시각기하학무리(The Visual Geometry Group)가 VGG-16 모형을 개발했다. 이것은 매우 정확하고 분류와 검출을 위하여 널리 사용된다. 나는 카페(Caffe)의 미리수련된 모형으로 이판을 개조했다. 이것은 다크넷-지정 이미지 전처리로 조정하기 위하여 추가적으로 6세대 수련했다(평균빼기 대신에 다크넷은 -1과 1 사이로 이미지를 조정한다).
-- Top-1 Accuracy: 70.5%
-- Top-5 Accuracy: 90.0%
-- Forward Timing: 10.7 ms/img
-- CPU Forward Timing: 4.9 s/img
-- cfg file
-- weight file (528 MB)
+ILSVRC-2014 대회를 위하여 옥스포드의 [시각기하학무리(The Visual Geometry Group)](http://www.robots.ox.ac.uk/~vgg/research/very_deep/)가 VGG-16 모형을 개발했다. 이것은 매우 정확하고 분류와 검출을 위하여 널리 사용된다. 나는 [카페(Caffe)](http://caffe.berkeleyvision.org/)의 미리수련된 [모형](https://gist.github.com/ksimonyan/211839e770f7b538e2d8#file-readme-md)으로 이판을 개조했다. 이것은 다크넷-지정 이미지 전처리로 조정하기 위하여 추가적으로 6세대 수련했다(평균빼기 대신에 다크넷은 -1과 1 사이로 이미지를 조정한다).
+- Top-1 정확도: 70.5%
+- Top-5 정확도: 90.0%
+- 순방향 시간: 10.7 ms/img
+- CPU 순방향 시간: 4.9 s/img
+- [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/vgg-16.cfg)
+- [가중값(weight) 파일 (528 MB)](http://pjreddie.com/media/files/vgg-16.weights)
 
 #### 3-4) Extraction
-나는 구글넷(GoogleNet) 모형의 파생물로 이 모형을 개발했다. 이것은 "시작(인셉션, inception)" 구성물을 사용하지 않는다, 오직 1x1 과 3x3 나선층이다.
-- Top-1 Accuracy: 72.5%
-- Top-5 Accuracy: 90.8%
-- Forward Timing: 6.4 ms/img
-- CPU Forward Timing: 0.95 s/img
-- cfg file
-- weight file (90 MB)
+나는 [구글넷(GoogleNet) 모형](http://arxiv.org/abs/1409.4842)의 파생물로 이 모형을 개발했다. 이것은 "마수(인셉션, inception)" 구성물(module)을 사용하지 않는다, 오직 1x1 과 3x3 나선층이다.
+- Top-1 정확도: 72.5%
+- Top-5 정확도: 90.8%
+- 순방향 시간: 6.4 ms/img
+- CPU 순방향 시간: 0.95 s/img
+- [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/extraction.cfg)
+- [가중값(weight) 파일 (90 MB)](http://pjreddie.com/media/files/extraction.weights)
 
 #### 3-5) Darknet19
 나는 추출망을 더 빠르고 정밀하게 수정했다. 이 망은 다크넷 기준망 그리고 추출망, 망안의 망, 시작(인셉션), 그리고 뭉치고르기(Batch Normalization) 처럼 수많은 출판물의 아이디어를 하나로 합친 것이다.
-- Top-1 Accuracy: 72.9%
-- Top-5 Accuracy: 91.2%
-- Forward Timing: 6.0 ms/img
-- CPU Forward Timing: 0.66 s/img
-- cfg file
-- weight file (80 MB)
+- Top-1 정확도: 72.9%
+- Top-5 정확도: 91.2%
+- 순방향 시간: 6.0 ms/img
+- CPU 순방향 시간: 0.66 s/img
+- [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/darknet19.cfg)
+- [가중값(weight) 파일 (80 MB)](http://pjreddie.com/media/files/darknet19.weights)
 
 #### 3-6) Darknet19 448x448
-I trained Darknet19 for 10 more epochs with a larger input image size, 448x448. This model performs significantly better but is slower since the whole image is larger.
-- Top-1 Accuracy: 76.4%
-- Top-5 Accuracy: 93.5%
-- Forward Timing: 11.0 ms/img
-- CPU Forward Timing: 2.8 s/img
-- cfg file
-- weight file (80 MB)
+나는 입력 이미지 크기가 큰 것으로 10세대 이상 Darknet19를 수련하였다, **448x448**. 이 모형은 상당히 좋은 수행을 한다 하지만 전체이미지가 크기 때문에 느리다.
+- Top-1 정확도: 76.4%
+- Top-5 정확도: 93.5%
+- 순방향 시간: 11.0 ms/img
+- CPU 순방향 시간: 2.8 s/img
+- [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/darknet19_448.cfg)
+- [가중값(weight) 파일 (80 MB)](http://pjreddie.com/media/files/darknet19_448.weights)
 
 #### 3-7) Resnet 50
-For some reason people love these networks even though they are so sloooooow. Whatever. Paper
-- Top-1 Accuracy: 75.8%
-- Top-5 Accuracy: 92.9%
-- Forward Timing: ?? ms/img
-- CPU Forward Timing: ?? s/img
-- cfg file
-- weight file (87 MB)
+어떤 이유인지 사람들은 이 망을 좋아한다 비록 너무너무 느리지만. 도대체 무엇인가. [논문](https://arxiv.org/abs/1512.03385)
+- Top-1 정확도: 75.8%
+- Top-5 정확도: 92.9%
+- 순방향 시간: ?? ms/img
+- CPU 순방향 시간: ?? s/img
+- [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/resnet50.cfg)
+- [가중값(weight) 파일 (87 MB)](https://pjreddie.com/media/files/resnet50.weights)
 
 #### 3-8) Resnet 152
-For some reason people love these networks even though they are so sloooooow. Whatever. Paper
-- Top-1 Accuracy: 77.6%
-- Top-5 Accuracy: 93.8%
-- Forward Timing: ?? ms/img
-- CPU Forward Timing: ?? s/img
-- cfg file
-- weight file (220 MB)
+어떤 이유인지 사람들은 이 망을 좋아한다 비록 너무너무 느리지만. 도대체 무엇인가. [논문](https://arxiv.org/abs/1512.03385)
+- Top-1 정확도: 77.6%
+- Top-5 정확도: 93.8%
+- 순방향 시간: ?? ms/img
+- CPU 순방향 시간: ?? s/img
+- [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/resnet152.cfg)
+- [가중값(weight) 파일 (220 MB)](https://pjreddie.com/media/files/resnet152.weights)
 
 #### 3-9) Densenet 201
-I love DenseNets! They are just so deep and so crazy and work so well. Like Resnet, still slow since they are sooooo many layers but at least they work really well! Paper
-- Top-1 Accuracy: 77.0%
-- Top-5 Accuracy: 93.7%
-- Forward Timing: ?? ms/img
-- CPU Forward Timing: ?? s/img
-- cfg file
-- weight file (67 MB)
+나는 덴스넷(DenseNets)을 좋아한다! 이것은 너무 깊다 그리고 아주 미친듯이 너무 잘 작동한다. 레스넷(Resnet) 처럼, 너무너무 많은층 때문에 여전히 느리다 하지만 적어도 이것은 정말로 잘 작동한다! [논문](https://arxiv.org/abs/1608.06993)
+- Top-1 정확도: 77.0%
+- Top-5 정확도: 93.7%
+- 순방향 시간: ?? ms/img
+- CPU 순방향 시간: ?? s/img
+- [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/densenet201.cfg)
+- [가중값(weight) 파일 (67 MB)](https://pjreddie.com/media/files/densenet201.weights)
 
 ---
 
