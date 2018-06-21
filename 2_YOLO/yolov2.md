@@ -1,12 +1,12 @@
 
 :kr: 다크넷(darknet): C로 작성한 신경망 공개소스 
 
-출처: https://pjreddie.com/darknet
+출처: https://pjreddie.com/darknet/yolov1
 
-| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](./2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
-<a name="욜로"></a>
+<a name="욜로v1"></a>
 <p align="center"><img width="30%" src="../images/yologo_1.png" /></p>  
 
 ## 2. 욜로: 실시간 개체 검출(YOLO: Real-Time Object Detection)
@@ -17,7 +17,7 @@ VOC: 시각개체분류(Visual Object Classes)
 
 욜로는(YOLO, 너는 오직 한번만 본다) 최첨단 기술이다, 실시간 개체 검출 시스템. 타이탄 X에서 40-90 FPS로 이미지를 처리한다 그리고 VOC 2007에 대해서 78.6%의 mAP를 가진다 그리고 COCO에 대해서 48.1%의 mAP 평가편차(test-dev)를 가진다.
 
-[![욜로v2 동영상](https://www.youtube.com/vi/VOC3huqHrss/0.jpg)](https://www.youtube.com/watch?v=VOC3huqHrss)
+[![욜로v2 동영상](https://img.youtube.com/vi/VOC3huqHrss/0.jpg)](https://www.youtube.com/watch?v=VOC3huqHrss)
 
 모형(Model)     | 수련(Train) | 평가 | mAP | FLOPS | FPS | Cfg | Weights |  
 ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |  
@@ -338,8 +338,7 @@ subdivisions=8
 ### 7) 옛 욜로 유적은 어떻게 되었나(What Happened to the Old YOLO Site)?
 
 욜로 판1을 사용한다면 여전히 여기에서 인용을 찾을 수 있다:  
-:kr: https://github.com/zeuseyera/darknet-kr/blob/master/yolov1.md  
-https://pjreddie.com/darknet/yolov1/
+[:kr:욜로v1](../2_YOLO/yolov1.md)[(영문)](https://pjreddie.com/darknet/yolov1)
 
 ### 8) 인용(Cite)
 

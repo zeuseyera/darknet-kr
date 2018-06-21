@@ -3,7 +3,7 @@
 
 출처: https://pjreddie.com/darknet
 
-| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](./2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
 <a name="욜로"></a>
@@ -17,7 +17,7 @@
 
 욜로는(YOLO, 너는 오직 한번만 본다) 최첨단 기술이다, 실시간 개체 검출 시스템. 타이탄 X에서 30 FPS로 이미지를 처리한다 그리고 COCO에 대해서 57.9%의 mAP 평가편차(test-dev)를 가진다.
 
-[![욜로v3 동영상](https://www.youtube.com/vi/MPU2HistivI/0.jpg)](https://www.youtube.com/watch?v=MPU2HistivI)
+[![욜로v3 동영상](https://img.youtube.com/vi/MPU2HistivI/0.jpg)](https://www.youtube.com/watch?v=MPU2HistivI)
 
 ### 1) 다른 검출기와 비교
 
@@ -33,7 +33,7 @@
 | SSD500            | COCO 수련실 | test-dev | 46.5 | - | 19 | - | [link](https://arxiv.org/abs/1512.02325) |  
 | YOLOv2 608x608    | COCO 수련실 | test-dev | 48.1 | 62.94 Bn | 40 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov2.cfg) | [weights](https://pjreddie.com/media/files/yolov2.weights) |  
 | Tiny YOLO         | COCO 수련실 | test-dev | 23.7 | 5.41 Bn | 207 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov2-tiny.cfg) | [weights](https://pjreddie.com/media/files/yolov2-tiny.weights) |  
-|  
+| | | | | | | | |  
 | SSD321            | COCO 수련실 | test-dev | 45.4 | - | 16 | - | [link](https://arxiv.org/abs/1701.06659) |  
 | DSSD321           | COCO 수련실 | test-dev | 46.1 | - | 12 | - | [link](https://arxiv.org/abs/1701.06659) |  
 | R-FCN             | COCO 수련실 | test-dev | 51.9 | - | 12 | - | [link](https://arxiv.org/abs/1605.06409) |  
@@ -166,7 +166,7 @@ data/horses.jpg 처럼 가지고 있는 이미지 경로를 입력하여 이미�
 wget https://pjreddie.com/media/files/yolov3-tiny.weights
 ```
 
- 그런다음 꼬맹이 설정파일과 가중값으로 검출기를 실행한다: 
+ 그런다음 꼬맹이 설정파일과 가중값으로 검출기를 실행한다:
 
 ```bash
 ./darknet detect cfg/yolov3-tiny.cfg yolov3-tiny.weights data/dog.jpg

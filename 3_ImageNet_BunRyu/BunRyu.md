@@ -3,10 +3,10 @@
 
 출처: https://pjreddie.com/darknet
 
-| [다크넷](./README.md) | [설치](./1_SeolChi/SeolChi.md) | [욜로](./2_YOLO/yolo.md) | [이미지넷분류](./3_ImageNet_BunRyu/BunRyu.md) | [악몽]() | [재사용신경망]() | [다크고]() | [분류기수련]() |  
-| --- | --- | --- | --- | --- | --- | --- |  
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
-
+<a name="이미지넷-분류"></a>
 ## 3. 이미지넷 분류(ImageNet Classification)
 다크넷을 사용하여 1000-분류 이미지넷 도전에 대한 이미지를 분류할 수 있다. 다크넷을 아직 설치하지 않았다면, 먼저 다크넷을 설치해야 한다.
 

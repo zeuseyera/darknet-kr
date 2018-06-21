@@ -1,11 +1,15 @@
+
 :kr: 다크넷(darknet): C로 작성한 신경망 공개소스 
 
 출처: https://pjreddie.com/darknet/yolov1
 
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+
 <a name="욜로v1"></a>
 <p align="center"><img width="30%" src="../images/yologo_1.png" /></p>  
 
-## 욜로(YOLO): 실시간 개체 검출(Real-Time Object Detection)
+## 2. 욜로(YOLO): 실시간 개체 검출(Real-Time Object Detection)
 
 ### 갱신: 욜로v2를 완료함
 
