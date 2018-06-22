@@ -95,11 +95,11 @@ data/yo.jpg 11 -rounds 4 -range 3
 
  이 본보기는 *VGG-16* 망을 사용한다. 구글넷은 [개와 민달팽이](http://i.imgur.com/ebk1Cdc.jpg)에 집착하는 것처럼 보이지만, *VGG* 는 오소리두더지(badgermoles) 생산하기를 좋아한다, 설치류와 원숭이 사이의 기괴한 교배다:
 
-<p align="center"><img width="50%" src="../images/badgermole.png" /></p>  
+<p align="center"><img width="50%" src="./images/badgermole.png" /></p>  
 
  *구글넷(GoogleNet)* 이 가진 *VGG* 는 또한 지역 응답 고르개 층이 없다. 결과적으로, 이 악몽은 종종 색이 별빛폭발로 과도포화(hyper-saturated)된다.
 
-<p align="center"><img width="50%" src="../images/vid_00520.png" /></p>  
+<p align="center"><img width="50%" src="./images/vid_00520.png" /></p>  
 
 즐겨라!
 
