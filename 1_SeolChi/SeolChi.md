@@ -44,20 +44,24 @@ gcc -I/usr/local/cuda/include/  -Wall -Wfatal-errors  -Ofast -lm....
 ```
 훌륭하다! 이제 멋진 것들을 확인해 보라 [여기](https://pjreddie.com/darknet/)에 있는 다크넷으로 할 수 있다.
 
+<a name="쿠다"></a>
 ### 2) 쿠다로 컴파일(Compiling With CUDA)
 다크넷은 CPU에서 빠르다 하지만 GPU에서는 500배 더 빠르다! **엔비디아(Nvidia) GPU** 가 있어야 한다 그리고 **쿠다(CUDA)** 를 설치해야 한다. 나는 자세하게 쿠다 설치를 다루지 않겠다 왜냐하면 이것은 끔찍한 것이다.  
 
 일단 쿠다를 설치했다면, 기본 디렉토리로에서 **만들기파일(Makefile)** 의 첫행을 다음과 같이 변경하라 읽기위하여:  
+
 ```
 GPU=1  
 ```
 
 이제 과제를 **만들 수 있다** 그리고 쿠다는 활성화 된다. 기본적으로 시스템에서 0번째 그래픽카드로 망이 실행한다(쿠다를 올바르게 설치했다면 **nvidia-smi(Nvidia-System Management Interface)** 를 사용하여 그래픽카드를 나열할 수 있다). 다크넷이 사용하는 카드를 바꾸고 싶다면 선택적 명령줄에 **-i <고유번호>** 표시정보를 줄 수 있다, 다음처럼:  
+
 ```
 ./darknet -i 1 imagenet test cfg/alexnet.cfg alexnet.weights  
 ```
 
 만약 쿠다를 사용하여 컴파일 했다 하지만 어떠한 이유로 든 CPU 계산을 원한다면 대신에 CPU를 사용하기 위하여 **-nogpu** 를 사용할 수 있다:  
+
 ```
 ./darknet -nogpu imagenet test cfg/alexnet.cfg alexnet.weights  
 ```
@@ -70,11 +74,13 @@ GPU=1
 먼저 OpenCV를 설치하라. 원본으로 이것을 한다면 길고 복잡할 것이다 그러므로 너를 위하여 패키지 관리자를 얻기 위하여 노력하라.  
 
 그런다음, **만들기파일(Makefile)** 의 두번째행을 다음과 같이 변경하라 읽기위하여:  
+
 ```
 OPENCV=1  
 ```
 
 끝났다! 시도해 보기 위한, 먼저 과제를 다시 **만든다**. 그 다음에 평가를위한 **imtest** 순서를 사용하여 이미지를 탑재하고 표시한다:  
+
 ```
 ./darknet imtest data/eagle.jpg  
 ```

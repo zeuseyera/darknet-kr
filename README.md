@@ -27,10 +27,10 @@
 알렉스넷과 VGG-16과 같은 인기있는 모델로 이미지를 분류한다.
 
 ## [4. 악몽(Nightmare)](./4_AkMong/AkMong.md#악몽)
-유령, 악귀(ghouls), 그리고 기괴한 야생 오소리(badgermoles)를 만들어내는 마술에 다크넷의 숨겨진 마법을 사용한다. 하지만, 경고한다, 여기에 들어간 자들에게: 악몽의 땅에서 아무도 안전하지 않다.
+유령, 악귀(ghouls), 그리고 기괴한 오소리두더지(badgermoles)를 만들어내는 마술에 다크넷의 숨겨진 마법을 사용한다. 하지만, 경고한다, 여기에 들어간 자들에게: 악몽의 땅에서 아무도 안전하지 않다.
 <p align="right"><img width="10%" src="images/nightmare-01.png" /></p>  
 
-## [5. 다크넷으로 작성한 재사용신경망(RNNs in Darknet)](#재사용-신경망)
+## [5. 다크넷으로 작성한 재사용신경망(RNNs in Darknet)](./5_RNN/rnn.md#재사용-신경망)
 재사용신경망은 순차(time-series)자료와 자연어처리(NLP: Natural Language Processing)에 대한 유행의 전부이다. 다크넷에서 어떻게 사용하는지 배워라!
 
 ## [6. 다크고: 다크넷으로 작성한 바둑(DarkGo: Go in Darknet)](#다크고)

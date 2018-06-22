@@ -20,7 +20,7 @@ VOC: 시각개체분류(Visual Object Classes)
 [![욜로v2 동영상](https://img.youtube.com/vi/VOC3huqHrss/0.jpg)](https://www.youtube.com/watch?v=VOC3huqHrss)
 
 모형(Model)     | 수련(Train) | 평가 | mAP | FLOPS | FPS | Cfg | Weights |  
------------- | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |  
+| ---            | ----       | ---  | --- | ---:  | ---: | --- | ---     |  
 Old YOLO       | VOC 2007+2012 | 2007 | 63.4 | 40.19 Bn | 45 | - | [link](https://pjreddie.com/darknet/yolov1/)  
 SSD300         | VOC 2007+2012 | 2007 | 74.3 | - | 46 | - | [link](https://arxiv.org/abs/1512.02325)  
 SSD500         | VOC 2007+2012 | 2007 | 76.8 | - | 19 | - | [link](https://arxiv.org/abs/1512.02325)  
@@ -67,13 +67,13 @@ make
 당신은 `cfg/` 하위디렉토리에 욜로에 대한 설정파일을 이미 가지고 있다. 당신은 이미수련된 가중값파일을 [여기(258MB)](https://pjreddie.com/media/files/yolov2.weights)에서 내려받아야 한다. 아니면 그냥 실행해라:
 
 ```bash
-wget https://pjreddie.com/media/files/yolo.weights
+wget https://pjreddie.com/media/files/yolov2.weights
 ```
 
 그런다음 검출기를 실행하라!
 
 ```bash
-./darknet detect cfg/yolo.cfg yolo.weights data/dog.jpg
+./darknet detect cfg/yolov2.cfg yolov2.weights data/dog.jpg
 ```
 
 당신은 이것과 비슷한 몇개의 출력을 볼 것이다.
@@ -120,7 +120,7 @@ Loading weights from yolo.weights ...Done!
 Enter Image Path:
 ```
 
-data/horses.jpg 처럼 가지고 있는 이미지 경로를 입력하여 이미지에 대한 상자를 예측한다.
+`data/horses.jpg` 처럼 가지고 있는 이미지 경로를 입력하여 이미지에 대한 상자를 예측한다.
 <p align="center"><img width="100%" src="images/Screen_Shot_2016-11-17_at_12_26_06_PM.png" /></p>  
 
 일단 완료되면 다른 이미지를 시도하기 위하여 다른 경로를 물어볼 것이다. 끝나면 `Ctrl-C` 를 사용하여 프로그램을 종료한다.

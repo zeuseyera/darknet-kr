@@ -27,8 +27,8 @@
 
 ### 2) 상황공통개체(COCO) 자료집합에서 성능
 
-| 모형(Model)     | 수련(Train) | 평가 | mAP | FLOPS: | FPS: | Cfg | Weights |  
-| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |  
+| 모형(Model)     | 수련(Train) | 평가 | mAP | FLOPS | FPS | Cfg | Weights |  
+| ---            | ----       | ---  | --- | ---:  | ---: | --- | ---     |  
 | SSD300            | COCO 수련실 | test-dev | 41.2 | - | 46 | - | [link](https://arxiv.org/abs/1512.02325) |  
 | SSD500            | COCO 수련실 | test-dev | 46.5 | - | 19 | - | [link](https://arxiv.org/abs/1512.02325) |  
 | YOLOv2 608x608    | COCO 수련실 | test-dev | 48.1 | 62.94 Bn | 40 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov2.cfg) | [weights](https://pjreddie.com/media/files/yolov2.weights) |  
@@ -85,13 +85,13 @@ make
 당신은 `cfg/` 하위디렉토리에 욜로에 대한 설정파일을 이미 가지고 있다. 당신은 이미수련된 가중값파일을 [여기(237MB)](https://pjreddie.com/media/files/yolov3.weights)에서 내려받아야 한다. 아니면 그냥 실행해라:
 
 ```bash
-wget https://pjreddie.com/media/files/yolo.weights
+wget https://pjreddie.com/media/files/yolov3.weights
 ```
 
 그런다음 검출기를 실행하라!
 
 ```bash
-./darknet detect cfg/yolo.cfg yolo.weights data/dog.jpg
+./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg
 ```
 
 당신은 이것과 비슷한 몇개의 출력을 볼 것이다.
@@ -139,7 +139,7 @@ Loading weights from yolo.weights ...Done!
 Enter Image Path:
 ```
 
-data/horses.jpg 처럼 가지고 있는 이미지 경로를 입력하여 이미지에 대한 상자를 예측한다.
+`data/horses.jpg` 처럼 가지고 있는 이미지 경로를 입력하여 이미지에 대한 상자를 예측한다.
 
 <p align="center"><img width="100%" src="images/Screen_Shot_2018-03-24_at_10.53.04_PM.png"></p>  
 
