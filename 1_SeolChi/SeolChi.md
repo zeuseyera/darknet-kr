@@ -87,6 +87,7 @@ OPENCV=1
 
 If you get a bunch of windows with eagles in them you've succeeded! They may look like:
 독수리가 있는 창 뭉치를 가지고 있다면 성공한 것이다! 그것은 다음처럼 보일 것이다:
+
 <p align="center"><img width="70%" src="images/Screen_Shot_2015-06-10_at_2_47_08_PM.png" /></p>
 
 ---
