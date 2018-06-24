@@ -6,6 +6,7 @@
 | [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
+<a name="재사용-신경망"></a>
 ## 5. 다크넷에서  재사용신경망(RNNs in Darknet)
 
  재사용신경망(RNN)은 시간이 지남에 따라 변하는 자료를 표현하기위한 강력한 모형이다. 훌륭한 재사용신경망(RNN) 입문서로 지난해부터 게시한 [Andrej Karpathy의 블로그](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)를 나는 적극 추천한다 이것은 그것(RNN)을 구현하는 동안 훌륭한 자원이었다!
