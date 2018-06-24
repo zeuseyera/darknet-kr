@@ -136,7 +136,8 @@ Densenet 201      | 77.0 | 93.7 | 10.9 Bn  | ?? ms   | ?? s   | [cfg](https://gi
 - [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/alexnet.cfg)
 - [가중값(weight) 파일 (285 MB)](http://pjreddie.com/media/files/alexnet.weights)
 
-#### 3-2) Darknet Reference Model
+<a name="기준망"></a>
+#### 3-2) 다크넷 기준망(Darknet Reference Model)
 이 모형은 작게 설계되었다 하지만 강력하다. 이것은 알렉스넷과 같은 top-1과 top-5와 동일 성능을 달성했다 하지만 참여는 1/10로. 이것은 끝에 큰 완전연결층 없이 대부분 나선층을 사용한다. 이것은 CPU 상에서 알렉스넷 보다 약 2배 빠르다 이것은 많은 시각 응용프로그램에 더욱 적합하다.
 - Top-1 정확도: 61.1%
 - Top-5 정확도: 83.0%
@@ -153,8 +154,9 @@ ILSVRC-2014 대회를 위하여 옥스포드의 [시각기하학무리(The Visua
 - CPU 순방향 시간: 4.9 s/img
 - [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/vgg-16.cfg)
 - [가중값(weight) 파일 (528 MB)](http://pjreddie.com/media/files/vgg-16.weights)
-
-#### 3-4) Extraction
+- 
+<a name="추출망"></a>
+#### 3-4) 추출(Extraction)
 나는 [구글넷(GoogleNet) 모형](http://arxiv.org/abs/1409.4842)의 파생물로 이 모형을 개발했다. 이것은 "마수(인셉션, inception)" 구성물(module)을 사용하지 않는다, 오직 1x1 과 3x3 나선층이다.
 - Top-1 정확도: 72.5%
 - Top-5 정확도: 90.8%

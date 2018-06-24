@@ -140,7 +140,7 @@ Enter Image Path:
 
 ### 3) 꼬맹이 욜로(Tiny YOLO)
 
-꼬맹이 욜로는 [다크넷 기준망(Darknet reference network)](https://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다 그리고 훨씬 빠르다 하지만 일반 욜로 모형보다 덜 정확하다. 시각적개체분류에 대해 수련된 판을 사용하기 위하여:
+꼬맹이 욜로는 [:kr:다크넷 기준망(Darknet reference network)](../3_ImageNet_BunRyu/BunRyu.md#기준망)[(영문)](https://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다 그리고 훨씬 빠르다 하지만 일반 욜로 모형보다 덜 정확하다. 시각적개체분류에 대해 수련된 판을 사용하기 위하여:
 
 ```bash
 wget https://pjreddie.com/media/files/tiny-yolo-voc.weights

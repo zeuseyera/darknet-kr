@@ -101,7 +101,7 @@ Enter Image Path:
 
 #### 2-2. 꼬맹이 모형
 
- `tiny-yolo.cfg`는 [다크넷 기준망](http://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다. `cfg/` 하위디렉토리에 설정파일이 이미 있어야 한다. [여기(103MB)](http://pjreddie.com/media/files/yolov1/tiny-yolov1.weights)에서 이미수련된 가중값을 내려받는다. 그런다음 모형을 실행할 수 있다!
+ `tiny-yolo.cfg`는 [:kr:다크넷 기준망(Darknet reference network)](../3_ImageNet_BunRyu/BunRyu.md#기준망)[(영문)](http://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다. `cfg/` 하위디렉토리에 설정파일이 이미 있어야 한다. [여기(103MB)](http://pjreddie.com/media/files/yolov1/tiny-yolov1.weights)에서 이미수련된 가중값을 내려받는다. 그런다음 모형을 실행할 수 있다!
 
 ```bash
 wget http://pjreddie.com/media/files/tiny-yolo.weights
@@ -115,7 +115,7 @@ wget http://pjreddie.com/media/files/tiny-yolo.weights
 #### 2-3. 욜로모형 비교
 
 * `yolo.cfg`는 [추출](http://pjreddie.com/darknet/imagenet/#extraction)망을 기반으로 한다. 이것은 45fps로 이미지를 처리한다, 여기는 [2007 train/val+ 2012 train/val](http://pjreddie.com/media/files/yolov1/yolov1.weights)에서 수련된 `yolo.cfg`에 대한 가중값 파일이 있다.
-* `tiny-yolo.cfg`는 훨씬 작다 그리고 [다크넷 기준망](http://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다. 이것은 155fps로 이미지를 처리한다, 여기는 [2007 train/val+ 2012 train/val](http://pjreddie.com/media/files/yolov1/tiny-yolov1.weights)에서 수련된 `tiny-yolo.cfg`에 대한 가중값 파일이 있다.
+* `tiny-yolo.cfg`는 훨씬 작다 그리고 [:kr:다크넷 기준망(Darknet reference network)](../3_ImageNet_BunRyu/BunRyu.md#기준망)[(영문)](http://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다. 이것은 155fps로 이미지를 처리한다, 여기는 [2007 train/val+ 2012 train/val](http://pjreddie.com/media/files/yolov1/tiny-yolov1.weights)에서 수련된 `tiny-yolo.cfg`에 대한 가중값 파일이 있다.
 
 #### 2-4. 검출 문턱값 변경
 
@@ -283,11 +283,11 @@ cat 2007_* 2012_train.txt > train.txt
 
 #### 6-4. 미리수련된 나선 가중값 내려받기
 
- 수련을 위해 우리는 이미지넷으로 미리수련된 나선 가중값을 사용한다. 우리는 [추출(Extraction)](http://pjreddie.com/darknet/imagenet/#extraction)모형의 가중값을 사용한다. 나선 층에 대한 가중값은 [여기(86MB)](http://pjreddie.com/media/files/extraction.conv.weights)에서 내려받을수 있다.
+ 수련을 위해 우리는 이미지넷으로 미리수련된 나선 가중값을 사용한다. 우리는 [:kr:추출모형(Extraction)](../3_ImageNet_BunRyu/BunRyu.md#추출망)[(영문)](http://pjreddie.com/darknet/imagenet/#extraction)의 가중값을 사용한다. 나선 층에 대한 가중값은 [여기(86MB)](http://pjreddie.com/media/files/extraction.conv.weights)에서 내려받을수 있다.
 
  만약 꼬맹이 모형을 수련하고 싶다면 [여기(25MB)](http://pjreddie.com/media/files/darknet.conv.weights)의 다크넷 기준망 나선 가중값을 사용해야 한다.
 
- 만약 자신의 미리수련된 가중값을 생성하기를 원한다면, 미리수련된 [추출모형(Extraction model)](http://pjreddie.com/darknet/imagenet/#extraction)을 내려받는다 그리고 다음 명령을 실행하라:
+ 만약 자신의 미리수련된 가중값을 생성하기를 원한다면, 미리수련된 [:kr:추출모형(Extraction model)](../3_ImageNet_BunRyu/BunRyu.md#추출망)[(영문)](http://pjreddie.com/darknet/imagenet/#extraction)을 내려받는다 그리고 다음 명령을 실행하라:
 
 ```bash
 ./darknet partial cfg/extraction.cfg extraction.weights extraction.conv.weights 24
