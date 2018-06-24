@@ -36,7 +36,7 @@
 ## [6. 다크고: 다크넷에서 바둑(DarkGo: Go in Darknet)](./6_DarkGo/DarkGo.md#다크고)
 다크넷으로 수련된 정책망을 사용하여 바둑놀이를 한다.
 
-## [7. 꼬맹이 다크넷(Tiny Darknet)](#꼬맹이-다크넷)
+## [7. 꼬맹이 다크넷(Tiny Darknet)](./7_GgoMaengIi/GgoMaengIi.md#꼬맹이-다크넷)
 이미지 분류를 꼬맹이(아주작게)로 만들었다.
 
 ## [8. CIFAR-10 으로 분류기를 수련한다(Train a Classifier on CIFAR-10)](#CIFAR-10-분류기)

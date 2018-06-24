@@ -11,13 +11,17 @@
 
  나는 많은 사람들이 [스퀴즈넷(SqueezeNet)](https://arxiv.org/abs/1602.07360)에 대해 이야기하는 것을 들었다.
 
- 스퀴즈넷(SqueezeNet)은 훌륭하다 하지만 이것은 단지 참여(parameter) 개수를 최적화한 것이다. 대부분 고품질 이지지가 10MB 또는 이상일 때 우리가 왜 신경써야 하나 만약 우리의 모형이 5MB 또는 50MB 라면? 만약 우리가 정말 빠른 작은 모형을 원한다면, [:kr:다크넷 기준망(Darknet reference network)](../3_ImageNet_BunRyu/BunRyu.md#기준망)[(영문)](https://pjreddie.com/darknet/imagenet/#reference)이 왜 안되는지 확인해보라? 이것은 28MB에 불과하다 하지만 더 중요한 것은, 이것은 단지 8억 부동소수점 연산을 한다. 원래 [알렉스넷(Alexnet)](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)은 23억이다. 다크넷은 2.9배 빠르다 그리고 작고 4% 더 정확하다. 그러면 스퀴즈넷(SqueezeNet)은 어떤가? 물론 가중값은 4.8MB에 불과하다 하지만 순방향 전달은 여전히 22억 연산이다. 알렉스넷(Alexnet)은 분류에서 훌륭하게 첫번째로 통과했다 하지만 오늘날 우리의 망은 뒤로 물러섰다 이것의 나쁜점은 너무 느리다! 그러나 어찌됐는, 사람들은 스퀴즈넷(SqueezeNet)에 대단한 관심이 있다 그래서 당신이 정말로 작은망을 고집하면, 이것을 사용하라:
+ 스퀴즈넷(SqueezeNet)은 훌륭하다 하지만 이것은 단지 참여(parameter) 개수를 최적화한 것이다. 대부분 고품질 이지지가 10MB 또는 이상일 때 우리가 왜 신경써야 하나 만약 우리의 모형이 5MB 또는 50MB 라면? 만약 우리가 정말 빠른 작은 모형을 원한다면, [:kr:다크넷 기준망(Darknet reference network)](../3_ImageNet_BunRyu/BunRyu.md#기준망)[(영문)](https://pjreddie.com/darknet/imagenet/#reference)이 왜 안되는지 확인해보라? 이것은 28MB에 불과하다 하지만 더 중요한 것은, 이것은 단지 8억 부동소수점 연산을 한다. 원래 [알렉스넷(Alexnet)](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)은 23억이다. 다크넷은 2.9배 빠르다 그리고 작고 4% 더 정확하다.
+
+ 그러면 스퀴즈넷(SqueezeNet)은 어떤가? 물론 가중값은 4.8MB에 불과하다 하지만 순방향 전달은 여전히 22억 연산이다. 알렉스넷(Alexnet)은 분류에서 훌륭하게 첫번째로 통과했다 하지만 오늘날 우리의 망은 뒤로 물러섰다 이것의 나쁜점은 너무 느리다!
+
+ 그러나 어찌됐는, 사람들은 스퀴즈넷(SqueezeNet)에 대단한 관심이 있다 그래서 당신이 정말로 작은망을 고집하면, 이것을 사용하라:
 
 ### 1) 꼬맹이 다크넷(Tiny Darknet)
 
 
 | 모형                          | Top-1 | Top-5 | 연산(Ops) | 크기 |  
-| ---                          | ---   | ---   | ---:     | ---:  |  
+| ---                          | :---: | :---: | ---:     | ---:  |  
 | 알렉스넷(AlexNet)             | 57.0  | 80.3  | 2.27 Bn | 238 MB |   
 | 다크넷 기준(Darknet Reference) | 61.1  | 83.0 | 0.81 Bn | 28 MB |  
 | 스퀴즈넷(SqueezeNet)          | 57.5  | 80.3  | 2.17 Bn | 4.8 MB |  
