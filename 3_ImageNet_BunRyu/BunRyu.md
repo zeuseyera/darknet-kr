@@ -115,17 +115,17 @@ mv inet.val.list <path-to>/darknet/data
 Here are a variety of pre-trained models for ImageNet classification. Accuracy is measured as single-crop validation accuracy on ImageNet. GPU timing is measured on a Titan X, CPU timing on an Intel i7-4790K (4 GHz).
 여기에 이미지넷 분류를 위해 미리수련된 다양한 모형이 있다. 정밀도는 이미지넷에서 단일집단(single-crop) 검증 정밀도로 측정된 것이다. GPU 시간은 Titan X로 측정됨, CPU 시간은 인텔 Intel i7-4790K(4 GHz)로.
 
-Model        | Top-1        | Top-5        | Ops          | GPU          | CPU          | Cfg          | Weights  
------------- | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------  
-AlexNet      | 57.0         | 80.3         | 2.27 Bn      | 1.5 ms       | 0.3 s        | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/alexnet.cfg)          | [285 MB](https://pjreddie.com/media/files/alexnet.weights)  
-Darknet Reference | 61.1 | 83.0 |  0.81 Bn |  1.5 ms | 0.16 s | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/darknet.cfg) | [28 MB](https://pjreddie.com/media/files/darknet.weights)  
-VGG-16            | 70.5 | 90.0 | 30.94 Bn | 10.7 ms | 4.9 s  | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/vgg-16.cfg) | [528 MB](https://pjreddie.com/media/files/vgg-16.weights)  
-Extraction        | 72.5 | 90.8 |  8.52 Bn |  6.4 ms | 0.95 s | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/extraction.cfg) | [90 MB](https://pjreddie.com/media/files/extraction.weights)  
-Darknet19         | 72.9 | 91.2 |  5.58 Bn |  6.0 ms | 0.66 s | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/darknet19.cfg) | [80 MB](https://pjreddie.com/media/files/darknet19.weights)  
-Darknet19 448x448 | 76.4 | 93.5 | 22.33 Bn | 11.0 ms | 2.8 s  | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/darknet19_448.cfg) | [80 MB](https://pjreddie.com/media/files/darknet19_448.weights)  
-Resnet 50         | 75.8 | 92.9 | 10 Bn    |  7.0 ms | ?? s   | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/resnet50.cfg) | [87 MB](https://pjreddie.com/media/files/resnet50.weights)  
-Resnet 152        | 77.6 | 93.8 | 29.4 Bn  | ?? ms   | ?? s   | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/resnet152.cfg) | [220 MB](https://pjreddie.com/media/files/resnet152.weights)  
-Densenet 201      | 77.0 | 93.7 | 10.9 Bn  | ?? ms   | ?? s   | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/densenet201.cfg) | [66 MB](https://pjreddie.com/media/files/densenet201.weights)  
+| 모형               | Top-1 | Top-5 | 연산(Ops) | GPU     | CPU    | 설정  | 가중값 |  
+| ---               | :---: | :---: | ---:     | ---:    | ---:   | :---: | ---: |  
+| AlexNet           | 57.0  | 80.3  | 2.27 Bn  | 1.5 ms  | 0.3 s  | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/alexnet.cfg)          | [285 MB](https://pjreddie.com/media/files/alexnet.weights) |  
+| Darknet Reference | 61.1 | 83.0 |  0.81 Bn |  1.5 ms | 0.16 s | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/darknet.cfg) | [28 MB](https://pjreddie.com/media/files/darknet.weights) |  
+| VGG-16            | 70.5 | 90.0 | 30.94 Bn | 10.7 ms | 4.9 s  | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/vgg-16.cfg) | [528 MB](https://pjreddie.com/media/files/vgg-16.weights) |  
+| Extraction        | 72.5 | 90.8 |  8.52 Bn |  6.4 ms | 0.95 s | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/extraction.cfg) | [90 MB](https://pjreddie.com/media/files/extraction.weights) |  
+| Darknet19         | 72.9 | 91.2 |  5.58 Bn |  6.0 ms | 0.66 s | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/darknet19.cfg) | [80 MB](https://pjreddie.com/media/files/darknet19.weights) |  
+| Darknet19 448x448 | 76.4 | 93.5 | 22.33 Bn | 11.0 ms | 2.8 s  | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/darknet19_448.cfg) | [80 MB](https://pjreddie.com/media/files/darknet19_448.weights) |  
+| Resnet 50         | 75.8 | 92.9 | 10 Bn    |  7.0 ms | ?? s   | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/resnet50.cfg) | [87 MB](https://pjreddie.com/media/files/resnet50.weights) |  
+| Resnet 152        | 77.6 | 93.8 | 29.4 Bn  | ?? ms   | ?? s   | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/resnet152.cfg) | [220 MB](https://pjreddie.com/media/files/resnet152.weights) |  
+| Densenet 201      | 77.0 | 93.7 | 10.9 Bn  | ?? ms   | ?? s   | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/densenet201.cfg) | [66 MB](https://pjreddie.com/media/files/densenet201.weights) |  
 
 #### 3-1) 알렉스넷(AlexNet)
 이 모형은 혁명의 시작이다! [원본](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf) 모형은 GPU 분할 작업으로 굉장히 좋았다 그래서 이것은 많은 [후속 작업](http://arxiv.org/abs/1404.5997)의 모형이다.

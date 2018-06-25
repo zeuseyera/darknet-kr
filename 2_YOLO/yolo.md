@@ -265,7 +265,7 @@ cat 2007_train.txt 2007_val.txt 2012_*.txt > train.txt
 
 `<path-to-voc>`를 VOC 자료를 저장할 디렉토리로 반드시 대체해야 한다.
 
-#### 6-4) 미리수련된 사선 가중값 내려받기(Download Pretrained Convolutional Weights)
+#### 6-4) 미리수련된 나선 가중값 내려받기(Download Pretrained Convolutional Weights)
 
 수련을 위하여 이미지넷에서 미리수련된 나선 가중값을 사용한다. [darknet53](https://pjreddie.com/darknet/imagenet/#darknet53)모형의 가중값을 사용한다. 나선층에 대한 가중값은 [여기(76MB)](https://pjreddie.com/media/files/darknet53.conv.74)에서 바로 내려받기할 수 있다.
 
