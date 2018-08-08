@@ -3,7 +3,7 @@
 
 출처: https://pjreddie.com/darknet
 
-| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](../8_SuRyeon/SuRyeon.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
 <a name="꼬맹이-다크넷"></a>
@@ -26,7 +26,7 @@
 | 스퀴즈넷(SqueezeNet)          | 57.5  | 80.3  | 2.17 Bn | 4.8 MB |  
 | 꼬맹이 다크넷(Tiny Darknet)    | 58.7  | 81.7  | 0.98 Bn | 4.0 MB |  
 
- 여기에서 진정한 승자는 분명히 다크넷 기준망이다 하지만 만약 당신이 작은 모형을 원한다고 고집하면, 꼬맹이 다크넷을 사용하라. 아니면 당신 자신의것을 수련하라, 이것은 쉽게 할수 있다!
+ 여기에서 진정한 승자는 분명히 다크넷 기준망이다 하지만 만약 당신이 작은 모형을 원한다고 고집하면, 꼬맹이 다크넷을 사용하라. 아니면 당신 자신의것을 벼림하라, 이것은 쉽게 할수 있다!
 
  여기에 다크넷에서 이것을 사용하는 방법이 있다(그리고 또한 다크넷을 설치하는 방법):
 

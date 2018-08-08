@@ -3,7 +3,7 @@
 
 출처: https://pjreddie.com/darknet
 
-| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](../8_SuRyeon/SuRyeon.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
 <a name="다크고"></a>
@@ -19,7 +19,7 @@
 
  나랑 놀자 온라인바둑 서버에서! https://online-go.com/user/view/434218
 
-### 1) 수련된 모형으로 놀기
+### 1) 벼림된 모형으로 놀기
 
  먼저 다크넷을 설치하라, 이것은 다음과 같이 성취할수 있다:
 
@@ -59,7 +59,7 @@ wget pjreddie.com/media/files/go.weights
 
  나는 Hugh Perkins의 [깃허브](https://github.com/hughperkins/kgsgo-dataset-preprocessor)에서 가져온 바둑 자료집합을 사용한다. 내가 다크넷에 공급한 자료는 현재 게임상태를 부호화(인코딩)한 1 채널 이미지다. `1`은 자신의 부분이 있는것이다, `-1`은 자신의 상대 부분이 있는것이다, 그리고 `0`은 빈 공간이 있는것이다. 망은 현재 놀이꾼이 다음 착수 가망이있는 것을 예측한다.
 
- 내가 사용후 미리-처리(전처리)한 전체 자료집합은 [여기(3.0GB)](https://pjreddie.com/media/files/go.train)에서 찾을수 있다. 단지 수련을 위해서만 필요하다:
+ 내가 사용후 미리-처리(전처리)한 전체 자료집합은 [여기(3.0GB)](https://pjreddie.com/media/files/go.train)에서 찾을수 있다. 단지 벼림을 위해서만 필요하다:
 
  * [go.train](https://pjreddie.com/media/files/go.train)
 

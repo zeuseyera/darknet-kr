@@ -3,14 +3,14 @@
 
 출처: https://pjreddie.com/darknet
 
-| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](../8_SuRyeon/SuRyeon.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
 <a name="이미지넷-분류"></a>
 ## 3. 이미지넷 분류(ImageNet Classification)
 다크넷을 사용하여 1000-분류 이미지넷 도전에 대한 이미지를 분류할 수 있다. 다크넷을 아직 설치하지 않았다면, 먼저 다크넷을 설치해야 한다.
 
-### 1) 미리수련된 모형으로 분류(Classifying With Pre-Trained Models)
+### 1) 미리벼림된 모형으로 분류(Classifying With Pre-Trained Models)
 다음의 명령을 다크넷을 설치하기 위한 명령이다, 분류 가중값 파일을 내려받기한다, 그리고 이미지 분류기를 실행한다:
 ```bash
 git clone https://github.com/pjreddie/darknet.git
@@ -86,8 +86,16 @@ tar -xzf ILSVRC2012_bbox_val_v3.tgz
 mkdir -p imgs && tar xf ILSVRC2012_img_val.tar -C imgs
 ```
 
-```bash
-ILSVRC : 이미지넷 대규모 시각인식 도전(ImageNet Large Scale Visual Recognition Challenge)
+```
+CIFAR : 진보된 연구를 위한 캐나다 학회 (Canadian Institute for Advanced Research)
+
+CAFFE : 빠르게 특징을 소박이하기 위한 나선구조 (Convolutional Architecture for Fast Feature Embedding)
+
+CNN : 나선 신경망 (Convolutional Neural Network)
+
+VGG : 시각 기하학 무리 (The Visual Geometry Group)
+
+ILSVRC : 이미지넷 대규모 시각인식 도전 (ImageNet Large Scale Visual Recognition Challenge)
 ```
 
 이제 이미지와 주석을 가지고 있다 하지만 이미지에 딱지를 붙일 필요가 있다 그렇게 해서 다크넷이 예측한 것을 평가할 수 있다. 이 배쉬스크립트(bash script)를 사용한다. 이것은 이미 scripts/ 하위디렉토리에 있다. 그렇지만 그냥 이것을 다시 가져올 수 있다 그리고 이것을 실행한다:
@@ -110,10 +118,10 @@ mv inet.val.list <path-to>/darknet/data
 
 만약 쿠다로 컴파일하지 않아도 여전히 이미지넷을 검증할 수 있다 하지만 이것은 정말정말로 오랜 시간이 걸릴 것이다. 권장하지 않는다.
 
-### 3) 미리수련된 모형(Pre-Trained Models)
+### 3) 미리벼림된 모형(Pre-Trained Models)
 
 Here are a variety of pre-trained models for ImageNet classification. Accuracy is measured as single-crop validation accuracy on ImageNet. GPU timing is measured on a Titan X, CPU timing on an Intel i7-4790K (4 GHz).
-여기에 이미지넷 분류를 위해 미리수련된 다양한 모형이 있다. 정밀도는 이미지넷에서 단일집단(single-crop) 검증 정밀도로 측정된 것이다. GPU 시간은 Titan X로 측정됨, CPU 시간은 인텔 Intel i7-4790K(4 GHz)로.
+여기에 이미지넷 분류를 위해 미리벼림된 다양한 모형이 있다. 정밀도는 이미지넷에서 단일집단(single-crop) 검증 정밀도로 측정된 것이다. GPU 시간은 Titan X로 측정됨, CPU 시간은 인텔 Intel i7-4790K(4 GHz)로.
 
 | 모형               | Top-1 | Top-5 | 연산(Ops) | GPU     | CPU    | 설정  | 가중값 |  
 | ---               | :---: | :---: | ---:     | ---:    | ---:   | :---: | ---: |  
@@ -147,14 +155,14 @@ Here are a variety of pre-trained models for ImageNet classification. Accuracy i
 - [가중값(weight) 파일 (28 MB)](http://pjreddie.com/media/files/darknet.weights)
 
 #### 3-3) VGG-16
-ILSVRC-2014 대회를 위하여 옥스포드의 [시각기하학무리(The Visual Geometry Group)](http://www.robots.ox.ac.uk/~vgg/research/very_deep/)가 VGG-16 모형을 개발했다. 이것은 매우 정확하고 분류와 검출을 위하여 널리 사용된다. 나는 [카페(Caffe)](http://caffe.berkeleyvision.org/)의 미리수련된 [모형](https://gist.github.com/ksimonyan/211839e770f7b538e2d8#file-readme-md)으로 이판을 개조했다. 이것은 다크넷-지정 이미지 전처리로 조정하기 위하여 추가적으로 6세대 수련했다(평균빼기 대신에 다크넷은 -1과 1 사이로 이미지를 조정한다).
+ILSVRC-2014 대회를 위하여 옥스포드의 [시각기하학무리(The Visual Geometry Group)](http://www.robots.ox.ac.uk/~vgg/research/very_deep/)가 VGG-16 모형을 개발했다. 이것은 매우 정확하고 분류와 검출을 위하여 널리 사용된다. 나는 [카페(Caffe)](http://caffe.berkeleyvision.org/)의 미리벼림된 [모형](https://gist.github.com/ksimonyan/211839e770f7b538e2d8#file-readme-md)으로 이판을 개조했다. 이것은 다크넷-지정 이미지 전처리로 조정하기 위하여 추가적으로 6세대 벼림했다(평균빼기 대신에 다크넷은 -1과 1 사이로 이미지를 조정한다).
 - Top-1 정확도: 70.5%
 - Top-5 정확도: 90.0%
 - 순방향 시간: 10.7 ms/img
 - CPU 순방향 시간: 4.9 s/img
 - [설정(cfg) 파일](https://github.com/pjreddie/darknet/blob/master/cfg/vgg-16.cfg)
 - [가중값(weight) 파일 (528 MB)](http://pjreddie.com/media/files/vgg-16.weights)
-- 
+-
 <a name="추출망"></a>
 #### 3-4) 추출(Extraction)
 나는 [구글넷(GoogleNet) 모형](http://arxiv.org/abs/1409.4842)의 파생물로 이 모형을 개발했다. 이것은 "마수(인셉션, inception)" 구성물(module)을 사용하지 않는다, 오직 1x1 과 3x3 나선층이다.
@@ -175,7 +183,7 @@ ILSVRC-2014 대회를 위하여 옥스포드의 [시각기하학무리(The Visua
 - [가중값(weight) 파일 (80 MB)](http://pjreddie.com/media/files/darknet19.weights)
 
 #### 3-6) Darknet19 448x448
-나는 입력 이미지 크기가 큰 것으로 10세대 이상 Darknet19를 수련하였다, **448x448**. 이 모형은 상당히 좋은 수행을 한다 하지만 전체이미지가 크기 때문에 느리다.
+나는 입력 이미지 크기가 큰 것으로 10세대 이상 Darknet19를 벼림하였다, **448x448**. 이 모형은 상당히 좋은 수행을 한다 하지만 전체이미지가 크기 때문에 느리다.
 - Top-1 정확도: 76.4%
 - Top-5 정확도: 93.5%
 - 순방향 시간: 11.0 ms/img

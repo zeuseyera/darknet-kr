@@ -3,7 +3,7 @@
 
 출처: https://pjreddie.com/darknet
 
-| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](../8_SuRyeon/SuRyeon.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
 <a name="악몽"></a>
@@ -11,23 +11,23 @@
 
 ## 4. 악몽(Nightmare)
 
- 옛날에, 대학 건물에서(in a University building almost), 하지만 아주(but not quite), 
-entirely unlike the one you are sitting in right now, 
+ 옛날에, 대학 건물에서(in a University building almost), 하지만 아주(but not quite),
+entirely unlike the one you are sitting in right now,
 Simonyan, Vedaldi, 그리고 Zisserman는 [훌륭한 발상](http://arxiv.org/pdf/1312.6034v2.pdf)을 했다. 그들은 생각했다, 이봐 우리는 이 신경망을 순방향으로 실행하지 그리고 꽤 잘 동작하지, 근데 왜 역방향으로 안돌리지? 그런식으로 우리는 알아낼수 있다 컴퓨터가 거기에 대해 실제로 생각하는 것을...
 
  결과 이미지는 너무 소름끼치고, 너무 기괴했다, 그들의 비명은 템플턴까지 들렸다.
 
 <p align="center"><img width="50%" src="./images/scream_vgg-conv_10_000002.png" /></p>
 
- [많은](http://arxiv.org/pdf/1412.0035v1.pdf) [연구자들](http://arxiv.org/pdf/1412.1897v4.pdf)이 그들의 작업을 확대[했다](http://arxiv.org/pdf/1506.02753.pdf), 구글에 의해 잘 공표된 [게시 블로그](http://googleresearch.blogspot.com/2015/06/inceptionism-going-deeper-into-neural.html)를 포함하여. 
+ [많은](http://arxiv.org/pdf/1412.0035v1.pdf) [연구자들](http://arxiv.org/pdf/1412.1897v4.pdf)이 그들의 작업을 확대[했다](http://arxiv.org/pdf/1506.02753.pdf), 구글에 의해 잘 공표된 [게시 블로그](http://googleresearch.blogspot.com/2015/06/inceptionism-going-deeper-into-neural.html)를 포함하여.
 
  이것은 다른사람이 가진 좋은 발상을 누군가 복사한 것을 내가 복사한 것이다.
 
 ### 1) 다크넷으로 악몽 꾸기
 
- 만약 다크넷 설치가 되지않았다면, [먼저 설치](http://pjreddie.com/darknet/install/)하라! 악몽을 꾸미기위해 우리는 VGG-16 미리수련된 모형을 사용할 것이다. 하지만, 우리는 전체모형이 필요하지 않다, 단지 나선층만, 그래서 우리는 `vgg-conv.cfg`파일을 사용할수 있다(이미 `cfg/` 하위디렉토리에 있어야 한다). 당신이 내려받기에 필요한 미리수련된 가중값은 [여기(57MB)](http://pjreddie.com/media/files/vgg-conv.weights)에 있다.  
+ 만약 다크넷 설치가 되지않았다면, [먼저 설치](http://pjreddie.com/darknet/install/)하라! 악몽을 꾸미기위해 우리는 VGG-16 미리벼림된 모형을 사용할 것이다. 하지만, 우리는 전체모형이 필요하지 않다, 단지 나선층만, 그래서 우리는 `vgg-conv.cfg`파일을 사용할수 있다(이미 `cfg/` 하위디렉토리에 있어야 한다). 당신이 내려받기에 필요한 미리벼림된 가중값은 [여기(57MB)](http://pjreddie.com/media/files/vgg-conv.weights)에 있다.  
 
- 이제 우리는 첫번째 절에서 본 절규이미지를 생성할수 있다: 
+ 이제 우리는 첫번째 절에서 본 절규이미지를 생성할수 있다:
 
 ```
 ./darknet nightmare cfg/vgg-conv.cfg vgg-conv.weights data/scream.jpg 10
@@ -56,7 +56,7 @@ Simonyan, Vedaldi, 그리고 Zisserman는 [훌륭한 발상](http://arxiv.org/pd
 
 ### 2) 특별한 선택사항
 
- 자신이 생성한 절규 이놈이 내것과 완전히 똑같지 않다는 것을 알수 있다. 그것은 내가 특별한 선택사항을 사용했기 때문이다! 내가 사용한 실제 명령이다: 
+ 자신이 생성한 절규 이놈이 내것과 완전히 똑같지 않다는 것을 알수 있다. 그것은 내가 특별한 선택사항을 사용했기 때문이다! 내가 사용한 실제 명령이다:
 
 ```
 ./darknet nightmare cfg/vgg-conv.cfg vgg-conv.weights \
@@ -73,7 +73,7 @@ data/scream.jpg 10 -range 3 -iters 20 -rate .01 -rounds 4
   * `-thresh x` : 확대할 특징에 대한 문턱값 변경(기본 1.0). 평균에서 벗어난 표준편차 `x`값 이상의 특징만 목표층에 확대된다.
   * `-zoom x`   : 각 순환(rounds)이후 이미지에 적용되는 배율(줌)을 변경(기본 1.0). 각 순환(rounds)이후 이미지에 적용하기위한 확대(`x` < 1.0, zoom in) 또는 축소(`x` > 1.0, zoom out)를 선택적으로 추가할수 있다.
   * `-rotate x` : 각 순환(rounds)이후 적용하는 회전변화(기본 0.0). 각 순환(rounds)이후 회전 선택.
-  
+
  여기에 많이 있다 놀이한 것이! 여기에 다중 순환(rounds)과 꾸준한 확대(zoom in)의 본보기가 있다:
 
 [![악몽](https://img.youtube.com/vi/qlO4M6MfDFY/0.jpg)](https://www.youtube.com/watch?v=qlO4M6MfDFY)

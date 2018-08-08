@@ -3,7 +3,7 @@
 
 출처: https://pjreddie.com/darknet/yolov1
 
-| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](../8_SuRyeon/SuRyeon.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
 <a name="욜로v1"></a>
@@ -20,10 +20,10 @@
 [![욜로보기 자연 파트2](https://img.youtube.com/vi/K9a6mGNmhbc/0.jpg)](https://www.youtube.com/watch?v=K9a6mGNmhbc)
 
 ```
-물리 시각개체분류(Pascal VOC: PASCAL Visual Object Classes)
+사물 시각개체분류(Pascal VOC: PASCAL Visual Object Classes)
 ```
 
-욜로(YOLO, 너는 오직 한번만 본다)는 물리 시각개체분류 2012(Pascal VOC 2012) 자료집합에서 개체를 검출하기 위한 몸통(시스템)이다. 이것은 20 물리 개체를 검출할수 있다:
+욜로(YOLO, 너는 오직 한번만 본다)는 사물 시각개체분류 2012(Pascal VOC 2012) 자료집합에서 개체를 검출하기 위한 몸통(시스템)이다. 이것은 20 사물 개체를 검출할수 있다:
 
 - 사람
 - 새, 고양이, 소, 개, 말, 양
@@ -46,11 +46,11 @@
 
 우리의 모델은 분류기기반 시스템에 비해 몇가지 장점을 가진다. 평가시 이미지전체 를 확인한다 그래서 이것의 예측은 이미지에서 전체맥락으로 된 정보이다. 이것은 또한 하나의 이미지에 수천개가 필요한 R-CNN 과 달리 하나의 망으로 평가하여 예측한다. 이것은 극도로 빠르게 한다, [R-CNN](https://github.com/rbgirshick/rcnn)보다 1000배 더 빠르다 그리고 [Fast R-CNN](https://github.com/rbgirshick/fast-rcnn) 보다 100배 빠르다. 전체 시스템에 대한 자세한 내용은 우리의 [논문](http://arxiv.org/abs/1506.02640) 을 봐라.
 
-### 2. 이미수련된 모형을 사용하여 검출
+### 2. 미리벼림된 모형을 사용하여 검출
 
- 이 게시물은 이미수련된 모형을 사용한 욜로 몸통(시스템)으로 개체를 검출하는 방법을 안내한다. 만약 아직 다크넷이 설치되지 않았다면, [:kr:먼저 설치](../1_SeolChi/SeolChi.md)[(영문)](http://pjreddie.com/darknet/install/)해야 한다.
+ 이 게시물은 미리벼림된 모형을 사용한 욜로 몸통(시스템)으로 개체를 검출하는 방법을 안내한다. 만약 아직 다크넷이 설치되지 않았다면, [:kr:먼저 설치](../1_SeolChi/SeolChi.md)[(영문)](http://pjreddie.com/darknet/install/)해야 한다.
 
- 당신은 `cfg/` 하위디렉토리에 욜로에 대한 설정파일을 이미 가지고 있다. 당신은 이미수련된 가중값파일을 [여기(753 MB)](http://pjreddie.com/media/files/yolov1/yolov1.weights)에서 내려받아야 한다. 아니면 그냥 실행해라:  
+ 당신은 `cfg/` 하위디렉토리에 욜로에 대한 설정파일을 이미 가지고 있다. 당신은 미리벼림된 가중값파일을 [여기(753 MB)](http://pjreddie.com/media/files/yolov1/yolov1.weights)에서 내려받아야 한다. 아니면 그냥 실행해라:  
 
 ```bash
 wget http://pjreddie.com/media/files/yolov1.weights
@@ -101,7 +101,7 @@ Enter Image Path:
 
 #### 2-2. 꼬맹이 모형
 
- `tiny-yolo.cfg`는 [:kr:다크넷 기준망(Darknet reference network)](../3_ImageNet_BunRyu/BunRyu.md#기준망)[(영문)](http://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다. `cfg/` 하위디렉토리에 설정파일이 이미 있어야 한다. [여기(103MB)](http://pjreddie.com/media/files/yolov1/tiny-yolov1.weights)에서 이미수련된 가중값을 내려받는다. 그런다음 모형을 실행할 수 있다!
+ `tiny-yolo.cfg`는 [:kr:다크넷 기준망(Darknet reference network)](../3_ImageNet_BunRyu/BunRyu.md#기준망)[(영문)](http://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다. `cfg/` 하위디렉토리에 설정파일이 이미 있어야 한다. [여기(103MB)](http://pjreddie.com/media/files/yolov1/tiny-yolov1.weights)에서 미리벼림된 가중값을 내려받는다. 그런다음 모형을 실행할 수 있다!
 
 ```bash
 wget http://pjreddie.com/media/files/tiny-yolo.weights
@@ -114,8 +114,8 @@ wget http://pjreddie.com/media/files/tiny-yolo.weights
 
 #### 2-3. 욜로모형 비교
 
-* `yolo.cfg`는 [추출](http://pjreddie.com/darknet/imagenet/#extraction)망을 기반으로 한다. 이것은 45fps로 이미지를 처리한다, 여기는 [2007 train/val+ 2012 train/val](http://pjreddie.com/media/files/yolov1/yolov1.weights)에서 수련된 `yolo.cfg`에 대한 가중값 파일이 있다.
-* `tiny-yolo.cfg`는 훨씬 작다 그리고 [:kr:다크넷 기준망(Darknet reference network)](../3_ImageNet_BunRyu/BunRyu.md#기준망)[(영문)](http://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다. 이것은 155fps로 이미지를 처리한다, 여기는 [2007 train/val+ 2012 train/val](http://pjreddie.com/media/files/yolov1/tiny-yolov1.weights)에서 수련된 `tiny-yolo.cfg`에 대한 가중값 파일이 있다.
+* `yolo.cfg`는 [추출](http://pjreddie.com/darknet/imagenet/#extraction)망을 기반으로 한다. 이것은 45fps로 이미지를 처리한다, 여기는 [2007 train/val+ 2012 train/val](http://pjreddie.com/media/files/yolov1/yolov1.weights)에서 벼림된 `yolo.cfg`에 대한 가중값 파일이 있다.
+* `tiny-yolo.cfg`는 훨씬 작다 그리고 [:kr:다크넷 기준망(Darknet reference network)](../3_ImageNet_BunRyu/BunRyu.md#기준망)[(영문)](http://pjreddie.com/darknet/imagenet/#reference)을 기반으로 한다. 이것은 155fps로 이미지를 처리한다, 여기는 [2007 train/val+ 2012 train/val](http://pjreddie.com/media/files/yolov1/tiny-yolov1.weights)에서 벼림된 `tiny-yolo.cfg`에 대한 가중값 파일이 있다.
 
 #### 2-4. 검출 문턱값 변경
 
@@ -168,9 +168,9 @@ Total Detection Time: 250.000000 Seconds
 
  이 VOC 2012 평가집합에는 10,991개의 이미지가 있다. 우리는 단지 250초 만에 처리했다! 그것은 초당 44프레임이다! 만약 [선택적검색(Selective Search)](http://koen.me/research/selectivesearch/)을 사용하는 경우 이미지 전체에 대한 제안영역 추출 조차도 6시간이 걸릴 것이다. 우리는 전체 검출 파이프라인을 단지 4분만에 실행햤다. 정말 멋지다.
 
- 예측된 검출은 `results/` 하위디렉토리에 있다. 이것들은 물리 시각개체분류(Pascal VOC) [제출](http://host.robots.ox.ac.uk:8080/)을 위해 지정된 형식이다.
+ 예측된 검출은 `results/` 하위디렉토리에 있다. 이것들은 사물 시각개체분류(Pascal VOC) [제출](http://host.robots.ox.ac.uk:8080/)을 위해 지정된 형식이다.
 
- 만약 당신이 파스칼 도전에서 우리의 순위를 재현하는데 관심이 있다면 대신에 [이 가중값 파일(1.0GB)](http://pjreddie.com/media/files/yolo.rescore.weights)을 사용해야 한다. 이것은 약간 더좋은 mAP(평균정일도평균, Mean Average Precision) 점수를 주는 논문에서 우리가 설명한 교차겹침결합(IOU: Intersection Over Union) 예측으로 수련되었다. 이 숫자는 완전히 일치하지는 않는다 실수로 원재 가중치 파일을 삭제했기 때문에 하지만 이것은 거의(근사하게) 같을 것이다.
+ 만약 당신이 파스칼 도전에서 우리의 순위를 재현하는데 관심이 있다면 대신에 [이 가중값 파일(1.0GB)](http://pjreddie.com/media/files/yolo.rescore.weights)을 사용해야 한다. 이것은 약간 더좋은 mAP(평균정일도평균, Mean Average Precision) 점수를 주는 논문에서 우리가 설명한 교차겹침결합(IOU: Intersection Over Union) 예측으로 벼림되었다. 이 숫자는 완전히 일치하지는 않는다 실수로 원재 가중치 파일을 삭제했기 때문에 하지만 이것은 거의(근사하게) 같을 것이다.
 
 ### 4. 웹캠으로 실시간 검출
 
@@ -196,7 +196,7 @@ Total Detection Time: 250.000000 Seconds
 상황공통개체(COCO: Common Object in COntext)
 ```
 
- [상황공통개체(COCO)](http://mscoco.org/)는 80개체 범주를 가진 마이크로소프트의 거대검출 자료집합이다. 우리는 상황공통개체(COCO)로 수련된 한쌍의 욜로 모형을 가지고 있다. 만약 처음부터 시작한다면 하나의 이미지에서 개체를 검출하기 위하여 이러한 명령을 실행할수 있다:
+ [상황공통개체(COCO)](http://mscoco.org/)는 80개체 범주를 가진 마이크로소프트의 거대검출 자료집합이다. 우리는 상황공통개체(COCO)로 벼림된 한쌍의 욜로 모형을 가지고 있다. 만약 처음부터 시작한다면 하나의 이미지에서 개체를 검출하기 위하여 이러한 명령을 실행할수 있다:
 
 ```bash
 git clone https://github.com/pjreddie/darknet
@@ -217,13 +217,13 @@ wget http://pjreddie.com/media/files/yolo-coco.weights
 ./darknet coco test cfg/yolov1/yolo-coco.cfg yolo-coco.weights data/giraffe.jpg
 ```
 
-### 6. 욜로 수련
+### 6. 욜로 벼림
 
- 욜로를 처음부터 수련할수 있다 만약 다른 수련 체제, 잠정참여(hyper-parameters), 또는 자료집합으로 놀고싶다면. 여기에 물리 시각개체분류(Pascal VOC) 자료집합에서 작업하는 방법이 있다.
+ 욜로를 처음부터 벼림할수 있다 만약 다른 벼림 체제, 잠정참여(hyper-parameters), 또는 자료집합으로 놀고싶다면. 여기에 사물 시각개체분류(Pascal VOC) 자료집합에서 작업하는 방법이 있다.
 
-#### 6-1. 물리 시각개체분류(Pascal VOC) 자료 가져오기
+#### 6-1. 사물 시각개체분류(Pascal VOC) 자료 가져오기
 
- 욜로를 수련하기 위하여 2007년 부터 2012년 까지의 시각개체분류(VOC) 자료가 필요하다. 자료에 자료 연결은 [여기](http://pjreddie.com/projects/pascal-voc-dataset-mirror/)에서 찾을수 있다. 모든 자료를 가져오기 위하여, 모든것을 저장할 디렉토리를 만든다 그리고 그 디렉토리에서 실행:
+ 욜로를 벼림하기 위하여 2007년 부터 2012년 까지의 시각개체분류(VOC) 자료가 필요하다. 자료에 자료 연결은 [여기](http://pjreddie.com/projects/pascal-voc-dataset-mirror/)에서 찾을수 있다. 모든 자료를 가져오기 위하여, 모든것을 저장할 디렉토리를 만든다 그리고 그 디렉토리에서 실행:
 
 ```bash
 wget https://pjreddie.com/media/files/VOCtrainval_11-May-2012.tar
@@ -262,7 +262,7 @@ ls
 2012_val.txt    VOCtrainval_11-May-2012.tar
 ```
 
- `2007_train.txt` 같은 문자파일은 연도와 이미지집합에 대한 이미지파일의 목록이 나열된것이다.  다크넷은 수련을 원하는 이미지 전체와 문자로된 하나의 파일이 필요하다. 이 본보기에서, 2007년 평가집합을 제외하고 모든것을 수련시키자 그런 다음 우리의 모형을 평가할 수 있다. 실행한다:
+ `2007_train.txt` 같은 문자파일은 연도와 이미지집합에 대한 이미지파일의 목록이 나열된것이다.  다크넷은 벼림을 원하는 이미지 전체와 문자로된 하나의 파일이 필요하다. 이 본보기에서, 2007년 평가집합을 제외하고 모든것을 벼림시키자 그런 다음 우리의 모형을 평가할 수 있다. 실행한다:
 
 ```bash
 cat 2007_* 2012_train.txt > train.txt
@@ -270,24 +270,24 @@ cat 2007_* 2012_train.txt > train.txt
 
  이제 가지고있는 2007년 trainval와 2012년 trainval의 전부를 하나의 큰 목록 집합한다. 이것이 자료를 설정하기위한 전부이다!
 
-#### 6-3. 다크넷에서 물리(Pascal) 자료를 가리킨다
+#### 6-3. 다크넷에서 사물(Pascal) 자료를 가리킨다
 
- 이제 다크넷 디렉토리로 이동하라. 우리는 자신의 VOC 자료 사본을 가리키기 위해 `욜로`의 `수련` 하위디렉토리를 변경해야 한다. `src/yolo.c`의, 18행과 19행을 수정하라:
+ 이제 다크넷 디렉토리로 이동하라. 우리는 자신의 VOC 자료 사본을 가리키기 위해 `욜로`의 `벼림` 하위디렉토리를 변경해야 한다. `src/yolo.c`의, 18행과 19행을 수정하라:
 
 ```bash
 18     char *train_images = "/home/pjreddie/data/voc/test/train.txt";
 19     char *backup_directory = "/home/pjreddie/backup/";
 ```
 
- `train_images`는 자신이 방금 생성한 `train.txt` 파일을 가리켜야 한다 그리고 `backup_directory`는 수련중에 가중값 예비파일을 저장할 디렉토리를 가리켜야 한다. 일단 행을 수정했다면, 다크넷을 다시 만든다.
+ `train_images`는 자신이 방금 생성한 `train.txt` 파일을 가리켜야 한다 그리고 `backup_directory`는 벼림중에 가중값 예비파일을 저장할 디렉토리를 가리켜야 한다. 일단 행을 수정했다면, 다크넷을 다시 만든다.
 
-#### 6-4. 미리수련된 나선 가중값 내려받기
+#### 6-4. 미리벼림된 나선 가중값 내려받기
 
- 수련을 위해 우리는 이미지넷으로 미리수련된 나선 가중값을 사용한다. 우리는 [:kr:추출모형(Extraction)](../3_ImageNet_BunRyu/BunRyu.md#추출망)[(영문)](http://pjreddie.com/darknet/imagenet/#extraction)의 가중값을 사용한다. 나선 층에 대한 가중값은 [여기(86MB)](http://pjreddie.com/media/files/extraction.conv.weights)에서 내려받을수 있다.
+ 벼림을 위해 우리는 이미지넷으로 미리벼림된 나선 가중값을 사용한다. 우리는 [:kr:추출모형(Extraction)](../3_ImageNet_BunRyu/BunRyu.md#추출망)[(영문)](http://pjreddie.com/darknet/imagenet/#extraction)의 가중값을 사용한다. 나선 층에 대한 가중값은 [여기(86MB)](http://pjreddie.com/media/files/extraction.conv.weights)에서 내려받을수 있다.
 
- 만약 꼬맹이 모형을 수련하고 싶다면 [여기(25MB)](http://pjreddie.com/media/files/darknet.conv.weights)의 다크넷 기준망 나선 가중값을 사용해야 한다.
+ 만약 꼬맹이 모형을 벼림하고 싶다면 [여기(25MB)](http://pjreddie.com/media/files/darknet.conv.weights)의 다크넷 기준망 나선 가중값을 사용해야 한다.
 
- 만약 자신의 미리수련된 가중값을 생성하기를 원한다면, 미리수련된 [:kr:추출모형(Extraction model)](../3_ImageNet_BunRyu/BunRyu.md#추출망)[(영문)](http://pjreddie.com/darknet/imagenet/#extraction)을 내려받는다 그리고 다음 명령을 실행하라:
+ 만약 자신의 미리벼림된 가중값을 생성하기를 원한다면, 미리벼림된 [:kr:추출모형(Extraction model)](../3_ImageNet_BunRyu/BunRyu.md#추출망)[(영문)](http://pjreddie.com/darknet/imagenet/#extraction)을 내려받는다 그리고 다음 명령을 실행하라:
 
 ```bash
 ./darknet partial cfg/extraction.cfg extraction.weights extraction.conv.weights 24
@@ -295,9 +295,9 @@ cat 2007_* 2012_train.txt > train.txt
 
  하지만 만약 그냥 가중값파일을 내려받으면 그것이 더 쉬운 방법이다.
 
-#### 6-5. 수련!!
+#### 6-5. 벼림!!
 
- 마침내 수련을 시작할 준비가 되었다. 실행하라:
+ 마침내 벼림을 시작할 준비가 되었다. 실행하라:
 
 ```bash
 ./darknet yolo train cfg/yolov1/yolo.train.cfg extraction.conv.weights
@@ -305,9 +305,9 @@ cat 2007_* 2012_train.txt > train.txt
 
  이것은 숫자와 결과물을 뱉어내기 시작해야 한다.
 
-#### 6-6. 수련 확인지점
+#### 6-6. 벼림 확인지점
 
- 매 128,000 이미지 이후 다크넷은 `src/yolo.c`에서 자신이 지정한 디렉토리에 수련 확인지점을 저장할 것이다. 이들은 `yolo_12000.weights` 같은 제목이 붙는다.처음부터 시작하는 대신에 이것들을 사용하여 수련을 다시시작할수 있다.
+ 매 128,000 이미지 이후 다크넷은 `src/yolo.c`에서 자신이 지정한 디렉토리에 벼림 확인지점을 저장할 것이다. 이들은 `yolo_12000.weights` 같은 제목이 붙는다.처음부터 시작하는 대신에 이것들을 사용하여 벼림을 다시시작할수 있다.
 
  40,000 반복(뭉치) 이후 다크넷은 모형의 최종 가중값을 `yolo_final.weights`으로 저장할 것이다. 그런다음 끝난다!
 

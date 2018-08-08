@@ -3,7 +3,7 @@
 
 출처: https://pjreddie.com/darknet
 
-| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기수련](../8_SuRyeon/SuRyeon.md) |  
+| [다크넷](../README.md) | [설치](../1_SeolChi/SeolChi.md) | [욜로](../2_YOLO/yolo.md) | [이미지넷분류](../3_ImageNet_BunRyu/BunRyu.md) | [악몽](../4_AkMong/AkMong.md) | [재사용신경망](../5_RNN/rnn.md) | [다크고](../6_DarkGo/DarkGo.md) | [꼬맹이망](../7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](../8_SuRyeon/SuRyeon.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
 <a name="욜로"></a>
@@ -21,37 +21,37 @@
 
 ### 1) 다른 검출기와 비교
 
-욜로v3는 매우 빠르고 정확하다. 0.5 교차겹침결합(IOU: Intersection Over Union)으로 측정한 mAP 에서 욜로v3는 초점손실은 동등하다 하지만 약 4배 빠르다. 게다가, 모형의 크기를 변경하는것 만으로 속도와 정확성간의 균형을 쉽게 이룰수 있다, 재수련은 필요없다!
+욜로v3는 매우 빠르고 정확하다. 0.5 교차겹침결합(IOU: Intersection Over Union)으로 측정한 mAP 에서 욜로v3는 초점손실은 동등하다 하지만 약 4배 빠르다. 게다가, 모형의 크기를 변경하는것 만으로 속도와 정확성간의 균형을 쉽게 이룰수 있다, 재벼림은 필요없다!
 
 <p align="center"><img width="100%" src="images/map50blue.png" /></p>  
 
 ### 2) 상황공통개체(COCO) 자료집합에서 성능
 
-| 모형(Model)     | 수련(Train) | 평가 | mAP | FLOPS | FPS | Cfg | Weights |  
+| 모형(Model)     | 벼림(Train) | 평가 | mAP | FLOPS | FPS | Cfg | Weights |  
 | ---            | ----       | ---  | --- | ---:  | ---: | --- | ---     |  
-| SSD300            | COCO 수련실 | test-dev | 41.2 | - | 46 | - | [link](https://arxiv.org/abs/1512.02325) |  
-| SSD500            | COCO 수련실 | test-dev | 46.5 | - | 19 | - | [link](https://arxiv.org/abs/1512.02325) |  
-| YOLOv2 608x608    | COCO 수련실 | test-dev | 48.1 | 62.94 Bn | 40 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov2.cfg) | [weights](https://pjreddie.com/media/files/yolov2.weights) |  
-| Tiny YOLO         | COCO 수련실 | test-dev | 23.7 | 5.41 Bn | 207 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov2-tiny.cfg) | [weights](https://pjreddie.com/media/files/yolov2-tiny.weights) |  
+| SSD300            | COCO 벼림값 | 평가-dev | 41.2 | - | 46 | - | [link](https://arxiv.org/abs/1512.02325) |  
+| SSD500            | COCO 벼림값 | 평가-dev | 46.5 | - | 19 | - | [link](https://arxiv.org/abs/1512.02325) |  
+| YOLOv2 608x608    | COCO 벼림값 | 평가-dev | 48.1 | 62.94 Bn | 40 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov2.cfg) | [weights](https://pjreddie.com/media/files/yolov2.weights) |  
+| Tiny YOLO         | COCO 벼림값 | 평가-dev | 23.7 | 5.41 Bn | 207 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov2-tiny.cfg) | [weights](https://pjreddie.com/media/files/yolov2-tiny.weights) |  
 | | | | | | | | |  
-| SSD321            | COCO 수련실 | test-dev | 45.4 | - | 16 | - | [link](https://arxiv.org/abs/1701.06659) |  
-| DSSD321           | COCO 수련실 | test-dev | 46.1 | - | 12 | - | [link](https://arxiv.org/abs/1701.06659) |  
-| R-FCN             | COCO 수련실 | test-dev | 51.9 | - | 12 | - | [link](https://arxiv.org/abs/1605.06409) |  
-| SSD513            | COCO 수련실 | test-dev | 50.4 | - | 8 | - | [link](https://arxiv.org/abs/1701.06659) |  
-| DSSD513           | COCO 수련실 | test-dev | 53.3 | - | 6 | - | [link](https://arxiv.org/abs/1701.06659) |  
-| FPN FRCN          | COCO 수련실 | test-dev | 59.1 | - | 6 | - | [link](https://arxiv.org/abs/1612.031449) |  
-| Retinanet-50-500  | COCO 수련실 | test-dev | 50.9 | - | 14 | - | [link]() |  
-| Retinanet-101-500 | COCO 수련실 | test-dev | 53.1 | - | 11 | - | [link]() |  
-| Retinanet-101-800 | COCO 수련실 | test-dev | 57.5 | - | 5 | - | [link]() |  
-| YOLOv3-320        | COCO 수련실 | test-dev | 51.5 | 38.97 Bn | 45 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg) | [weights](https://pjreddie.com/media/files/yolov3.weights) |  
-| YOLOv3-416        | COCO 수련실 | test-dev | 55.3 | 65.86 Bn | 35 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg) | [weights](https://pjreddie.com/media/files/yolov3.weights)  
-| YOLOv3-608        | COCO 수련실 | test-dev | 57.9 | 140.69 Bn | 20 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg) | [weights](https://pjreddie.com/media/files/yolov3.weights) |  
-| YOLOv3-Tiny       | COCO 수련실 | test-dev | 33.1 | 5.56 Bn | 220 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg) | [weights](https://pjreddie.com/media/files/yolov3-tiny.weights) |  
+| SSD321            | COCO 벼림값 | 평가-dev | 45.4 | - | 16 | - | [link](https://arxiv.org/abs/1701.06659) |  
+| DSSD321           | COCO 벼림값 | 평가-dev | 46.1 | - | 12 | - | [link](https://arxiv.org/abs/1701.06659) |  
+| R-FCN             | COCO 벼림값 | 평가-dev | 51.9 | - | 12 | - | [link](https://arxiv.org/abs/1605.06409) |  
+| SSD513            | COCO 벼림값 | 평가-dev | 50.4 | - | 8 | - | [link](https://arxiv.org/abs/1701.06659) |  
+| DSSD513           | COCO 벼림값 | 평가-dev | 53.3 | - | 6 | - | [link](https://arxiv.org/abs/1701.06659) |  
+| FPN FRCN          | COCO 벼림값 | 평가-dev | 59.1 | - | 6 | - | [link](https://arxiv.org/abs/1612.031449) |  
+| Retinanet-50-500  | COCO 벼림값 | 평가-dev | 50.9 | - | 14 | - | [link]() |  
+| Retinanet-101-500 | COCO 벼림값 | 평가-dev | 53.1 | - | 11 | - | [link]() |  
+| Retinanet-101-800 | COCO 벼림값 | 평가-dev | 57.5 | - | 5 | - | [link]() |  
+| YOLOv3-320        | COCO 벼림값 | 평가-dev | 51.5 | 38.97 Bn | 45 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg) | [weights](https://pjreddie.com/media/files/yolov3.weights) |  
+| YOLOv3-416        | COCO 벼림값 | 평가-dev | 55.3 | 65.86 Bn | 35 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg) | [weights](https://pjreddie.com/media/files/yolov3.weights)  
+| YOLOv3-608        | COCO 벼림값 | 평가-dev | 57.9 | 140.69 Bn | 20 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg) | [weights](https://pjreddie.com/media/files/yolov3.weights) |  
+| YOLOv3-Tiny       | COCO 벼림값 | 평가-dev | 33.1 | 5.56 Bn | 220 | [cfg](https://github.com/pjreddie/darknet/blob/master/cfg/yolov3-tiny.cfg) | [weights](https://pjreddie.com/media/files/yolov3-tiny.weights) |  
 
 ```
 mAP : 평균정밀도 평균(Mean Average Precision)
-Bn : 백만(Million)
-cfg : 신경망 설정내용
+Bn : 십억(Billion), 백만(Million)
+cfg : 신경망 구성정보
 Weights : 신경망 가중값
 ```
 
@@ -68,11 +68,11 @@ Weights : 신경망 가중값
 
 #### 1-1) 버전 3에서 새로운것은 무엇인가?
 
-YOLOv3은 수련과 성능향상을 개선하기 위하여 몇가지 묘책을 사용한다, 포함: 다중축척 예측, 더좋은 중추 분류기, 그 외. 전체 내용은 우리 [논문](https://arxiv.org/abs/1612.08242)에 있다.!
+YOLOv3은 벼림과 성능향상을 개선하기 위하여 몇가지 묘책을 사용한다, 포함: 다중축척 예측, 더좋은 중추 분류기, 그 외. 전체 내용은 우리 [논문](https://arxiv.org/abs/1612.08242)에 있다.!
 
-### 4) 이미수련된 모델을 사용하여 검출
+### 4) 미리벼림된 모델을 사용하여 검출
 
-이 게시물은 이미수련된 모델을 사용한 욜로시스템으로 개체를 검출하는 방법을 안내한다. 만약 아직 다크넷이 설치되지 않았다면, 먼저 설치해야 한다. 아니면 전부 읽는 대신에 그냥 [실행해라](#그냥-실행):
+이 게시물은 미리벼림된 모델을 사용한 욜로시스템으로 개체를 검출하는 방법을 안내한다. 만약 아직 다크넷이 설치되지 않았다면, 먼저 설치해야 한다. 아니면 전부 읽는 대신에 그냥 [실행해라](#그냥-실행):
 
 ```bash
 git clone https://github.com/pjreddie/darknet
@@ -82,7 +82,7 @@ make
 
 쉽다!
 
-당신은 `cfg/` 하위디렉토리에 욜로에 대한 설정파일을 이미 가지고 있다. 당신은 이미수련된 가중값파일을 [여기(237MB)](https://pjreddie.com/media/files/yolov3.weights)에서 내려받아야 한다. 아니면 그냥 실행해라:
+당신은 `cfg/` 하위디렉토리에 욜로에 대한 설정파일을 이미 가지고 있다. 당신은 미리벼림된 가중값파일을 [여기(237MB)](https://pjreddie.com/media/files/yolov3.weights)에서 내려받아야 한다. 아니면 그냥 실행해라:
 
 ```bash
 wget https://pjreddie.com/media/files/yolov3.weights
@@ -194,17 +194,17 @@ OpenCV가 연결할 수 있는 컴퓨터에 웹캠이 연결되어 있어야한�
 
 이것은 위의 유튜브동영상을 만든 방법이다.
 
-### 6) 시각개체분류(VOC)로 욜로 수련(Training YOLO on VOC)
+### 6) 시각개체분류(VOC)로 욜로 벼림(Training YOLO on VOC)
 
 ```bash
 VOC: 시각개체분류(Visual Object Classes)
 ```
 
-처음부터 욜로(YOLO)를 수련할 수 있다 다른 수련 체계, 잠정참여, 또는 자료집합으로 놀고싶다면. 파스칼 VOC 자료집합으로 작업하는 방법이 여기에 있다.
+처음부터 욜로(YOLO)를 벼림할 수 있다 다른 벼림 체계, 잠정참여, 또는 자료집합으로 놀고싶다면. 사물 시각개체분류(Pascal VOC) 자료집합으로 작업하는 방법이 여기에 있다.
 
-#### 6-1) 파스칼 시각개체분류 자료를 가져온다(Get The Pascal VOC Data)
+#### 6-1) 사물 시각개체분류 자료를 가져온다(Get The Pascal VOC Data)
 
- 욜로(YOLO)를 수련시키기 위해서는 2007년 부터 2012년 까지 모든자료가 필요하다. 자료 연결은 [여기](https://pjreddie.com/projects/pascal-voc-dataset-mirror/)에서 찾을수 있다. 모든 자료를 얻으려면, 모든것을 저장할 디렉토리를 만든다 그리고 그 디렉토리에서 실행한다:
+ 욜로(YOLO)를 벼림시키기 위해서는 2007년 부터 2012년 까지 모든자료가 필요하다. 자료 연결은 [여기](https://pjreddie.com/projects/pascal-voc-dataset-mirror/)에서 찾을수 있다. 모든 자료를 얻으려면, 모든것을 저장할 디렉토리를 만든다 그리고 그 디렉토리에서 실행한다:
 
 ```bash
 wget https://pjreddie.com/media/files/VOCtrainval_11-May-2012.tar
@@ -215,7 +215,7 @@ tar xf VOCtrainval_06-Nov-2007.tar
 tar xf VOCtest_06-Nov-2007.tar
 ```
 
-이제 모든 시각개체분류(VOC) 수련자료에 `VOCdevkit/`가 포함된 하위디렉토리가 생긴다.
+이제 모든 시각개체분류(VOC) 벼림자료에 `VOCdevkit/`가 포함된 하위디렉토리가 생긴다.
 
 #### 6-2) 시각개체분류에 대한 딱지 생성(Generate Labels for VOC)
 
@@ -243,7 +243,7 @@ ls
 2012_val.txt    VOCtrainval_11-May-2012.tar
 ```
 
- `2007_train.txt` 같은 문자파일은 연도와 이미지집합에 대한 이미지파일의 목록이 나열된것이다.  다크넷은 수련을 원하는 이미지 전체와 문자로된 하나의 파일이 필요하다. 이 본보기에서, 2007년 평가집합을 제외하고 모든것을 수련시키자 그런 다음 우리의 모형을 평가할 수 있다. 실행한다:
+ `2007_train.txt` 같은 문자파일은 연도와 이미지집합에 대한 이미지파일의 목록이 나열된것이다.  다크넷은 벼림을 원하는 이미지 전체와 문자로된 하나의 파일이 필요하다. 이 본보기에서, 2007년 평가집합을 제외하고 모든것을 벼림시키자 그런 다음 우리의 모형을 평가할 수 있다. 실행한다:
 
 ```bash
 cat 2007_train.txt 2007_val.txt 2012_*.txt > train.txt
@@ -251,7 +251,7 @@ cat 2007_train.txt 2007_val.txt 2012_*.txt > train.txt
 
  이제 가지고있는 2007년 trainval와 2012년 trainval의 전부를 하나의 큰 목록 집합한다. 이것이 자료를 설정하기위한 전부이다!
 
-#### 6-3) 파스칼 자료를 위해 Cfg를 수정한다(Modify Cfg for Pascal Data)
+#### 6-3) 사물 자료를 위해 Cfg를 수정한다(Modify Cfg for Pascal Data)
 
 이제 다크넷 디렉토리로 가라. 자료를 지시하기 위하여 `cfg/voc.data` 구성파일을 변경해야 한다:
 
@@ -265,33 +265,33 @@ cat 2007_train.txt 2007_val.txt 2012_*.txt > train.txt
 
 `<path-to-voc>`를 VOC 자료를 저장할 디렉토리로 반드시 대체해야 한다.
 
-#### 6-4) 미리수련된 나선 가중값 내려받기(Download Pretrained Convolutional Weights)
+#### 6-4) 미리벼림된 나선 가중값 내려받기(Download Pretrained Convolutional Weights)
 
-수련을 위하여 이미지넷에서 미리수련된 나선 가중값을 사용한다. [darknet53](https://pjreddie.com/darknet/imagenet/#darknet53)모형의 가중값을 사용한다. 나선층에 대한 가중값은 [여기(76MB)](https://pjreddie.com/media/files/darknet53.conv.74)에서 바로 내려받기할 수 있다.
+벼림을 위하여 이미지넷에서 미리벼림된 나선 가중값을 사용한다. [darknet53](https://pjreddie.com/darknet/imagenet/#darknet53)모형의 가중값을 사용한다. 나선층에 대한 가중값은 [여기(76MB)](https://pjreddie.com/media/files/darknet53.conv.74)에서 바로 내려받기할 수 있다.
 
 ```bash
 wget https://pjreddie.com/media/files/darknet53.conv.74
 ```
 
-#### 6-5) 모형 수련(Train The Model)
+#### 6-5) 모형 벼림(Train The Model)
 
-이제 수련할 수 있다! 명령을 실행한다:
+이제 벼림할 수 있다! 명령을 실행한다:
 
 ```bash
 ./darknet detector train cfg/voc.data cfg/yolov3-voc.cfg darknet53.conv.74
 ```
 
-### 7) COCO에 대한 욜로 수련(Training YOLO on COCO)
+### 7) COCO에 대한 욜로 벼림(Training YOLO on COCO)
 
 ```bash
 CoCo: 상황공통개체(Common Objects in Context, 상황에서 공통 개체)
 ```
 
-처음부터 욜로(YOLO)를 수련할 수 있다 다른 수련 체계, 잠정참여, 또는 자료집합으로 놀고싶다면. [COCO 자료집합](http://mscoco.org/dataset/#overview)으로 작업하는 방법이 여기에 있다.
+처음부터 욜로(YOLO)를 벼림할 수 있다 다른 벼림 체계, 잠정참여, 또는 자료집합으로 놀고싶다면. [:kr:COCO 자료집합](../10_JaRyoJibHab/COCO.md)[영문](http://mscoco.org/dataset/#overview)으로 작업하는 방법이 여기에 있다.
 
 #### 7-1) 코코(COCO) 자료를 가져온다(Get The COCO Data)
 
-욜로를 수련시키기 위해서는 COCO의 모든 자료와 딱지가 필요하다. `scripts/get_coco_dataset.sh` 스크립트가 이것을 수행한다. COCO 자료를 넣을 위치를 파악한다 그리고 내려받기한다, 예를 들면:
+욜로를 벼림시키기 위해서는 COCO의 모든 자료와 딱지가 필요하다. `scripts/get_coco_dataset.sh` 스크립트가 이것을 수행한다. COCO 자료를 넣을 위치를 파악한다 그리고 내려받기한다, 예를 들면:
 
 ```bash
 cp scripts/get_coco_dataset.sh data
@@ -315,7 +315,7 @@ bash get_coco_dataset.sh
 
 `<path-to-coco>` 를 COCO 자료를 저장한 디렉토리로 반드시 대체해야 한다.
 
-또한 평가 대신에 수련을 위하여 모형 cfg를 반드시 수정해야 한다. `cfg/yolo.cfg`는 다음과 같아야 한다:
+또한 평가 대신에 벼림을 위하여 모형 cfg를 반드시 수정해야 한다. `cfg/yolo.cfg`는 다음과 같아야 한다:
 
 ```bash
 [net]
@@ -328,9 +328,9 @@ subdivisions=8
 ....
 ```
 
-#### 7-3) 모형 수련(Train The Model)
+#### 7-3) 모형 벼림(Train The Model)
 
-이제 수련할 수 있다! 명령을 실행한다:
+이제 벼림할 수 있다! 명령을 실행한다:
 
 ```bash
 ./darknet detector train cfg/coco.data cfg/yolov3.cfg darknet53.conv.74
@@ -342,7 +342,7 @@ subdivisions=8
 ./darknet detector train cfg/coco.data cfg/yolov3.cfg darknet53.conv.74 -gpus 0,1,2,3
 ```
 
-만약 수련을 중지하고 확인지점에서 다시 시작하려면 다음을 수행하라:
+만약 벼림을 중지하고 확인지점에서 다시 시작하려면 다음을 수행하라:
 
 ```bash
 ./darknet detector train cfg/coco.data cfg/yolov3.cfg backup/yolov3.backup -gpus 0,1,2,3
