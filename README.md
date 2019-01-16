@@ -1,11 +1,12 @@
 :kr: 다크넷(darknet): C로 작성한 신경망 공개소스 
 
 출처:  
-- https://github.com/pjreddie/darknet
-- https://pjreddie.com/darknet
+- https://github.com/pjreddie/darknet  
+- https://pjreddie.com/darknet  
+- https://github.com/AlexeyAB/darknet  
 
-| [다크넷](./README.md) | [설치](./1_SeolChi/SeolChi.md) | [욜로](./2_YOLO/yolo.md) | [이미지넷분류](./3_ImageNet_BunRyu/BunRyu.md) | [악몽](./4_AkMong/AkMong.md) | [재사용신경망](./5_RNN/rnn.md) | [다크고](./6_DarkGo/DarkGo.md) | [꼬맹이망](./7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](./8_SuRyeon/SuRyeon.md#CIFAR-10-분류기) |  
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| [다크넷](./README.md) | [설치](./1_SeolChi/SeolChi.md) | [욜로](./2_YOLO/yolo.md) | [이미지넷분류](./3_ImageNet_BunRyu/BunRyu.md) | [악몽](./4_AkMong/AkMong.md) | [재사용신경망](./5_RNN/rnn.md) | [다크고](./6_DarkGo/DarkGo.md) | [꼬맹이망](./7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](./8_SuRyeon/SuRyeon.md#CIFAR-10-분류기) | [사용방법](./SaYongBeob.md) |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
 ---
 <p align="center"><img width="30%" src="images/darknet.png" /></p>  
@@ -20,7 +21,7 @@
 다크넷은 설치와 실행이 쉽다. 이 게시는 이것을 통해 안내한다.
 
 ## [2. 욜로: 실시간 개체 검출(YOLO: Real-Time Object Detection)](./2_YOLO/yolo.md#욜로)
-욜로는(YOLO, 너는 오직 한번만 본다) 최첨단 기술이다, 실시간 개체 검출 시스템.
+욜로는(너는 오직 한번만 본다, You Only Look Once ) 최첨단 기술이다, 실시간 개체 검출 시스템.
 <p align="right"><img width="10%" src="images/yologo_1.png" /></p>  
 
 ## [3. 이미지넷 분류(ImageNet Classification)](./3_ImageNet_BunRyu/BunRyu.md#이미지넷-분류)
@@ -55,7 +56,7 @@
 ```
 
 ## [9. 장비 안내: GPU 로 신경망](./9_JangBi/JangBi.md#장비-안내)(갱신 2016-01-30)
-많은 사람들이 나에게 물었다 시각응용프로그램을 위한 신경망 벼림을 위하여 권장하는 장비가 무엇인지. 이것은 내생각의 일부이다.
+많은 사람들이 나에게 물었다 시각응용프로그램을 위한 신경망 벼림을 위하여 권장하는 장비가 무엇인지. 이것은 내 생각의 일부이다.
 
 ## 10. 인용(Cite)
 다크넷을 연구에 사용한다면 이것을 인용하시오:
