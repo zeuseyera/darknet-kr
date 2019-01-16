@@ -20,24 +20,24 @@
   #### 나는 한번만 본다(YOLO): 통합된, 실시간 개체검출(판 2와 3)  
 
   * [쟁점에 대한 설명](https://github.com/AlexeyAB/darknet/issues?q=is%3Aopen+is%3Aissue+label%3AExplanations)  
-  * [지원내용](./SaYongBeob_Yolo-v3.md/#지원내용)
-  * [요구사항](./SaYongBeob_Yolo-v3.md/#요구사항)  
-  * [미리-수련된 모형](./SaYongBeob_Yolo-v3.md/#미리-수련된-모형)  
-  * [결과 본보기](./SaYongBeob_Yolo-v3.md/#결과-본보기)
+  * [지원내용](./SaYongBeob_Yolo-v3.md#지원내용)
+  * [요구사항](./SaYongBeob_Yolo-v3.md#요구사항)  
+  * [미리-수련된 모형](./SaYongBeob_Yolo-v3.md#미리-수련된-모형)  
+  * [결과 본보기](./SaYongBeob_Yolo-v3.md#결과-본보기)
 
 ---  
-  0. [이 저장소에서 개선 내용](./SaYongBeob_Yolo-v3.md/#이-저장소-개선-내용)  
-  1. [사용 방법](./SaYongBeob_Yolo-v3.md/#사용-방법)  
-  2. [리눅스에서 컴파일하는 방법](./SaYongBeob_Yolo-v3.md/#리눅스에서-컴파일하는-방법)  
-  3. [윈도우에서 컴파일하는 방법](./SaYongBeob_Yolo-v3.md/#윈도우에서-컴파일하는-방법)  
-  4. [벼림하는 방법(물리 시각개체분류 자료, Pascal VOC)](./SaYongBeob_Yolo-v3.md/#욜로-v3-v2-벼림방법)  
-  5. [벼림하는 방법(사용자가 정한 개체를 검출하기 위하여)](./SaYongBeob_Yolo-v3.md/#맞춤-벼림방법)  
-  6. [언제 벼림을 중지해야 하는가](./SaYongBeob_Yolo-v3.md/#언제-벼림을-중지)  
-  7. [물리 시각개체분류(Pascal VOC)로 mAP를 계산하는 방법](./SaYongBeob_Yolo-v3.md/#평균정밀도평균-계산)  
-  8. [개체검출을 개선하는 방법](./SaYongBeob_Yolo-v3.md/#개체검출-개선)  
-  9. [개체의 경계상자를 표시하고 설명파일을 생성하는 방법](./SaYongBeob_Yolo-v3.md/#개체-경계상자)  
-  10. [욜로9000(Yolo9000) 사용](./SaYongBeob_Yolo-v3.md/#욜로9000)  
-  11. [DLL로 욜로를 사용하는 방법](./SaYongBeob_Yolo-v3.md/#욜로DLL)  
+  0. [이 저장소에서 개선 내용](./SaYongBeob_Yolo-v3.md#이-저장소-개선-내용)  
+  1. [사용 방법](./SaYongBeob_Yolo-v3.md#사용-방법)  
+  2. [리눅스에서 컴파일하는 방법](./SaYongBeob_Yolo-v3.md#리눅스에서-컴파일하는-방법)  
+  3. [윈도우에서 컴파일하는 방법](./SaYongBeob_Yolo-v3.md#윈도우에서-컴파일하는-방법)  
+  4. [벼림하는 방법(물리 시각개체분류 자료, Pascal VOC)](./SaYongBeob_Yolo-v3.md#욜로-v3-v2-벼림방법)  
+  5. [벼림하는 방법(사용자가 정한 개체를 검출하기 위하여)](./SaYongBeob_Yolo-v3.md#맞춤-벼림방법)  
+  6. [언제 벼림을 중지해야 하는가](./SaYongBeob_Yolo-v3.md#언제-벼림을-중지)  
+  7. [물리 시각개체분류(Pascal VOC)로 mAP를 계산하는 방법](./SaYongBeob_Yolo-v3.md#평균정밀도평균-계산)  
+  8. [개체검출을 개선하는 방법](./SaYongBeob_Yolo-v3.md#개체검출-개선)  
+  9. [개체의 경계상자를 표시하고 설명파일을 생성하는 방법](./SaYongBeob_Yolo-v3.md#개체-경계상자)  
+  10. [욜로9000(Yolo9000) 사용](./SaYongBeob_Yolo-v3.md#욜로9000)  
+  11. [DLL로 욜로를 사용하는 방법](./SaYongBeob_Yolo-v3.md#욜로DLL)  
 
 ---  
 | <p align="center"><img width="70%" src="./images/darknet-black-small.png" /></p> | ![처리속도](./images/pwzd0jb9g7znt_dbsyw9qzbnvti-kr.png) mAP (AP50) https://pjreddie.com/media/files/papers/YOLOv3.pdf |  
@@ -130,7 +130,7 @@
   * 실시간 조언과 경고. 잘못된 구성(cfg)파일 또는 자료집합을 사용하는 경우.  
   * 다른 많은 코드 수정...  
 
-  그리고 사용방법 추가 - [욜로 v3/v2 벼림방법](./SaYongBeob_Yolo-v3.md/#욜로-v3-v2-벼림방법)
+  그리고 사용방법 추가 - [욜로 v3/v2 벼림방법](./SaYongBeob_Yolo-v3.md#욜로-v3-v2-벼림방법)
 
 
 <a name="사용-방법"></a>
