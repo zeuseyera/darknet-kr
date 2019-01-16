@@ -159,18 +159,18 @@
 
 ##### * 모든 안드로이드 스마트폰을 가지고 네트워크 동영상-카메라 mjpeg-뭉치(stream) 사용을 위하여  
 
-  1. 안드로이드폰 mjpeg-뭉치(stream) 소프트웨어 내려받기: IP 웹캠 / 스카트 웹캠  
+1. 안드로이드폰 mjpeg-뭉치(stream) 소프트웨어 내려받기: IP 웹캠 / 스카트 웹캠  
 
-    * 스마트 웹캠 - 선호함: https://play.google.com/store/apps/details?id=com.acontech.android.SmartWebCam2  
-    * IP 웹캠: https://play.google.com/store/apps/details?id=com.pas.webcam  
+  * 스마트 웹캠 - 선호함: https://play.google.com/store/apps/details?id=com.acontech.android.SmartWebCam2  
+  * IP 웹캠: https://play.google.com/store/apps/details?id=com.pas.webcam  
 
-  2. 와이파이(WiFi, 와이파이-라우터를 통해) 또는 유에스비(USB)를 통해 컴퓨터에 자신의 스마트폰을 연결한다  
+2. 와이파이(WiFi, 와이파이-라우터를 통해) 또는 유에스비(USB)를 통해 컴퓨터에 자신의 스마트폰을 연결한다  
 
-  3. 자신의 웹캠으로 스마트 웹캠을 시작한다  
+3. 자신의 웹캠으로 스마트 웹캠을 시작한다  
 
-  4. 아래의 주소를 대체한다, 스마트폰 응용프로그램(Smart WebCam)에 보이는 주소로, 그리고 실행한다:  
+4. 아래의 주소를 대체한다, 스마트폰 응용프로그램(Smart WebCam)에 보이는 주소로, 그리고 실행한다:  
 
-    * Yolo v3 COCO-모형: `darknet.exe detector demo data/coco.data yolov3.cfg yolov3.weights http://192.168.0.80:8080/video?dummy=param.mjpg -i 0`  
+  * Yolo v3 COCO-모형: `darknet.exe detector demo data/coco.data yolov3.cfg yolov3.weights http://192.168.0.80:8080/video?dummy=param.mjpg -i 0`  
 
 
 <a name="리눅스에서-컴파일하는-방법"></a>  
@@ -178,13 +178,13 @@
 
  다크넷 디렉토리에서 직접 `make`를 한다. `make` 전에, `Makefile`에서 옵션같은 것을 설정할수 있다: [연결](https://github.com/AlexeyAB/darknet/blob/9c1b9a2cf6363546c152251be578a21f3c3caec6/Makefile#L1)  
 
-  * `GPU=1`로 빌드하면 GPU 사용하여 가속하기 위한 CUDA를 포함한다(`/usr/local/cuda`에 CUDA가 있어야 한다)
-  * `CUDNN=1`로 빌드하면 GPU 사용하여 벼림가속을 위한 cuDNN v5-v7를 포함한다(`/usr/local/cudnn`에 cuDNN이 있어야 한다)
-  * `CUDNN_HALF=1`로 빌드하면 텐서코어에 대해(Titan V, Tesla V100, DGX-2 그리고 계승된것) 검출 3x, 벼림 2x 가속됨
-  * `OPENCV=1`로 빌드하면 OpenCV 3.x/2.4.x를 포함한다 - 동영상파일과 네트워크 카메라 또는 웹캠으로부터 동영상뭉치로 검출할수 있다
-  * `DEBUG=1`로 빌드하면 욜로판을 디버그할수 있다
-  * `OPENMP=1`로 빌드하면 다중-코어 CPU를 사용하여 가속하기 위한 OpenMP 지원을 포함한다
-  * `LIBSO=1`로 빌드하면 `darknet.so` 라이브러리를 만든다 그리고 이진 실행가능 파일은  `uselib`로 이 라이브러리를 사용한다. 또는 `LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH ./uselib test.mp4`로 할수 있다. 자신의 코드에서 개체공유-라이브러리(SO-library)를 사용하는 방법은 - C++ 본보기에서 볼수 있다: https://github.com/AlexeyAB/darknet/blob/master/src/yolo_console_dll.cpp 또는 이런 방법으로 사용한다: `LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH ./uselib data/coco.names cfg/yolov3.cfg yolov3.weights test.mp4`  
+* `GPU=1`로 빌드하면 GPU 사용하여 가속하기 위한 CUDA를 포함한다(`/usr/local/cuda`에 CUDA가 있어야 한다)
+* `CUDNN=1`로 빌드하면 GPU 사용하여 벼림가속을 위한 cuDNN v5-v7를 포함한다(`/usr/local/cudnn`에 cuDNN이 있어야 한다)
+* `CUDNN_HALF=1`로 빌드하면 텐서코어에 대해(Titan V, Tesla V100, DGX-2 그리고 계승된것) 검출 3x, 벼림 2x 가속됨
+* `OPENCV=1`로 빌드하면 OpenCV 3.x/2.4.x를 포함한다 - 동영상파일과 네트워크 카메라 또는 웹캠으로부터 동영상뭉치로 검출할수 있다
+* `DEBUG=1`로 빌드하면 욜로판을 디버그할수 있다
+* `OPENMP=1`로 빌드하면 다중-코어 CPU를 사용하여 가속하기 위한 OpenMP 지원을 포함한다
+* `LIBSO=1`로 빌드하면 `darknet.so` 라이브러리를 만든다 그리고 이진 실행가능 파일은  `uselib`로 이 라이브러리를 사용한다. 또는 `LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH ./uselib test.mp4`로 할수 있다. 자신의 코드에서 개체공유-라이브러리(SO-library)를 사용하는 방법은 - C++ 본보기에서 볼수 있다: https://github.com/AlexeyAB/darknet/blob/master/src/yolo_console_dll.cpp 또는 이런 방법으로 사용한다: `LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH ./uselib data/coco.names cfg/yolov3.cfg yolov3.weights test.mp4`  
 
  리눅스에서 다크넷을 실행하려면 이글의 본보기를 사용하라, `darknet.exe`대신에 단지 `./darknet`를 사용한다, 예를들어 이 명령을 사용한다: `./darknet detector test ./cfg/coco.data ./cfg/yolov3.cfg ./yolov3.weights`
 
@@ -192,36 +192,36 @@
 <a name="윈도우에서-컴파일하는-방법"></a>
 #### 3. 윈도우에서 컴파일하는 방법  
 
-  ```
-  MSVS : MicroSoft Visual Studio, 마이크로소프트 비주얼스튜디오
-  CUDA : Compute Unified Device Architecture, 연산이 통합된 장치구조
-  OpenCV : Open source Computer Vision, 영상계산(컴퓨터영상처리) 자원 공개
-  ```
+```
+MSVS : MicroSoft Visual Studio, 마이크로소프트 비주얼스튜디오
+CUDA : Compute Unified Device Architecture, 연산이 통합된 장치구조
+OpenCV : Open source Computer Vision, 영상계산(컴퓨터영상처리) 자원 공개
+```
 
-  1. 만약 **MSVS 2015, CUDA 10.0, cuDNN 7.4 와 OpenCV 3.x** 를 가지고 있다면(포함 경로: `C:\opencv_3.0\opencv\build\include` 그리고 `C:\opencv_3.0\opencv\build\x64\vc14\lib`), 그러면 마이크로소프트 비주얼스튜디오를 시작한다, `build\darknet\darknet.sln`를 연다, **x64** 와 **Release** 로 [설정](https://hsto.org/webt/uh/fk/-e/uhfk-eb0q-hwd9hsxhrikbokd6u.jpeg)한다 그리고 `빌드` -> `darknet 빌드`를 실행한다. 또한 윈도우 시스템변수 `cudnn`에 **CUDNN** 의 경로를 추가한다: [참조그림](https://hsto.org/files/a49/3dc/fc4/a493dcfc4bd34a1295fd15e0e2e01f26.jpg)  
+1. 만약 **MSVS 2015, CUDA 10.0, cuDNN 7.4 와 OpenCV 3.x** 를 가지고 있다면(포함 경로: `C:\opencv_3.0\opencv\build\include` 그리고 `C:\opencv_3.0\opencv\build\x64\vc14\lib`), 그러면 마이크로소프트 비주얼스튜디오를 시작한다, `build\darknet\darknet.sln`를 연다, **x64** 와 **Release** 로 [설정](https://hsto.org/webt/uh/fk/-e/uhfk-eb0q-hwd9hsxhrikbokd6u.jpeg)한다 그리고 `빌드` -> `darknet 빌드`를 실행한다. 또한 윈도우 시스템변수 `cudnn`에 **CUDNN** 의 경로를 추가한다: [참조그림](https://hsto.org/files/a49/3dc/fc4/a493dcfc4bd34a1295fd15e0e2e01f26.jpg)  
   **알림:** 만약 OpenCV를 설치한다면, OpenCV 3.4.0 또는 이전버전을 사용하라. 이것은 C 응용프로그램의 OpenCV 3.4.1에서 버그다([500번](https://github.com/AlexeyAB/darknet/issues/500)을 보라).  
 
-    1-1) `C:\opencv_3.0\opencv\build\x64\vc14\bin`에 있는 `opencv_world320.dll`과 `opencv_ffmpeg320_64.dll`(또는 `opencv_world340.dll`과 `opencv_ffmpeg340_64.dll`) 파일을 찾는다 그리고 `darknet.exe`이 포함된 근처에 넣는다.  
+  1-1) `C:\opencv_3.0\opencv\build\x64\vc14\bin`에 있는 `opencv_world320.dll`과 `opencv_ffmpeg320_64.dll`(또는 `opencv_world340.dll`과 `opencv_ffmpeg340_64.dll`) 파일을 찾는다 그리고 `darknet.exe`이 포함된 근처에 넣는다.  
 
-    1-2) `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0`안에 `bin`과 `include`폴더가 있는지 확인한다. 그렇지 않으면, CUDA가 설치된 경로에서 이 폴더로 복사를 한다.  
+  1-2) `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0`안에 `bin`과 `include`폴더가 있는지 확인한다. 그렇지 않으면, CUDA가 설치된 경로에서 이 폴더로 복사를 한다.  
 
-    1-3) CUDNN을 설치하려면(신경망 속도증가), 다음을 수행한다:  
+  1-3) CUDNN을 설치하려면(신경망 속도증가), 다음을 수행한다:  
 
-      * **CUDA 10.0을 위한 cuDNN v7.4.1** 을 내려받고 설치한다: [내려받기](https://developer.nvidia.com/cudnn)  
-      * 윈도우 시스템변수 `cudnn`에 **CUDNN** 의 경로를 추가한다: [참조그림](https://hsto.org/files/a49/3dc/fc4/a493dcfc4bd34a1295fd15e0e2e01f26.jpg)  
+  * **CUDA 10.0을 위한 cuDNN v7.4.1** 을 내려받고 설치한다: [내려받기](https://developer.nvidia.com/cudnn)  
+  * 윈도우 시스템변수 `cudnn`에 **CUDNN** 의 경로를 추가한다: [참조그림](https://hsto.org/files/a49/3dc/fc4/a493dcfc4bd34a1295fd15e0e2e01f26.jpg)  
 
-    1-4) 만약 **CUDNN** 없이 빌드를 원한다면: `\darknet.sln`을 열고 -> 프로젝트 -> 속성 -> C/C++ -> 전처리기 -> 전처리기 정의에서, `CUDNN`을 제거한다.  
+  1-4) 만약 **CUDNN** 없이 빌드를 원한다면: `\darknet.sln`을 열고 -> 프로젝트 -> 속성 -> C/C++ -> 전처리기 -> 전처리기 정의에서, `CUDNN`을 제거한다.  
 
-  2. 다른 버전의 **CUDA(10.0 아님)** 를 가졌다면 문서편집기를 사용하여 `build\darknet\darknet.vcxproj`를 연다, "CUDA 10.0"이 포함된 2곳을 찾는다 그리고 자신의 버전으로 변경한다, 그런다음 단계1을 수행한다.  
+2. 다른 버전의 **CUDA(10.0 아님)** 를 가졌다면 문서편집기를 사용하여 `build\darknet\darknet.vcxproj`를 연다, "CUDA 10.0"이 포함된 2곳을 찾는다 그리고 자신의 버전으로 변경한다, 그런다음 단계1을 수행한다.  
 
-  3. 만약 **GPU가 없다** 면, 하지만 **MSVS 2015 와 OpenCV 3.0** (포함경로: `C:\opencv_3.0\opencv\build\include` 와 `C:\opencv_3.0\opencv\build\x64\vc14\lib`)가 있다, 그러면 마이크로소프트 비주얼스튜디오를 시작하고, `build\darknet\darknet_no_gpu.sln`를 열고, **x64** 와 **Release** 로 설정한다, 그리고 `빌드` -> `darknet_no_gpu 빌드` 를 한다.  
+3. 만약 **GPU가 없다** 면, 하지만 **MSVS 2015 와 OpenCV 3.0** (포함경로: `C:\opencv_3.0\opencv\build\include` 와 `C:\opencv_3.0\opencv\build\x64\vc14\lib`)가 있다, 그러면 마이크로소프트 비주얼스튜디오를 시작하고, `build\darknet\darknet_no_gpu.sln`를 열고, **x64** 와 **Release** 로 설정한다, 그리고 `빌드` -> `darknet_no_gpu 빌드` 를 한다.  
 
-  4. 만약 OpenCV 3.0 대신에 **OpenCV 2.4.13** 을 가지고 있다 그러면 `\darknet.sln`을 열고나서 경로를 변경해야 한다  
+4. 만약 OpenCV 3.0 대신에 **OpenCV 2.4.13** 을 가지고 있다 그러면 `\darknet.sln`을 열고나서 경로를 변경해야 한다  
 
-    4-1) 프로젝트 -> 속성 -> C/C++ -> 일반 -> 추가 포함 디렉토리에 추가: `C:\opencv_2.4.13\opencv\build\include`  
-    4-2) 프로젝트 -> 속성 -> 링커 -> 일반 -> 추가 라이브러리 디렉토리에 추가: `C:\opencv_2.4.13\opencv\build\x64\vc14\lib`  
+  4-1) 프로젝트 -> 속성 -> C/C++ -> 일반 -> 추가 포함 디렉토리에 추가: `C:\opencv_2.4.13\opencv\build\include`  
+  4-2) 프로젝트 -> 속성 -> 링커 -> 일반 -> 추가 라이브러리 디렉토리에 추가: `C:\opencv_2.4.13\opencv\build\x64\vc14\lib`  
 
-  5. 만약 검출에 3x, 벼림에 2x 가속 텐서코어(nVidia Titan V, Tesla V100, DGX-2 그리고 계승된것)를 가진 GPU를 가졌다면: `\darknet.sln`을 열고, 프로젝트 -> 속성 -> C/C++ -> 전처리기 -> 전처리기 정의에, `CUDNN_HALF`를 추가한다.
+5. 만약 검출에 3x, 벼림에 2x 가속 텐서코어(nVidia Titan V, Tesla V100, DGX-2 그리고 계승된것)를 가진 GPU를 가졌다면: `\darknet.sln`을 열고, 프로젝트 -> 속성 -> C/C++ -> 전처리기 -> 전처리기 정의에, `CUDNN_HALF`를 추가한다.
 
   **알림:** CUDA는 반드시 마이크로소프트 비주얼스튜디오 2015가 설치된 후에 설치해야 한다.
 
@@ -232,143 +232,143 @@
 
  그런다음 생성된 자신의 프로젝트에 추가한다:
 
-  * 프로젝트 -> 속성 -> C/C++ -> 일반 -> 추가 포함 디렉토리에 넣는다:  
+* 프로젝트 -> 속성 -> C/C++ -> 일반 -> 추가 포함 디렉토리에 넣는다:  
     `C:\opencv_3.0\opencv\build\include; ..\..\3rdparty\include; %(AdditionalIncludeDirectories); $(CudaToolkitIncludeDir); $(cudnn)\include`
 
-  * 솔루션 탐색기 탭에서 프로젝트 이름(예: darknet)을 마우스 오른쪽버튼을 눌러 튀어오름 메뉴에서 [`빌드 종속성` -> `사용자 지정 빌드`](./images/VS2013-R-5.jpg)를 클릭하고, 열린 창에서 CUDA 9.1 또는 자신이 가진 판을 선택지정한다.
+* 솔루션 탐색기 탭에서 프로젝트 이름(예: darknet)을 마우스 오른쪽버튼을 눌러 튀어오름 메뉴에서 [`빌드 종속성` -> `사용자 지정 빌드`](./images/VS2013-R-5.jpg)를 클릭하고, 열린 창에서 CUDA 9.1 또는 자신이 가진 판을 선택지정한다.
 
-  * `\src`에서 모든 `.c`와 `.cu` 파일과 `http_stream.cpp`파일을 프로젝트에 추가한다.
+* `\src`에서 모든 `.c`와 `.cu` 파일과 `http_stream.cpp`파일을 프로젝트에 추가한다.
 
-  * 프로젝트 -> 속성 -> 링커 -> 일반 -> 추가 라이브러리 디렉토리에 추가:  
+* 프로젝트 -> 속성 -> 링커 -> 일반 -> 추가 라이브러리 디렉토리에 추가:  
     `C:\opencv_3.0\opencv\build\x64\vc14\lib; $(CUDA_PATH)lib\$(PlatformName); $(cudnn)\lib\x64; %(AdditionalLibraryDirectories)`  
 
-  * 프로젝트 -> 속성 -> 링커 -> 입력 -> 추가 종속성에 추가:  
+* 프로젝트 -> 속성 -> 링커 -> 입력 -> 추가 종속성에 추가:  
     `..\..\3rdparty\lib\x64\pthreadVC2.lib; cublas.lib; curand.lib; cudart.lib; cudnn.lib; %(AdditionalDependencies)`  
 
-  * 프로젝트 -> 속성 -> C/C++ -> 전처리기 -> 전처리기 정의에 추가:  
+* 프로젝트 -> 속성 -> C/C++ -> 전처리기 -> 전처리기 정의에 추가:  
     `OPENCV; _TIMESPEC_DEFINED; _CRT_SECURE_NO_WARNINGS; _CRT_RAND_S; WIN32; NDEBUG; _CONSOLE; _LIB; %(PreprocessorDefinitions)`
 
-  * .exe ([X64 와 Release](./images/uhfk-eb0q-hwd9hsxhrikbokd6u.jpeg))로 컴파일한다 그리고 .exe 근처에 .dll을 넣는다:  
+* .exe ([X64 와 Release](./images/uhfk-eb0q-hwd9hsxhrikbokd6u.jpeg))로 컴파일한다 그리고 .exe 근처에 .dll을 넣는다:  
 
-    - `\3rdparty\dll\x64`에서 `pthreadVC2.dll, pthreadGC2.dll`  
-    - `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.1\bin`에서, CUDA 9.1을 위한 91 또는 자신의 판 `cusolver64_91.dll, curand64_91.dll, cudart64_91.dll, cublas64_91.dll`  
-    - OpenCV 3.2를 위하여: `C:\opencv_3.0\opencv\build\x64\vc14\bin`에서 `opencv_world320.dll`과 `opencv_ffmpeg320_64.dll`  
-    - OpenCV 2.4.13를 위하여: `C:\opencv_2.4.13\opencv\build\x64\vc14\bin`에서 `opencv_core2413.dll`과 `opencv_highgui2413.dll`  
+  - `\3rdparty\dll\x64`에서 `pthreadVC2.dll, pthreadGC2.dll`  
+  - `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.1\bin`에서, CUDA 9.1을 위한 91 또는 자신의 판 `cusolver64_91.dll, curand64_91.dll, cudart64_91.dll, cublas64_91.dll`  
+  - OpenCV 3.2를 위하여: `C:\opencv_3.0\opencv\build\x64\vc14\bin`에서 `opencv_world320.dll`과 `opencv_ffmpeg320_64.dll`  
+  - OpenCV 2.4.13를 위하여: `C:\opencv_2.4.13\opencv\build\x64\vc14\bin`에서 `opencv_core2413.dll`과 `opencv_highgui2413.dll`  
 
 
 <a name="욜로-v3-v2-벼림방법"></a>   
 #### 4. 벼림하는 방법(물리 시각개체분류 자료, Pascal VOC)  
 
-  1. http://pjreddie.com/media/files/darknet53.conv.74 에서 나선단에 대한 미리-벼림된 가중값(154 MB)을 내려받는다: 그리고 `build\darknet\x64`에 넣는다.
+1. http://pjreddie.com/media/files/darknet53.conv.74 에서 나선단에 대한 미리-벼림된 가중값(154 MB)을 내려받는다: 그리고 `build\darknet\x64`에 넣는다.
 
-  2. Pascal VOC 자료를 내료받고 `build\darknet\x64\data\voc` 폴더에 묶음을 푼다 이것은 `build\darknet\x64\data\voc\VOCdevkit\`폴더가 생성된다:
+2. Pascal VOC 자료를 내료받고 `build\darknet\x64\data\voc` 폴더에 묶음을 푼다 이것은 `build\darknet\x64\data\voc\VOCdevkit\`폴더가 생성된다:
 
-    - http://pjreddie.com/media/files/VOCtrainval_11-May-2012.tar
-    - http://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar
-    - http://pjreddie.com/media/files/VOCtest_06-Nov-2007.tar
+  - http://pjreddie.com/media/files/VOCtrainval_11-May-2012.tar
+  - http://pjreddie.com/media/files/VOCtrainval_06-Nov-2007.tar
+  - http://pjreddie.com/media/files/VOCtest_06-Nov-2007.tar
 
-    2-1) `build\darknet\x64\data\voc`폴더에 `voc_label.py`파일을 내려받는다: http://pjreddie.com/media/files/voc_label.py
+  2-1) `build\darknet\x64\data\voc`폴더에 `voc_label.py`파일을 내려받는다: http://pjreddie.com/media/files/voc_label.py
 
-  3. 윈도우를 위한 파이썬을 내려받고 설치한다: https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe
+3. 윈도우를 위한 파이썬을 내려받고 설치한다: https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe
 
-  4. 명령을 실행한다: `python build\darknet\x64\data\voc\voc_label.py`(이것은 2007_test.txt, 2007_train.txt, 2007_val.txt, 2012_train.txt, 2012_val.txt 파일을 생성하기위한 것이다)  
+4. 명령을 실행한다: `python build\darknet\x64\data\voc\voc_label.py`(이것은 2007_test.txt, 2007_train.txt, 2007_val.txt, 2012_train.txt, 2012_val.txt 파일을 생성하기위한 것이다)  
 
-  5. 명령을 실행한다: `type 2007_train.txt 2007_val.txt 2012_*.txt > train.txt`(이것은 위에서 생성한 파일을 하나의 2007_train.txt 파일로 합치는 것이다)
+5. 명령을 실행한다: `type 2007_train.txt 2007_val.txt 2012_*.txt > train.txt`(이것은 위에서 생성한 파일을 하나의 2007_train.txt 파일로 합치는 것이다)
 
-  6. `yolov3-voc.cfg` 파일(의 3행, 4행을)에서 `batch=64`와 `subdivisions=8`로 설정한다: [연결](https://github.com/AlexeyAB/darknet/blob/ee38c6e1513fb089b35be4ffa692afd9b3f65747/cfg/yolov3-voc.cfg#L3-L4)
+6. `yolov3-voc.cfg` 파일(의 3행, 4행을)에서 `batch=64`와 `subdivisions=8`로 설정한다: [연결](https://github.com/AlexeyAB/darknet/blob/ee38c6e1513fb089b35be4ffa692afd9b3f65747/cfg/yolov3-voc.cfg#L3-L4)
 
-  7. `train_voc.cmd`를 사용하여 벼림을 시작한다 아니면 명령행을 사용한다:  
+7. `train_voc.cmd`를 사용하여 벼림을 시작한다 아니면 명령행을 사용한다:  
     `darknet.exe detector train data/voc.data cfg/yolov3-voc.cfg darknet53.conv.74`  
     ( **알림:** 손실-창을 해제하기 위해서는 `-dont_show`표기를 사용한다. 만약 CPU 벼림은 `darknet.exe`대신에 `darknet_no_gpu.exe`을 사용한다. )  
 
-  만약 필요한 경우 `build\darknet\x64\data\voc.data` 파일에서 경로를 변경한다.  
+만약 필요한 경우 `build\darknet\x64\data\voc.data` 파일에서 경로를 변경한다.  
 
-  벼림에 대한 추가정보는 연결로... : [:kr:국문](./2_YOLO/yolo.md#시각개체분류-딱지-생성), [영문](http://pjreddie.com/darknet/yolo/#train-voc)
+벼림에 대한 추가정보는 연결로... : [:kr:국문](./2_YOLO/yolo.md#시각개체분류-딱지-생성), [영문](http://pjreddie.com/darknet/yolo/#train-voc)
 
-  **알림:** 만약 벼림하는 동안 `avg`(손실, 오차) 영역에 대하여 `nan`값을 봤다 - 그러면 벼림이 잘못된 것이다, 하지만 만약 `nan`이 다른 행에 있다 - 그러면 벼림이 잘 되는 것이다.
+**알림:** 만약 벼림하는 동안 `avg`(손실, 오차) 영역에 대하여 `nan`값을 봤다 - 그러면 벼림이 잘못된 것이다, 하지만 만약 `nan`이 다른 행에 있다 - 그러면 벼림이 잘 되는 것이다.
 
 
 ##### 4-2. 다중-GPU를 가지고 벼림하는 방법
 
-  1. 먼저 약 1000번 반복에 대해 하나의 GPU로 벼림한다:  
+1. 먼저 약 1000번 반복에 대해 하나의 GPU로 벼림한다:  
   `darknet.exe detector train data/voc.data cfg/yolov3-voc.cfg darknet53.conv.74`
 
-  2. 그런다음 중지한다 그리고 약간 벼림된 모형 `/backup/yolov3-voc_1000.weights`을 사용하여 다중GPU를 가지고 벼림을 한다(4개의 GPU 까지):  
+2. 그런다음 중지한다 그리고 약간 벼림된 모형 `/backup/yolov3-voc_1000.weights`을 사용하여 다중GPU를 가지고 벼림을 한다(4개의 GPU 까지):  
   `darknet.exe detector train data/voc.data cfg/yolov3-voc.cfg /backup/yolov3-voc_1000.weights -gpus 0,1,2,3`
 
-  적은 자료집합의 경우는 때대로 학습률을 줄이는 것이 더 좋다, 4 GPU 집합에 대하여 `learning_rate = 0.00025`(즉, learning_rate = 0.001/GPU수). 이 경우 또한 자신의 구성파일(.cfg 파일)에서 `burn_in =`을 `max_batches =`의 4x 배로 늘린다. 즉, `1000` 대신에 `burn_in = 4000`을 사용한다.  
+적은 자료집합의 경우는 때대로 학습률을 줄이는 것이 더 좋다, 4 GPU 집합에 대하여 `learning_rate = 0.00025`(즉, learning_rate = 0.001/GPU수). 이 경우 또한 자신의 구성파일(.cfg 파일)에서 `burn_in =`을 `max_batches =`의 4x 배로 늘린다. 즉, `1000` 대신에 `burn_in = 4000`을 사용한다.  
 
-  https://groups.google.com/d/msg/darknet/NbJqonJBTSY/Te5PfIpuCAAJ
+https://groups.google.com/d/msg/darknet/NbJqonJBTSY/Te5PfIpuCAAJ
 
 <a name="맞춤-벼림방법"></a>
 #### 5. 벼림하는 방법(사용자가 정한 개체를 검출하기 위하여)  
 
-  ( 이전의 욜로-v2를 벼림하기 위해서는 `yolov2-voc.cfg`, `yolov2-tiny-voc.cfg`, `yolo-voc.cfg`, `yolo-voc.2.0.cfg`, ... [:kr:국문](./SaYongBeob_Yolo-v2.md), [영문](https://github.com/AlexeyAB/darknet/tree/47c7af1cea5bbdedf1184963355e6418cb8b1b4f#how-to-train-pascal-voc-data) )
+( 이전의 욜로-v2를 벼림하기 위해서는 `yolov2-voc.cfg`, `yolov2-tiny-voc.cfg`, `yolo-voc.cfg`, `yolo-voc.2.0.cfg`, ... [:kr:국문](./SaYongBeob_Yolo-v2.md), [영문](https://github.com/AlexeyAB/darknet/tree/47c7af1cea5bbdedf1184963355e6418cb8b1b4f#how-to-train-pascal-voc-data) )
 
-  욜로-v3 벼림:
+욜로-v3 벼림:
 
-  1. `yolov3.cfg`와 같은 내용으로 `yolo-obj.cfg`파일을 생성한다(또는 `yolov3.cfg`를 `yolo-obj.cfg`로 복사) 그리고:  
+1. `yolov3.cfg`와 같은 내용으로 `yolo-obj.cfg`파일을 생성한다(또는 `yolov3.cfg`를 `yolo-obj.cfg`로 복사) 그리고:  
 
-    * batch 행을 [`batch=64`](https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L3)로 변경한다
-    * subdivisions 행읗 [`subdivisions=8`](https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L4)로 변경한다
-    * `classes=80` 행을 3개의 `[yolo]`-단에서 자신의 개체개수로 변경한다:
-      - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L610
-      - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L696
-      - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L783
-    * [`filters=255`] 행을 각 `[yolo]`단 이전 3개의 `[convolutional]`단에 filters=(classes + 5)x3 로 변경한다:
-      - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L603
-      - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L689
-      - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L776
+  * batch 행을 [`batch=64`](https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L3)로 변경한다
+  * subdivisions 행읗 [`subdivisions=8`](https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L4)로 변경한다
+  * `classes=80` 행을 3개의 `[yolo]`-단에서 자신의 개체개수로 변경한다:
+    - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L610
+    - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L696
+    - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L783
+  * [`filters=255`] 행을 각 `[yolo]`단 이전 3개의 `[convolutional]`단에 filters=(classes + 5)x3 로 변경한다:
+    - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L603
+    - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L689
+    - https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L776
 
-      그러므로 만약 `classes=1`이면 `filters=18`이 된다. 만약 `classes=2`이면 `filters=21`로 쓴다.  
-      ( 구성파일에 **filters=(classes + 5)x3)** 로 쓰지 마라! )  
+  그러므로 만약 `classes=1`이면 `filters=18`이 된다. 만약 `classes=2`이면 `filters=21`로 쓴다.  
+  ( 구성파일에 **filters=(classes + 5)x3)** 로 쓰지 마라! )  
 
-      ( 일반적으로 `filters`는 `classes`, `coords`와 `mask`의 개수에 종속된다, 즉, filters=`(classes + coords + 1)*<number of mask>`, 여기에서 `mask`는 고정자(anchor)의 순번(index)이다. 만약 `mask`가 없다, 그러면 filters=`(classes + coords + 1)*num` 이다 )
+  ( 일반적으로 `filters`는 `classes`, `coords`와 `mask`의 개수에 종속된다, 즉, filters=`(classes + coords + 1)*<number of mask>`, 여기에서 `mask`는 고정자(anchor)의 순번(index)이다. 만약 `mask`가 없다, 그러면 filters=`(classes + coords + 1)*num` 이다 )
 
-      그래서 본보기에 대해, 2개의 개체를 위해, 자신의 `yolo-obj.cfg`파일은 [yolo]단 3개 각각의 행이 아래처럼 `yolov3.cfg`와 달라야 한다:  
+  그래서 본보기에 대해, 2개의 개체를 위해, 자신의 `yolo-obj.cfg`파일은 [yolo]단 3개 각각의 행이 아래처럼 `yolov3.cfg`와 달라야 한다:  
 
-      ```
-      [convolutional]
-      filters=21
+  ```
+  [convolutional]
+  filters=21
 
-      [region]
-      classes=2
-      ```
+  [region]
+  classes=2
+  ```
 
-  2. `build\darknet\x64\data\`폴더에 `obj.names`파일을 생성한다, 개체 이름을 가진 - 다른 행에 각각
+2. `build\darknet\x64\data\`폴더에 `obj.names`파일을 생성한다, 개체 이름을 가진 - 다른 행에 각각
 
-  3. `build\darknet\x64\data\`폴더에 `obj.data`파일을 생성한다, (여기에서 **classes = 개체 개수**)를 담고있는
+3. `build\darknet\x64\data\`폴더에 `obj.data`파일을 생성한다, (여기에서 **classes = 개체 개수**)를 담고있는
 
-    ```
-    classes= 2
-    train  = data/train.txt
-    valid  = data/test.txt
-    names = data/obj.names
-    backup = backup/
-    ```
+  ```
+  classes= 2
+  train  = data/train.txt
+  valid  = data/test.txt
+  names = data/obj.names
+  backup = backup/
+  ```
 
-  4. `build\darknet\x64\data\obj\`폴더에 자신의 개체 이미지파일(.jpg)을 넣는다
+4. `build\darknet\x64\data\obj\`폴더에 자신의 개체 이미지파일(.jpg)을 넣는다
 
-  5. 자신의 자료집합인 이미지에 개체 각각의 딱지(label)를 지정해야 한다. 개체의 경계상자 표식과 설명파일을 생성하기 위해 **시각 GUI 소프트웨어** 를 사용하라: https://github.com/AlexeyAB/Yolo_mark  
+5. 자신의 자료집합인 이미지에 개체 각각의 딱지(label)를 지정해야 한다. 개체의 경계상자 표식과 설명파일을 생성하기 위해 **시각 GUI 소프트웨어** 를 사용하라: https://github.com/AlexeyAB/Yolo_mark  
 
-    이것은 `.jpg` 이미지파일 각각에 대해 `.txt` 파일을 생성한다 - 동일 폴더에 동일한 이름으로, 하지만 `.txt`확장자, 그리고 파일로 쓴다: 이미지상의 개체 번호와 개체 좌표, 다른 행에 개체 각각에 대해:  
+이것은 `.jpg` 이미지파일 각각에 대해 `.txt` 파일을 생성한다 - 동일 폴더에 동일한 이름으로, 하지만 `.txt`확장자, 그리고 파일로 쓴다: 이미지상의 개체 번호와 개체 좌표, 다른 행에 개체 각각에 대해:  
     `<object-class> <x> <y> <width> <height>`  
 
-    여기에서:  
-    * `<object-class>` - `(classes-1)`을 개체번호 정수 `0`부터
-    * `<x_center> <y_center> <width> <height>` - 이미지의 너비와 높이에 관련된 실수값, 이것은 0.0 ~ 1.0 이다
-    * 예를들어: `<x> = <absolute_x> / <image_width>` 또는 `<height> = <absolute_height> / <image_height>`
-    * 주의: `<x_center> <y_center>` - 이것은 사각형의 중심이다 (상-좌 모서리가 아니다)
+여기에서:  
+  * `<object-class>` - `(classes-1)`을 개체번호 정수 `0`부터
+  * `<x_center> <y_center> <width> <height>` - 이미지의 너비와 높이에 관련된 실수값, 이것은 0.0 ~ 1.0 이다
+  * 예를들어: `<x> = <absolute_x> / <image_width>` 또는 `<height> = <absolute_height> / <image_height>`
+  * 주의: `<x_center> <y_center>` - 이것은 사각형의 중심이다 (상-좌 모서리가 아니다)
 
-    예를들어 `img1.jpg`에 대해 담고있는 `img1.txt`가 생성된다:
+  예를들어 `img1.jpg`에 대해 담고있는 `img1.txt`가 생성된다:
 
-    ```
-    1 0.716797 0.395833 0.216406 0.147222
-    0 0.687109 0.379167 0.255469 0.158333
-    1 0.420312 0.395833 0.140625 0.166667
-    ```
+  ```
+  1 0.716797 0.395833 0.216406 0.147222
+  0 0.687109 0.379167 0.255469 0.158333
+  1 0.420312 0.395833 0.140625 0.166667
+  ```
 
-  6. `build\darknet\x64\data\`폴더에 `train.txt`파일을 생성한다, 자신의 이미지 파일이름을 가진, 다른행에 각각의 파일이름, `darknet.exe`에 상대경로를 가진, 담고있는 예를 들면:
+6. `build\darknet\x64\data\`폴더에 `train.txt`파일을 생성한다, 자신의 이미지 파일이름을 가진, 다른행에 각각의 파일이름, `darknet.exe`에 상대경로를 가진, 담고있는 예를 들면:
 
   ```
   data/obj/img1.jpg
@@ -376,34 +376,34 @@
   data/obj/img3.jpg
   ```
 
-  7. 나선단에 대해 [미리-벼림된 가중값(154 MB)](https://pjreddie.com/media/files/darknet53.conv.74)을 내려받는다. 그리고 `build\darknet\x64`폴더에 넣는다.
+7. 나선단에 대해 [미리-벼림된 가중값(154 MB)](https://pjreddie.com/media/files/darknet53.conv.74)을 내려받는다. 그리고 `build\darknet\x64`폴더에 넣는다.
 
-  8. 명령행을 사용하여 벼림을 시작한다: `darknet.exe detector train data/obj.data yolo-obj.cfg darknet53.conv.74`  
+8. 명령행을 사용하여 벼림을 시작한다: `darknet.exe detector train data/obj.data yolo-obj.cfg darknet53.conv.74`  
 
-    리눅스에서 벼림하기위해 사용하는 명령: `./darknet detector train data/obj.data yolo-obj.cfg darknet53.conv.74` (`darknet.exe`대신에 `./darknet`사용)
+  리눅스에서 벼림하기위해 사용하는 명령: `./darknet detector train data/obj.data yolo-obj.cfg darknet53.conv.74` (`darknet.exe`대신에 `./darknet`사용)
 
-    * `yolo-obj_last.weights`파일은 100번 반복마다 `build\darknet\x64\backup\`에 저장된다
-    * `yolo-obj_xxxx.weights`파일은 1000번 반복마다 `build\darknet\x64\backup\`에 저장된다
-    * 손실-창을 해제하기 위해 `darknet.exe detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show` 사용, Amazaon EC2 클라우드처럼 감시없이 벼림하는 경우
-    * GUI없이 원격서버로 벼림하는 동안 mAP와 손실-챠트(Loss-chart)를 보기위해, `darknet.exe detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show -mjpeg_port 8090 -map`명령을 사용한다 그런다음 크롬/파이어폭스 브라우저에서 `http://ip-address:8090`URL을 연다
+  * `yolo-obj_last.weights`파일은 100번 반복마다 `build\darknet\x64\backup\`에 저장된다
+  * `yolo-obj_xxxx.weights`파일은 1000번 반복마다 `build\darknet\x64\backup\`에 저장된다
+  * 손실-창을 해제하기 위해 `darknet.exe detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show` 사용, Amazaon EC2 클라우드처럼 감시없이 벼림하는 경우
+  * GUI없이 원격서버로 벼림하는 동안 mAP와 손실-챠트(Loss-chart)를 보기위해, `darknet.exe detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -dont_show -mjpeg_port 8090 -map`명령을 사용한다 그런다음 크롬/파이어폭스 브라우저에서 `http://ip-address:8090`URL을 연다
 
   8-1) 벼림을 위해 4세대마다 계산한 평균정밀도평균(mAP: mean Average Precisions)을 가짐(`obj.data`파일에 `valid=valid.txt`또는 `train.txt`을 설정) 그리고 실행: `darknet.exe detector train data/obj.data yolo-obj.cfg darknet53.conv.74 -map`
 
-  9. 벼림이 완료된 후에 - `build\darknet\x64\backup\`경로에서 `yolo-obj_final.weights`결과를 얻는다
+9. 벼림이 완료된 후에 - `build\darknet\x64\backup\`경로에서 `yolo-obj_final.weights`결과를 얻는다
 
-    * 매 100번 반복후 중지할수 있다 그리고 나중에 이 시점부터 벼림을 시작한다. 예를들어, 2000번 반복후에 벼림을 중지할수 있다, 그리고 나중에 `build\darknet\x64\backup\`에서 `build\darknet\x64\`로 `yolo-obj_2000.weights`을 복사한다 그리고 이것을 사용하여 벼림을 시작한다: `darknet.exe detector train data/obj.data yolo-obj.cfg yolo-obj_2000.weights`
+  * 매 100번 반복후 중지할수 있다 그리고 나중에 이 시점부터 벼림을 시작한다. 예를들어, 2000번 반복후에 벼림을 중지할수 있다, 그리고 나중에 `build\darknet\x64\backup\`에서 `build\darknet\x64\`로 `yolo-obj_2000.weights`을 복사한다 그리고 이것을 사용하여 벼림을 시작한다: `darknet.exe detector train data/obj.data yolo-obj.cfg yolo-obj_2000.weights`
 
-      ( 원본 저장소 https://github.com/pjreddie/darknet 의 가중값파일은 10,000번 반복마다 1번 저장된 것이다 `if(iterations > 1000)` )
+  ( 원본 저장소 https://github.com/pjreddie/darknet 의 가중값파일은 10,000번 반복마다 1번 저장된 것이다 `if(iterations > 1000)` )
 
-    * 또한 당신은 모두 45,000번 반복보다 빠르게 결과를 얻을수 있다.
+  * 또한 당신은 모두 45,000번 반복보다 빠르게 결과를 얻을수 있다.
 
-    **알림:** 만약 벼림하는 동안 avg(손실, 오차) 영역에 대하여 nan값을 봤다 - 그러면 벼림이 잘못된 것이다, 하지만 만약 nan이 다른 행에 있다 - 그러면 벼림이 잘 되는 것이다.
+  **알림:** 만약 벼림하는 동안 avg(손실, 오차) 영역에 대하여 nan값을 봤다 - 그러면 벼림이 잘못된 것이다, 하지만 만약 nan이 다른 행에 있다 - 그러면 벼림이 잘 되는 것이다.
 
-    **알림:** 만약 자신의 구성파일에서 `width=` 또는 `height=`를 변경했다, 그러면 새로운 너비와 높이를 반드시 32로 나눌수 있어야 한다.
+  **알림:** 만약 자신의 구성파일에서 `width=` 또는 `height=`를 변경했다, 그러면 새로운 너비와 높이를 반드시 32로 나눌수 있어야 한다.
 
-    **알림:** 벼림후 검출을 위해 이런 명령을 사용한다: `darknet.exe detector test data/obj.data yolo-obj.cfg yolo-obj_8000.weights`
+  **알림:** 벼림후 검출을 위해 이런 명령을 사용한다: `darknet.exe detector test data/obj.data yolo-obj.cfg yolo-obj_8000.weights`
 
-    **알림:** 만약 `메모리 부족(Out of memory)`이 발생한다, 그러면 `.cfg`파일에서 `subdivisions=16`을 키워야 한다, 32 또는 64: [연결](https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L4) 의 4행을 수정한다
+  **알림:** 만약 `메모리 부족(Out of memory)`이 발생한다, 그러면 `.cfg`파일에서 `subdivisions=16`을 키워야 한다, 32 또는 64: [연결](https://github.com/AlexeyAB/darknet/blob/0039fd26786ab5f71d5af725fc18b3f521e7acfd/cfg/yolov3.cfg#L4) 의 4행을 수정한다
 
 
 ##### 5-2. 꼬맹이-욜로(tiny-yolo) 벼림하는 방법(자기맞춤 개체 검출을 위해)
@@ -486,7 +486,7 @@
 <a name="평균정밀도평균-계산"></a>  
 #### 7. 물리 시각개체분류(Pascal VOC)로 mAP를 계산하는 방법  
 
- 1. PascalVOC-2007-test 로 평균정밀도평균(mAP: mean Average Precision)을 계산하기 위해:
+1. PascalVOC-2007-test 로 평균정밀도평균(mAP: mean Average Precision)을 계산하기 위해:
 
   * PascalVOC 자료집합을 내려받고, Python 3.x을 설치하고 `2007_test.txt`파일을 가져온다 여기에 설명된 대로:  
   https://github.com/AlexeyAB/darknet#how-to-train-pascal-voc-data
