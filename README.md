@@ -5,6 +5,9 @@
 - https://pjreddie.com/darknet  
 - https://github.com/AlexeyAB/darknet  
 
+어떻게 컴퓨터가 개체를 즉시 인식하기위해 배우는가.(TED 강의, 한글자막)  
+[![요셉 레드먼](https://img.youtube.com/vi/Cgxsv1riJhI/0.jpg)](https://www.youtube.com/watch?v=Cgxsv1riJhI)
+
 | [다크넷](./README.md) | [설치](./1_SeolChi/SeolChi.md) | [욜로](./2_YOLO/yolo.md) | [이미지넷분류](./3_ImageNet_BunRyu/BunRyu.md) | [악몽](./4_AkMong/AkMong.md) | [재사용신경망](./5_RNN/rnn.md) | [다크고](./6_DarkGo/DarkGo.md) | [꼬맹이망](./7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](./8_SuRyeon/SuRyeon.md#CIFAR-10-분류기) | [사용방법](./SaYongBeob_Yolo-v3.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
@@ -71,5 +74,10 @@
 
 ## 11. 연락(Contact)  
 다크넷에 관한 질문이나 도움을 받으려면 [다크넷 메일목록](https://groups.google.com/forum/#!forum/darknet)에 연락하시오. 가능한 한 빨리 질문에 답변할 것이다.  
+
+---
+
+어떻게 운전자없는 자동차가 도로를 보는가.(TED 강의)  
+[![크리스 우르슨](https://img.youtube.com/vi/tiwVMrTLUWg/0.jpg)](https://www.youtube.com/watch?v=tiwVMrTLUWg)  
 
 ---

@@ -156,7 +156,7 @@ Enter Image Path:
 생산된 것:
 <p align="center"><img width="100%" src="images/Screen_Shot_2016-11-17_at_12_03_22_PM.png"></p>  
 
-이것은 분명하게 그다지 아주 유용하지 않다 하지만 모형에서 문턱값을 얻어서 어떤석을 제어하기 위한 다른 값으로 설정할 수 있다.
+이것은 분명하게 그다지 아주 유용하지 않다 하지만 모형에서 문턱값을 얻어서 어떤것을 제어하기 위한 다른 값으로 설정할 수 있다.
 
 #### 4-3) 꼬맹이 욜로v3(Tiny YOLOv3)
 
@@ -288,7 +288,7 @@ wget https://pjreddie.com/media/files/darknet53.conv.74
 CoCo: 상황공통개체(Common Objects in Context, 상황에서 공통 개체)
 ```
 
-처음부터 욜로(YOLO)를 벼림할 수 있다 다른 벼림 체계, 잠정참여, 또는 자료집합으로 놀고싶다면. [:kr:COCO 자료집합](../10_JaRyoJibHab/COCO.md)[영문](http://mscoco.org/dataset/#overview)으로 작업하는 방법이 여기에 있다.
+처음부터 욜로(YOLO)를 벼림할 수 있다 다른 벼림 체계, 잠정참여, 또는 자료집합으로 놀고싶다면. [:kr:COCO 자료집합](../10_JaRyoJibHab/COCO.md)[(영문)](http://mscoco.org/dataset/#overview)으로 작업하는 방법이 여기에 있다.
 
 #### 7-1) 코코(COCO) 자료를 가져온다(Get The COCO Data)
 
