@@ -8,7 +8,7 @@
 어떻게 컴퓨터가 개체를 즉시 인식하기위해 배우는가.(TED 강의, 한글자막)  
 [![요셉 레드먼](https://img.youtube.com/vi/Cgxsv1riJhI/0.jpg)](https://www.youtube.com/watch?v=Cgxsv1riJhI)
 
-| [다크넷](./README.md) | [설치](./1_SeolChi/SeolChi.md) | [욜로](./2_YOLO/yolo.md) | [이미지넷분류](./3_ImageNet_BunRyu/BunRyu.md) | [악몽](./4_AkMong/AkMong.md) | [재사용신경망](./5_RNN/rnn.md) | [다크고](./6_DarkGo/DarkGo.md) | [꼬맹이망](./7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](./8_SuRyeon/SuRyeon.md#CIFAR-10-분류기) | [사용방법](./SaYongBeob_Yolo-v3.md) |  
+| [다크넷](./README.md) | [설치](./1_SeolChi/SeolChi.md) | [욜로](./2_YOLO/yolo.md) | [이미지넷분류](./3_ImageNet_BunRyu/BunRyu.md) | [악몽](./4_AkMong/AkMong.md) | [재사용신경망](./5_RNN/rnn.md) | [다크고](./6_DarkGo/DarkGo.md) | [꼬맹이망](./7_GgoMaengIi/GgoMaengIi.md) | [분류기벼림](./8_SuRyeon/SuRyeon.md#CIFAR-10-분류기) | [사용방법](./11_SaYongBeob/SaYongBeob_Yolo-v3.md) |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 
 ---
